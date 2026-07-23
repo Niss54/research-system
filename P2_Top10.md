@@ -5,9 +5,9 @@
 
 ## 🎯 What This Phase Does
 
-Market mein pehle se kya solutions hain? Best 10 competitors identify karo — direct, indirect, aur manual workarounds sab mila ke. Yeh phase P3 ke liye raw material hai. Jitna accurate yahan, utna deeper research aage.
+What solutions already exist in the market? Before building anything, you need a complete picture of the competitive landscape — not just the obvious big names, but niche tools, manual workarounds, and everything in between.
 
-**Goal:** Clean table of 10 solutions — name, URL, pricing, target user, 3 key features.
+**Goal:** A clean table of 10 existing solutions that serve your problem space, ready to feed into P3 deep research.
 
 ---
 
@@ -15,20 +15,20 @@ Market mein pehle se kya solutions hain? Best 10 competitors identify karo — d
 
 | Tool | Status | Why |
 |------|--------|-----|
-| 🔍 Web Search | **ON** | Competitors dhundhna hai across multiple platforms |
-| 🧠 Extended Thinking | OFF | Straightforward discovery task — normal mode enough hai |
+| 🔍 Web Search | **ON** | Must search across multiple platforms to find all relevant solutions |
+| 🧠 Extended Thinking | OFF | Not needed here — this is a discovery task, not synthesis |
 
 > **How to enable in Claude.ai:**
-> - Web Search → top bar search icon se toggle karo
+> - Web Search → toggle via the search icon in the top bar
 
 ---
 
 ## 📋 Copy-to-Paste Prompt
 
-> **Instructions:** `[VALIDATED PROBLEM FROM P1 — paste P1 verdict here]` ki jagah apna P1 output paste karo.
+> **Instructions:** Copy the full prompt below, replace the placeholder with your validated problem from P1, and paste it into Claude.
 
 ```
-Problem: [VALIDATED PROBLEM FROM P1 — paste P1 verdict here]
+Problem: [PASTE YOUR VALIDATED PROBLEM FROM P1 — include the P1 verdict here]
 
 Find TOP 10 solutions that exist for this problem. Include a mix of:
 - Direct competitors (solve the exact same problem)
@@ -63,11 +63,11 @@ Output: Clean table + one-line summary of what makes each solution unique.
 
 ## 🗂️ How to Use
 
-1. **P1 output paste karo** — poora verdict aur evidence paste karo prompt mein
-2. **Web Search ON rakho** — Claude multiple sites search karega ek saath
-3. **Table review karo** carefully — koi obvious player miss hua toh manually add karo
-4. **Type column check karo** — Direct / Indirect / Manual Workaround — teeno categories mein kuch hona chahiye
-5. **Yeh list save karo** — P3 mein har ek competitor ke liye ek deep dive session karna hai
+1. **Paste your P1 verdict** — include the problem statement and the GO / MAYBE verdict from P1
+2. **Let Claude search broadly** — don't guide it toward tools you already know; let it discover
+3. **Don't stop at 7 or 8** — push for all 10, including at least one manual workaround
+4. **Save the full table** — you'll run P3 once per row in this table
+5. **Note any recently shut-down tools** — those are strong market signals worth investigating
 
 ---
 
@@ -75,37 +75,32 @@ Output: Clean table + one-line summary of what makes each solution unique.
 
 Claude should return:
 
-- **10-row table** with Name, URL, Type, Pricing, Target User, 3 Key Features
-- **Mix of types** — at least 2 direct competitors, 1–2 indirect, 1–2 manual workarounds
-- **One-line unique angle** per solution — what makes each one different
-- **Market signals** — koi band hua tool? koi recent funding? mention hona chahiye
-
-**Example row format:**
-```
-| 3 | Notion + Template | notion.so | Manual Workaround | Free / $8/mo | Freelancers, PMs | Custom fields, DB views, shareable |
-```
+- **A table of 10 solutions** — with URL, pricing, target user, and key features for each
+- **A healthy mix** — major players, niche tools, and at least one manual workaround
+- **One-line summary per solution** — what makes it unique or how it differs
+- **Foundation for P3** — you'll use each row as input for one P3 research session
 
 ---
 
 ## 💡 Pro Tip
 
-> **Manual workarounds are gold.** Agar log Excel ya Notion bana rahe hain problem solve karne ke liye — yeh HUGE gap signal hai. Matlab problem real hai but ek proper software abhi tak nahi bana.
+> **Manual workarounds are gold.** If people are building Excel sheets or Notion templates to solve this problem, that's a HUGE gap signal. It means the problem is real but no proper software exists yet — or the existing software is too complex, too expensive, or too generic.
 
-**Tool band ho gaya recently?** → Even bigger signal. Users are stranded and actively looking for alternatives. Note the shutdown date and search for Reddit threads asking for alternatives.
+Look specifically for comments like "I just use a spreadsheet for this" or "I hire a VA to manage this" — these are your best opportunities.
 
 ---
 
 ## ⏱️ Time Estimate
 
-**~15 minutes** — Claude 10–12 min leta hai across 8 platforms. Quick hai compared to P3.
+**~15 minutes** — Claude searches multiple platforms and assembles the table. Faster than P1 since no deep reasoning is needed.
 
 ---
 
 ## ➡️ Next Step
 
-Copy the full P2 table → Go to [`P3_Research_x10.md`](./P3_Research_x10.md)
+Go to [`P3_Research_x10.md`](./P3_Research_x10.md) — run the P3 prompt **once per solution** from your Top 10 table.
 
-Yahan listed **10 solutions mein se ek ek ko** P3 prompt se deep research karna hai. Ek session = ek competitor.
+You'll run P3 ten times total — one session per competitor.
 
 ---
 
