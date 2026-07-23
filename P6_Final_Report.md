@@ -5,9 +5,9 @@
 
 ## 🎯 What This Phase Does
 
-Sab kuch ek jagah. P1 se P5 tak ke sare outputs ek massive prompt mein paste karo aur Claude ek professional, structured startup opportunity report generate karega — co-founders ya investors ko directly dikhao.
+Everything in one place. You paste all outputs from P1 through P5 into a single prompt, and Claude synthesizes a complete, structured startup opportunity report — ready to share with co-founders, investors, or use as your own build/no-build decision framework.
 
-**Goal:** 6-section investor-ready startup opportunity report with GO/NO-GO/PIVOT recommendation + 30-day action plan.
+**Goal:** A professional, evidence-backed report with a clear GO / NO-GO / PIVOT recommendation and a 30-day action plan.
 
 ---
 
@@ -15,18 +15,18 @@ Sab kuch ek jagah. P1 se P5 tak ke sare outputs ek massive prompt mein paste kar
 
 | Tool | Status | Why |
 |------|--------|-----|
-| 🧠 Extended Thinking | **ON** | This is the final synthesis — Claude ko full depth mein sochna hai |
-| 🔍 Web Search | **OFF** | Sab research complete ho chuka hai — fresh search needed nahi |
+| 🧠 Extended Thinking | **ON** | Synthesizing 5 phases of research requires deep, structured reasoning |
+| 🔍 Web Search | **OFF** | All data comes from previous phases — no new searches needed |
 
 > **How to enable in Claude.ai:**
-> - Extended Thinking → model selector → "Extended thinking" option
-> - Web Search → OFF rakho
+> - Extended Thinking → model selector → select "Extended thinking"
+> - Turn web search OFF to keep Claude focused on your compiled research
 
 ---
 
 ## 📋 Copy-to-Paste Prompt
 
-> **Instructions:** `[PROBLEM STATEMENT]` aur `[TODAY'S DATE]` bharo. Phir P1–P5 ke sare outputs respective sections mein paste karo. Yeh ek very long prompt hoga — yeh normal hai.
+> **Instructions:** Copy the full prompt below, fill in your problem statement and today's date, then paste all outputs from P1 through P5 into their respective sections.
 
 ```
 Create a STARTUP OPPORTUNITY REPORT.
@@ -91,10 +91,10 @@ Recommended gap to target: [#1 with 3-line reasoning]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SECTION 5: PRODUCT DIRECTION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-MUST BUILD — core, without these don't launch:
+MUST BUILD — core features; don't launch without these:
 • [Feature] → why it's non-negotiable
 
-SHOULD BUILD — these make you win against competitors:
+SHOULD BUILD — these help you win against competitors:
 • [Feature] → which gap it fills
 
 SKIP FOR NOW — crowded or not your focus in v1:
@@ -127,76 +127,50 @@ Cite which research phase each key claim comes from (e.g. "from P3 reviews").
 
 ## 🗂️ How to Use
 
-1. **Sab 5 phase outputs ready karo** — P1, P2, P3 (×10), P4, P5 — ek doc mein organized
-2. **Problem statement aur date add karo** — simple hai
-3. **Sab paste karo ek saath** — yeh longest prompt hai poore pipeline mein, normal hai
-4. **Extended Thinking ON, Web Search OFF** — yeh critical hai
-5. **Wait for full response** — 10–15 min lag sakte hain, interrupt bilkul mat karo
-6. **Report ek markdown/doc mein save karo** — yeh shareable artifact hai
-
-### Apne Final Report Ko Polish Karo (Optional)
-
-Report aane ke baad:
-- Claims jinhein verify nahi kiya → highlight karo, manually check karo
-- Numbers aur estimates (TAM, revenue, users) → always double-check independently
-- Section 5 (product direction) → share with 2–3 potential users aur feedback lo
+1. **Compile all previous outputs** before starting — have P1 through P5 saved and ready to paste
+2. **Do not skip any section** — the report structure is designed to build a complete decision framework
+3. **Fill in today's date** — this timestamps the research and makes the report shareable
+4. **Let Claude finish fully** — this is the longest generation in the pipeline; do not interrupt
+5. **Review before sharing** — mark any figures or claims you want to verify manually
 
 ---
 
 ## ✅ Expected Output
 
-A complete 6-section report including:
+Claude should return a complete 6-section report including:
 
-- **Section 1:** Executive Summary + clear GO / NO-GO / PIVOT recommendation
-- **Section 2:** ICP, current workarounds, cost of problem, user voice
-- **Section 3:** Competitive landscape table + market map + what they all miss
-- **Section 4:** Top 3 ranked opportunities + revenue + build estimates + #1 recommendation
-- **Section 5:** Must Build / Should Build / Skip Now product roadmap
-- **Section 6:** 30-day action plan + user interview script + community launch plan
-
-**This report is ready to share with:**
-- Co-founders — to align on the problem and opportunity
-- Early advisors or mentors — for strategic feedback
-- Potential investors — as a pre-seed opportunity memo
+- **Executive Summary** — clear GO / NO-GO / PIVOT with 2-line reasoning
+- **Problem Deep Dive** — ICP definition, current workarounds, cost of inaction
+- **Competitive Landscape** — market map and what all 10 competitors collectively miss
+- **Your Opportunity** — top 3 confirmed gaps with revenue potential and build estimates
+- **Product Direction** — MUST BUILD / SHOULD BUILD / SKIP prioritization
+- **30-Day Action Plan** — landing page → user interviews → MVP → launch, with a full interview script
 
 ---
 
 ## 💡 Pro Tip
 
-> **Report aane ke baad seedha share mat karo.** Jo claims tujhe doubtful lagein unhe mark kar aur manually verify kar. Claude synthesis well karta hai but numbers aur estimates tujhe personally check karne chahiye.
+> **Do not share the report immediately after it's generated.** Go through it once and mark any claims that seem doubtful — especially revenue figures, market size estimates, and user numbers. Claude synthesizes research well, but quantitative estimates should always be personally verified before you present them to investors or co-founders.
 
-**Specific things to verify manually:**
-- Market size numbers — cross-check with Statista or industry reports
-- Revenue estimates — validate with similar SaaS pricing benchmarks
-- ICP definition — confirm with 2 real interviews before locking in
-
-**To make it even better**, add this line at the end of the prompt:
-```
-After writing the full report, add one final section titled 
-"ASSUMPTIONS TO VERIFY" — list every estimate or claim that 
-needs real-world confirmation before building.
-```
+The qualitative sections (gaps, product direction, ICP) are usually very reliable. The numbers are starting points, not ground truth.
 
 ---
 
 ## ⏱️ Time Estimate
 
-**~20 minutes** — Prompt assembly 5–10 min (pasting all outputs), Claude response 10–15 min with Extended Thinking.
+**~20 minutes** — Claude takes 15–20 minutes in Extended Thinking mode to synthesize all 5 phases. The bulk of your time is in assembling the inputs (5–10 minutes of copy-pasting).
 
 ---
 
 ## 🏁 You're Done
 
-Congratulations — you've completed the full 6-phase startup research pipeline.
+You now have a complete startup opportunity report. Here's what to do next:
 
-**Total time invested:** ~4–5 hours
-**What you now have:** A data-backed opportunity report most startup teams spend weeks trying to build.
-
-**What comes next:**
-1. Week 1 → Build landing page (from Section 6 plan)
-2. Week 2 → Talk to 10 real users
-3. Week 3 → Define 3-feature MVP
-4. Week 4 → Launch + community distribution
+| If the verdict is... | Next action |
+|----------------------|-------------|
+| ✅ GO | Build the landing page this week. Start collecting emails. |
+| ↩️ PIVOT | Pick the #1 gap from Section 4 and restart from P1 with the refined problem |
+| ❌ NO-GO | The research saved you months. Pick a new problem and restart. |
 
 ---
 
