@@ -5,9 +5,9 @@
 
 ## 🎯 What This Phase Does
 
-P4 mein jo gaps mile hain unhe ab confirm karo. Koi stealth startup toh nahi build kar raha? Koi open-source project already exists? Koi YC company recently funded toh nahi? Yeh phase last sanity check hai before you commit.
+The gaps identified in P4 came from analyzing existing competitors — but the analysis isn't complete until you confirm that no one is already filling those gaps. This phase runs an exhaustive search to verify each gap is genuinely open, partially open, or already being addressed.
 
-**Goal:** Confirmed / Partial / False verdict on each of the top 5 gaps — with evidence.
+**Goal:** A verified list of real, open market gaps — with only confirmed (✅) and partial (⚠️) gaps moving forward to the final report.
 
 ---
 
@@ -15,19 +15,19 @@ P4 mein jo gaps mile hain unhe ab confirm karo. Koi stealth startup toh nahi bui
 
 | Tool | Status | Why |
 |------|--------|-----|
-| 🔍 Web Search | **ON** | Exhaustive search across 9+ platforms |
-| 🔬 Deep Research Mode | **ON** | Multiple parallel searches needed per gap |
-| 🧠 Extended Thinking | OFF | Discovery task, not synthesis |
+| 🔍 Web Search | **ON** | Must search broadly across many platforms to verify each gap |
+| 🔬 Deep Research Mode | **ON** | Runs multiple searches automatically — ideal for exhaustive verification |
+| 🧠 Extended Thinking | Optional | Useful if gaps are complex or overlapping |
 
 > **How to enable in Claude.ai:**
-> - Web Search → top bar search icon
-> - Deep Research → model selector mein "Deep research" option
+> - Web Search → toggle via the search icon in the top bar
+> - Deep Research → available in Claude Pro; activates multi-step search automatically
 
 ---
 
 ## 📋 Copy-to-Paste Prompt
 
-> **Instructions:** `[PROBLEM SPACE]` aur Top 5 gaps P4 se fill karo. Descriptions mein sirf 1–2 sentence likhna hai per gap — zyada nahi.
+> **Instructions:** Copy the full prompt below, paste your Top 5 gaps from P4, and run with Web Search and Deep Research both ON.
 
 ```
 I've found these potential market gaps in [PROBLEM SPACE]:
@@ -70,83 +70,49 @@ Output: Verified gap report. Only ✅ and ⚠️ gaps move to the final report.
 
 ## 🗂️ How to Use
 
-1. **P4 se Top 5 gaps copy karo** — naam aur ek line description per gap
-2. **Problem space clear karo** — ek short phrase, e.g., "freelance client management" or "B2B invoice tracking"
-3. **Deep Research + Web Search dono ON** — Deep research automatically multiple searches karega
-4. **Claude bahut searches karega** — 40–50+ search queries normal hai is phase mein
-5. **Verdicts carefully padho** — specifically FALSE GAP results
-6. **Only ✅ and ⚠️ gaps aage jaayenge** — FALSE GAPs hata do list se
-
-### Verdicts ko Interpret Karna
-
-| Verdict | What it means | What to do |
-|---------|---------------|-----------|
-| ✅ CONFIRMED GAP | Nobody's building this | Include in P6 — yeh tera main opportunity hai |
-| ⚠️ PARTIAL GAP | Someone is but doing it badly | Research their negative reviews immediately |
-| ❌ FALSE GAP | Good solution already exists | Drop it — pivot to other gaps |
+1. **Paste the exact gap descriptions from P4** — use the names and descriptions Claude gave you, not your own paraphrasing
+2. **Let Claude search all 9 platforms per gap** — don't shorten the search list; thoroughness is the point
+3. **Watch for stealth builders on LinkedIn** — some of the best competition is pre-launch
+4. **Keep every gap's verdict separate** — don't let Claude combine or merge gaps during verification
+5. **Only carry ✅ and ⚠️ gaps into P6** — remove false gaps from your working list
 
 ---
 
 ## ✅ Expected Output
 
-Claude should return for each gap:
+Claude should return:
 
-- **Verdict with evidence** — links to what was or wasn't found
-- **For CONFIRMED:** Why gap exists + what changed recently + minimal version outline
-- **For PARTIAL:** Name of weak solution + exact reason it's insufficient
-- **For FALSE:** Competitor name + URL — remove this gap
-
-**Example verdict:**
-```
-GAP 3: Mobile-first client portal for freelancers
-
-VERDICT: ⚠️ PARTIAL GAP
-
-Found: "Clientjoy" (clientjoy.io) launched 2021 — mobile app exists but 
-has 2.1★ on Play Store, constant sync issues, no offline mode.
-
-Why it's insufficient: App crashes on Android 13+, UI is not adapted for 
-mobile-first use — it's a desktop web app with a wrapper.
-
-Q1: Why hasn't anyone built this properly? Mobile-first requires 
-separate codebase — most solo founders build web-first.
-Q2: What changed? 60% of freelancers in SEA now primarily work on mobile.
-Q3: Minimal version:
-  • Native Android/iOS app (not webview)
-  • Client approval flows with push notifications
-  • Invoice creation from phone in < 2 min
-  • Offline mode for proposals
-  • WhatsApp integration for sharing
-```
+- **A verdict for each gap** — CONFIRMED / PARTIAL / FALSE — with evidence
+- **For false gaps:** the solution name and URL that already fills the gap
+- **For confirmed and partial gaps:**
+  - Why the gap exists (technical, regulatory, market size?)
+  - What recently changed to make it addressable now
+  - What a minimal version would look like (3–5 features)
+- **A clean final list** of only ✅ and ⚠️ gaps to carry into P6
 
 ---
 
 ## 💡 Pro Tip
 
-> **False gaps are NOT bad news** — matlab kisi ne idea validate kiya but poorly execute kiya. Unke negative reviews search karo turant. Partial gap + bad reviews = massive opportunity to do it 10× better.
+> **False gaps are not bad news.** If someone already tried to fill the gap and failed, that's actually validation that the need is real. Search their negative reviews immediately — poor execution of a real need is one of the best opportunities to enter a market.
 
-**Ek aur bonus search add karo** for any ⚠️ PARTIAL gaps:
+**Partial gap + bad reviews = massive opportunity to do it 10× better.**
 
-```
-Search: "[weak solution name] negative reviews" on Reddit and G2
-Search: "[weak solution name] alternative" — see who's searching for escape
-```
-
-Inke negative reviews = exact feature list tujhe build karna chahiye.
+Also: a gap where the only existing solution is a GitHub repo with 12 stars is effectively a confirmed gap. "Technically exists" doesn't mean "adequately served."
 
 ---
 
 ## ⏱️ Time Estimate
 
-**~45 minutes** — Deep research per gap takes 8–10 min. 5 gaps × ~9 min = 45 min. Claude is doing real search work here.
+**~45 minutes** — the most search-intensive phase. Claude runs 9 searches per gap × 5 gaps = up to 45 search operations. Deep Research mode handles this automatically.
 
 ---
 
 ## ➡️ Next Step
 
-Take ALL outputs from P1 → P5 → Go to [`P6_Final_Report.md`](./P6_Final_Report.md)
+Take your verified gaps (✅ and ⚠️ only) → Go to [`P6_Final_Report.md`](./P6_Final_Report.md)
 
-P6 investor-ready report banata hai from everything compiled here. Only ✅ and ⚠️ gaps enter P6.
+Compile **all outputs from P1 through P5** — you'll paste everything into P6 to generate the final investor-ready report.
 
 ---
 
