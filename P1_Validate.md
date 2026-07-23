@@ -5,9 +5,9 @@
 
 ## 🎯 What This Phase Does
 
-Problem real hai ya sirf tujhe lag raha hai? Assumptions pe startup mat bana. Is phase mein real-world evidence dhundho — Reddit threads, forum complaints, reviews, aur surveys — aur decide karo ki aage badhna chahiye ya pivot.
+Is the problem real, or does it just feel real? Don't build a startup on assumptions. In this phase, you find real-world evidence — Reddit threads, forum complaints, reviews, and surveys — and decide whether to move forward or pivot.
 
-**Goal:** GO / MAYBE / NO-GO verdict with hard evidence before investing any more time.
+**Goal:** Get a GO / MAYBE / NO-GO verdict backed by hard evidence before investing any more time.
 
 ---
 
@@ -15,21 +15,21 @@ Problem real hai ya sirf tujhe lag raha hai? Assumptions pe startup mat bana. Is
 
 | Tool | Status | Why |
 |------|--------|-----|
-| 🔍 Web Search | **ON** | Real evidence dhundhna zaroori hai — bina search ke yeh prompt half-effective hai |
+| 🔍 Web Search | **ON** | Real evidence requires live search — without it, this prompt is half as effective |
 | 🧠 Extended Thinking | **ON** | Deep reasoning for honest scoring, not surface-level validation |
 
 > **How to enable in Claude.ai:**
-> - Web Search → top bar search icon se toggle karo
-> - Extended Thinking → model selector → "Extended thinking" option
+> - Web Search → toggle via the search icon in the top bar
+> - Extended Thinking → model selector → select "Extended thinking"
 
 ---
 
 ## 📋 Copy-to-Paste Prompt
 
-> **Instructions:** Neeche diya gaya poora prompt copy karo, `[APNA PROBLEM YAHAN 2-3 LINES MEIN LIKHO]` ki jagah apna actual problem likho, aur Claude mein paste karo.
+> **Instructions:** Copy the full prompt below, replace `[WRITE YOUR PROBLEM HERE IN 2–3 LINES]` with your actual problem statement, and paste it into Claude.
 
 ```
-Problem statement: [APNA PROBLEM YAHAN 2-3 LINES MEIN LIKHO]
+Problem statement: [WRITE YOUR PROBLEM HERE IN 2–3 LINES]
 
 Act as a startup problem validator. Validate if this is a REAL problem worth solving.
 
@@ -74,11 +74,11 @@ VERDICT: GO ✅ / MAYBE ⚠️ / NO-GO ❌ + 2-line reasoning
 
 ## 🗂️ How to Use
 
-1. **Problem likho clearly** — vague mat likho. "People don't like their jobs" → BAD. "Freelance designers in India can't track client revision cycles without losing track of scope" → GOOD
-2. **Problem statement 2–3 lines mein** — ek sentence enough nahi hai, essay bhi nahi chahiye
-3. **Prompt paste karo** Claude mein — Web Search aur Extended Thinking dono ON rakho
-4. **Wait for full output** — Claude kaafi time le sakta hai is step mein, interrupt mat karo
-5. **Verdict note karo** — GO / MAYBE / NO-GO? Yeh P2 mein chahiye
+1. **Write your problem clearly** — avoid vague statements. "People don't like their jobs" → BAD. "Freelance designers in India can't track client revision cycles without losing scope" → GOOD
+2. **Keep the problem statement to 2–3 lines** — one sentence isn't enough; an essay isn't needed either
+3. **Paste the prompt into Claude** — make sure both Web Search and Extended Thinking are ON
+4. **Wait for the full output** — Claude may take a while on this step; don't interrupt
+5. **Note the verdict** — GO / MAYBE / NO-GO? You'll need this for P2
 
 ---
 
@@ -86,7 +86,7 @@ VERDICT: GO ✅ / MAYBE ⚠️ / NO-GO ❌ + 2-line reasoning
 
 Claude should return:
 
-- **Validation verdict** — Strong / Moderate / Weak + reasoning
+- **Validation verdict** — Strong / Moderate / Weak with reasoning
 - **3-dimension scores** — Frequency, Severity, Willingness to Pay with real evidence
 - **3–5 source links** — actual Reddit threads, forum posts, or surveys found via web search
 - **Clear GO / MAYBE / NO-GO verdict** with 2-line reasoning
@@ -105,23 +105,23 @@ VERDICT: GO ✅ — High frequency daily pain + users already paying = real oppo
 
 ## 💡 Pro Tip
 
-> **Agar NO-GO aaya toh abhi ruk.** Problem ko rephrase karo — ek specific user ke liye define karo aur dobara try karo. 3 rephrases ke baad bhi weak hai toh problem genuinely nahi hai ya bahut niche hai.
+> **If you get a NO-GO, stop here.** Rephrase the problem — define it for a specific user and try again. If it's still weak after 3 rephrases, the problem genuinely doesn't exist at scale or is too niche to pursue.
 
-**MAYBE aaya?** → Yeh acceptable hai. P2 mein jaao but Week 2 mein zaroor 5 real users se baat karo before building anything.
+**Got a MAYBE?** → That's acceptable. Move to P2, but make sure you talk to at least 5 real users in Week 2 before building anything.
 
 ---
 
 ## ⏱️ Time Estimate
 
-**~20 minutes** — Claude 10–15 min leta hai web search ke saath. Tum 5 min mein problem statement refine kar sakte ho.
+**~20 minutes** — Claude takes 10–15 minutes with web search enabled. You can use 5 minutes to refine your problem statement before pasting.
 
 ---
 
 ## ➡️ Next Step
 
-**If GO ✅ or MAYBE ⚠️** → Go to [`P2_Top10.md`](./P2_Top10.md) — P1 verdict paste karo wahan.
+**If GO ✅ or MAYBE ⚠️** → Go to [`P2_Top10.md`](./P2_Top10.md) — paste your P1 verdict there.
 
-**If NO-GO ❌** → Rephrase karo. P2 pe mat jaao without a GO or MAYBE — warna pure 4-hour cycle waste hoga.
+**If NO-GO ❌** → Rephrase the problem. Don't move to P2 without a GO or MAYBE — the entire 4-hour cycle will be wasted.
 
 ---
 
