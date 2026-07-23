@@ -5,9 +5,9 @@
 
 ## 🎯 What This Phase Does
 
-P3 ke sab 10 competitor profiles ek jagah paste karo aur Claude ko feature matrix banane do. Yeh phase pure synthesis hai — web search nahi chahiye, sirf deep thinking chahiye. Claude har feature across 10 tools map karega aur genuine gaps nikaalega.
+This is where the research becomes a decision. You paste all 10 competitor profiles from P3 into one session, and Claude builds a complete feature matrix — then identifies, categorizes, and scores every gap in the market.
 
-**Goal:** Feature matrix + ranked list of top 5 market gaps — kahan genuinely koi nahi hai.
+**Goal:** A ranked list of real market opportunities, scored on user pain, market size, and build difficulty — with a single #1 recommendation on where to focus.
 
 ---
 
@@ -15,18 +15,18 @@ P3 ke sab 10 competitor profiles ek jagah paste karo aur Claude ko feature matri
 
 | Tool | Status | Why |
 |------|--------|-----|
-| 🧠 Extended Thinking | **ON** | Pure synthesis task — Claude ko sochne ka waqt chahiye |
-| 🔍 Web Search | **OFF** | Sab data already P3 mein aa chuka hai, fresh search distract karega |
+| 🧠 Extended Thinking | **ON** | This is a pure synthesis task — Claude needs time to reason across 10 profiles |
+| 🔍 Web Search | **OFF** | All data comes from P3 research; no new searches needed here |
 
 > **How to enable in Claude.ai:**
-> - Extended Thinking → model selector → "Extended thinking" option
-> - Web Search → OFF rakho (toggle down)
+> - Extended Thinking → model selector → select "Extended thinking"
+> - Make sure web search is toggled OFF to keep Claude focused on your research data
 
 ---
 
 ## 📋 Copy-to-Paste Prompt
 
-> **Instructions:** `[PROBLEM STATEMENT]` replace karo apne problem se. `[PASTE ALL 10 P3 RESEARCH PROFILES HERE]` ki jagah P3 ke sab 10 outputs paste karo (hanji, sab ek saath).
+> **Instructions:** Copy the full prompt below, paste your problem statement and all 10 P3 profiles into the designated sections, and run in Claude with Extended Thinking ON.
 
 ```
 Problem: [PROBLEM STATEMENT]
@@ -80,19 +80,11 @@ Output:
 
 ## 🗂️ How to Use
 
-1. **Sab 10 P3 profiles ek doc mein ready rakh** — copy-paste fast karna hoga
-2. **Prompt mein problem statement add karo** — pehle wali P1 se lelo
-3. **10 profiles paste karo** — haan, sab ek saath, prompt ke andar. Yeh ek LONG prompt hoga
-4. **Extended Thinking ON, Web Search OFF** — yeh bilkul zaroori hai
-5. **Kuch add karo prompt ke end mein (optional but powerful):**
-
-```
-Take extra time before responding. Think through every gap carefully 
-before scoring. Don't rush to output.
-```
-
-6. **Claude zyada time lega** — Extended thinking ke saath 5–10 min possible hai. Wait karo.
-7. **Top 5 gaps note karo** — yeh P5 mein jaayenge for verification
+1. **Paste all 10 P3 profiles** — do not leave any out; the matrix only works with the full dataset
+2. **Keep Extended Thinking ON** — this is the most reasoning-intensive step in the entire pipeline
+3. **Do not interrupt** — Claude will take longer than usual here; let it finish the full analysis
+4. **Add this line to the end of your prompt** for better results: *"Take extra time before responding. Think through every gap carefully before scoring."*
+5. **Save the full output** — you need the top 5 gaps list for P5
 
 ---
 
@@ -100,50 +92,33 @@ before scoring. Don't rush to output.
 
 Claude should return:
 
-- **Complete feature matrix table** — rows = features, columns = tools, cells = ✓ / ~ / ✗
-- **Gaps categorized into 5 types** — Feature, Quality, Audience, Pricing, Workflow
-- **Each gap scored** — User Pain, Market Size, Build Difficulty, Competitive Moat
-- **Top 5 opportunities ranked** with score formula result + reasoning
-- **#1 recommended gap** with 3-line explanation of why to focus here
-
-**Example gap entry:**
-```
-GAP: Mobile-first experience
-Type: Feature Gap
-User Pain: High (mentioned in 7 of 10 tool reviews)
-Market Size: Large (1M+ freelancers use mobile-first)
-Build Difficulty: Medium
-Competitive Moat: Medium (takes 6+ months to rebuild properly)
-Score: High × Large ÷ Medium = Priority A
-```
+- **Complete feature matrix** — every feature × every competitor (✓ / ~ / ✗)
+- **All gaps categorized** — Feature, Quality, Audience, Pricing, and Workflow gaps
+- **Scoring for each gap** — User Pain, Market Size, Build Difficulty, Competitive Moat
+- **Top 5 ranked opportunities** — with scores and brief reasoning for each
+- **A single #1 recommendation** — the gap with the best combination of high pain, large market, and manageable build effort
 
 ---
 
 ## 💡 Pro Tip
 
-> **Extended thinking mode zaroor ON karo** — yeh pure synthesis task hai, web search nahi chahiye. Prompt ke end mein ye add karo: *"Take extra time before responding. Think through every gap carefully before scoring."*
+> **Extended Thinking is non-negotiable for this step.** This is a pure synthesis task — no web searching, just deep reasoning across 10 profiles. Add *"Take extra time before responding. Think through every gap carefully before scoring."* to the end of your prompt.
 
-**Context window ka dhyan rakho** — 10 full competitor profiles bohot bade hote hain. Agar Claude respond nahi kar raha ya timeout ho raha hai, profiles ko split karo:
-
-```
-Run 1: Competitors 1–5 → get partial matrix
-Run 2: Competitors 6–10 → extend the matrix
-Run 3: Combine both matrices, score gaps, rank opportunities
-```
+Also: look closely at **Quality Gaps** (where all tools have `~`). These are often more valuable than Feature Gaps — the need is proven, but no one has executed it well. That's your opening.
 
 ---
 
 ## ⏱️ Time Estimate
 
-**~30 minutes** — Prompt prepare karne mein 10 min (all 10 profiles paste karna), Claude response 15–20 min with Extended Thinking.
+**~30 minutes** — Claude takes 20–25 minutes in Extended Thinking mode for this step. You'll need a few minutes to assemble all 10 P3 profiles before pasting.
 
 ---
 
 ## ➡️ Next Step
 
-Take the **Top 5 gaps** from P4 output → Go to [`P5_Verify_Gaps.md`](./P5_Verify_Gaps.md)
+Take the **Top 5 gaps** from P4's output → Go to [`P5_Verify_Gaps.md`](./P5_Verify_Gaps.md)
 
-P5 mein yeh gaps web search se verify hongi — koi pehle se toh nahi bana raha yeh secretly?
+You'll verify each gap against exhaustive web search to confirm no one is already building a solution.
 
 ---
 
