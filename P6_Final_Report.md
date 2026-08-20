@@ -1,177 +1,892 @@
 # P6 — Final Report
-> **Phase 6 of 6** · Problem → Opportunity Playbook
+
+> **Phase 6 of 6 · Problem → Opportunity Playbook · Evidence-Verified Edition**
 
 ---
 
 ## 🎯 What This Phase Does
 
-Everything in one place. You paste all outputs from P1 through P5 into a single prompt, and Claude synthesizes a complete, structured startup opportunity report — ready to share with co-founders, investors, or use as your own build/no-build decision framework.
+Everything in one place.
 
-**Goal:** A professional, evidence-backed report with a clear GO / NO-GO / PIVOT recommendation and a 30-day action plan.
+You paste all outputs from P1 through P5 into this phase. Claude must **synthesize the research AND independently fact-check the important claims before producing the final report.**
+
+The final report must be suitable for:
+
+* Co-founders
+* Hackathon judges
+* Startup planning
+* Customer discovery
+* Investor discussion
+* Internal build/no-build decisions
+
+### Core principle
+
+**Never convert an unverified claim into a fact.**
+
+P6 is not allowed to blindly trust P1-P5.
+
+P1-P5 are research inputs, not unquestionable truth.
 
 ---
 
 ## ⚙️ Tools Required
 
-| Tool | Status | Why |
-|------|--------|-----|
-| 🧠 Extended Thinking | **ON** | Synthesizing 5 phases of research requires deep, structured reasoning |
-| 🔍 Web Search | **OFF** | All data comes from previous phases — no new searches needed |
+| Tool                       | Status | Why                                                               |
+| -------------------------- | ------ | ----------------------------------------------------------------- |
+| 🧠 Extended Thinking       | **ON** | Deep synthesis, contradiction detection and evidence evaluation   |
+| 🔍 Web Search              | **ON** | Every material factual claim must be independently verified       |
+| 🌐 Primary-source browsing | **ON** | Open and inspect the original source, not only the search snippet |
 
-> **How to enable in Claude.ai:**
-> - Extended Thinking → model selector → select "Extended thinking"
-> - Turn web search OFF to keep Claude focused on your compiled research
+> **Important:** Web Search MUST remain ON for P6.
+>
+> P6 is an evidence-verification stage, not only a writing stage.
 
 ---
 
-## 📋 Copy-to-Paste Prompt
+# 📋 Copy-to-Paste Prompt
 
-> **Instructions:** Copy the full prompt below, fill in your problem statement and today's date, then paste all outputs from P1 through P5 into their respective sections.
+```text
+Create an EVIDENCE-VERIFIED STARTUP OPPORTUNITY REPORT.
 
-```
-Create a STARTUP OPPORTUNITY REPORT.
+Problem:
+[PROBLEM STATEMENT]
 
-Problem: [PROBLEM STATEMENT]
-Date: [TODAY'S DATE]
+Research date:
+[TODAY'S DATE]
 
-All research below:
-━━━ P1 — VALIDATION RESULTS ━━━━━━━━━━━━━━━━━━━━━━━
+IMPORTANT:
+The P1-P5 material below is research input, NOT automatically verified truth.
+
+Your job is NOT to simply summarize P1-P5.
+
+Your job is to:
+
+1. Synthesize P1-P5.
+2. Independently verify every important factual claim using fresh web research.
+3. Detect contradictions between P1-P5 and current external evidence.
+4. Remove unsupported claims.
+5. Clearly separate:
+   - VERIFIED FACT
+   - PARTIALLY VERIFIED
+   - UNVERIFIED
+   - ESTIMATE
+   - INFERENCE
+   - CONTRADICTED
+6. Never invent a source, quotation, statistic, company capability, market number, funding number, customer number, research result, publication date or competitor feature.
+7. Never present an estimate as a fact.
+8. Never present an AI-generated assumption as evidence.
+9. Never claim "100% of competitors", "all tools", "no competitor", "everyone", "only", "zero", or similar universal statements unless an exhaustive and documented audit actually proves it.
+10. If evidence is insufficient, say so explicitly.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESEARCH INPUTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━ P1 — VALIDATION RESULTS ━━━━━━━━━━━━━━━━━━━
 [PASTE P1 OUTPUT]
 
-━━━ P2 — TOP 10 SOLUTIONS ━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━ P2 — TOP 10 SOLUTIONS ━━━━━━━━━━━━━━━━━━━━━
 [PASTE P2 OUTPUT]
 
-━━━ P3 — COMPETITIVE PROFILES (all 10) ━━━━━━━━━━━━
-[PASTE ALL 10 P3 OUTPUTS]
+━━━ P3 — COMPETITIVE PROFILES ━━━━━━━━━━━━━━━━━
+[PASTE ALL P3 OUTPUTS]
 
-━━━ P4 — GAP ANALYSIS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━ P4 — GAP ANALYSIS ━━━━━━━━━━━━━━━━━━━━━━━━━
 [PASTE P4 OUTPUT]
 
-━━━ P5 — VERIFIED GAPS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━ P5 — VERIFIED GAPS ━━━━━━━━━━━━━━━━━━━━━━━━
 [PASTE P5 OUTPUT]
 
-Write the complete report with these exact sections:
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SECTION 1: EXECUTIVE SUMMARY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Problem in 2–3 sentences
-- Market size signal (from validation evidence)
-- What the market is missing (top gap in one line)
-- Recommendation: GO ✅ / NO-GO ❌ / PIVOT ↩️ + 2-line reasoning
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 0 — CLAIM AUDIT BEFORE WRITING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SECTION 2: PROBLEM DEEP DIVE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- ICP (Ideal Customer Profile): Role, company size, industry, location
-- How they cope today (current workarounds they use)
-- Cost of not solving: time lost, money wasted, stress caused
-- Key user quotes (paraphrased from P3 research)
+Before writing the report, extract every material claim from P1-P5.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SECTION 3: COMPETITIVE LANDSCAPE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Summary table of all 10 solutions
-- Market map (group them into 2–3 categories)
-- What they collectively do well
-- The pattern they all miss — this is the real opportunity
+A material claim includes:
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SECTION 4: YOUR OPPORTUNITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Top 3 confirmed gaps (priority ranked).
-For each gap:
-  → What's missing and why it matters
-  → Estimated users affected
-  → Revenue potential (rough range)
-  → Build effort estimate
+- Market size
+- CAGR
+- User count
+- Customer count
+- Repository count
+- Funding amount
+- Pricing
+- Number of competitors
+- Product capabilities
+- Security claims
+- CVEs
+- Attack rates
+- Detection rates
+- Breach costs
+- Time-to-contain statistics
+- Research findings
+- Publication dates
+- Company acquisitions
+- Company ownership
+- Customer adoption
+- Revenue projections
+- TAM/SAM/SOM
+- Pain-point statistics
+- Quotes
+- Any claim used to justify GO / NO-GO / PIVOT
 
-Recommended gap to target: [#1 with 3-line reasoning]
+Create an internal evidence ledger.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SECTION 5: PRODUCT DIRECTION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-MUST BUILD — core features; don't launch without these:
-• [Feature] → why it's non-negotiable
+For every material claim record:
 
-SHOULD BUILD — these help you win against competitors:
-• [Feature] → which gap it fills
+CLAIM
+SOURCE FROM P1-P5
+EXTERNAL SOURCE
+SOURCE TYPE
+PUBLICATION DATE
+DATE VERIFIED
+WHAT THE SOURCE ACTUALLY SAYS
+VERDICT
+CONFIDENCE
 
-SKIP FOR NOW — crowded or not your focus in v1:
-• [Feature] → why to defer
+Allowed verdicts:
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SECTION 6: 30-DAY ACTION PLAN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Week 1 (Days 1–7): Build a landing page for the solution.
-  Goal: 50 email signups = demand confirmed. 0 signups = rethink.
+✅ VERIFIED
+🟡 PARTIALLY VERIFIED
+⚠️ UNVERIFIED
+🔴 CONTRADICTED
+📊 ESTIMATE
+🧠 INFERENCE
 
-Week 2 (Days 8–14): Talk to 10 real potential users (not friends).
-  Interview script:
-  Q1: "Tell me about the last time you dealt with [problem]."
-  Q2: "What do you currently use to handle this?"
-  Q3: "What would your ideal solution look like?"
-  Q4: "Would you pay $X/month for this? Why or why not?"
+Do NOT include the internal ledger unless useful, but use it to control the final report.
 
-Week 3 (Days 15–21): Define the MVP scope.
-  What's in v0.1? Max 3 core features. Nothing else.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOURCE HIERARCHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Week 4 (Days 22–30): Launch to first users.
-  Join 3 online communities where your ICP is active and share.
+Prefer sources in this order:
 
-Output: Professional, structured report. Use tables where data is comparative.
-Cite which research phase each key claim comes from (e.g. "from P3 reviews").
+TIER 1 — PRIMARY / AUTHORITATIVE
+
+- Official company documentation
+- Official company security advisories
+- Official GitHub repositories
+- NVD / CVE records
+- Government sources
+- Regulatory sources
+- Official Hugging Face documentation/statistics
+- Official standards organizations
+- Original research papers
+- DOI / publisher pages
+- arXiv when the original paper is not yet formally published
+
+TIER 2 — HIGH-QUALITY SECONDARY
+
+- Reputable security research firms
+- Reputable market research firms
+- Established technology publications
+- Established financial/business reporting
+
+TIER 3 — COMMUNITY
+
+- Reddit
+- Hacker News
+- GitHub issues
+- Forums
+- Product Hunt
+- Discord
+- Community discussions
+
+Community sources may establish:
+
+- User complaints
+- User sentiment
+- Workarounds
+- Demand signals
+- Anecdotal experiences
+
+But community posts MUST NOT be used alone to establish:
+
+- Market size
+- Global user counts
+- Revenue
+- Funding
+- Security effectiveness
+- Scientific claims
+- Company valuation
+
+Never use a search-result snippet as the final evidence.
+Open the actual source and verify the surrounding context.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VERIFICATION RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RULE 1 — NO FABRICATION
+
+Never invent:
+
+- citations
+- URLs
+- paper titles
+- author names
+- statistics
+- publication dates
+- company capabilities
+- quotes
+- funding
+- customer numbers
+
+If you cannot verify it:
+
+write "UNVERIFIED".
+
+Do not guess.
+
+RULE 2 — PRIMARY SOURCE CHECK
+
+Whenever a claim concerns a company product, first check:
+
+- Official website
+- Official documentation
+- Official GitHub
+- Official security/advisory page
+
+Whenever a claim concerns a CVE:
+
+- Check NVD
+- Check the relevant vendor/project advisory where available
+
+Whenever a claim concerns research:
+
+- Check the original paper
+- Verify publication status
+- Verify publication date
+- Verify what was actually tested
+
+RULE 3 — DATE ACCURACY
+
+Never confuse:
+
+- arXiv submission date
+- preprint date
+- conference date
+- journal acceptance date
+- journal publication date
+- webpage update date
+
+Use the exact date that the source supports.
+
+Never write:
+
+"Published in May 2026"
+
+when the source only proves:
+
+"Preprint available in 2024"
+
+or vice versa.
+
+RULE 4 — MARKET SIZE
+
+A market-size figure must include:
+
+- Market definition
+- Geography
+- Time period
+- Source
+- Report/publisher
+- Whether it is total AI security, AI vulnerability scanning, model security, or the specific problem
+
+Do NOT use a broad AI-security market figure and present it as the market size of this specific startup opportunity.
+
+When multiple market estimates exist:
+
+show a range and explain the difference.
+
+RULE 5 — COMPETITOR CLAIMS
+
+Never write:
+
+"Nobody does this."
+
+Instead use language such as:
+
+"Among the tools reviewed in this audit, we did not find evidence of..."
+
+Only write:
+
+"0/10 tools"
+
+when:
+
+- Exactly 10 tools were audited
+- Each tool was actually inspected
+- The feature matrix records evidence
+- The audit date is stated
+
+If the audit is incomplete, write:
+
+"Not established by this research."
+
+RULE 6 — QUANTITATIVE CLAIMS
+
+Every number must have one of:
+
+- Verified source
+- Clearly labeled estimate
+- Clearly labeled model assumption
+
+Examples:
+
+BAD:
+"50,000 MLOps teams exist."
+
+GOOD:
+"Estimated 50,000–150,000 teams based on [method/source]; this is a directional estimate, not an authoritative count."
+
+BAD:
+"The startup can generate $8M ARR."
+
+GOOD:
+"Illustrative revenue scenario: $8M ARR if X customers pay Y. This is a model assumption, not validated revenue."
+
+RULE 7 — RESEARCH CLAIMS
+
+Never strengthen a research paper's conclusion.
+
+Example:
+
+BAD:
+"The attack survives 90% of fine-tuning."
+
+unless the source actually tested that exact scenario.
+
+GOOD:
+"The cited study reported X under Y experimental conditions."
+
+Always preserve the study's:
+
+- model
+- dataset
+- attack type
+- embedding rate
+- detection method
+- experimental conditions
+
+RULE 8 — USER QUOTES
+
+Only use a quotation if the original quote can be verified.
+
+Otherwise:
+
+- paraphrase it
+- identify the source
+- do not use quotation marks
+
+Never create an AI-generated quote.
+
+RULE 9 — NEGATIVE CLAIMS
+
+Negative claims require stronger evidence than positive claims.
+
+For example:
+
+"The product does not support feature X"
+
+requires checking current documentation.
+
+"The entire industry does not support feature X"
+
+requires a documented industry-wide audit.
+
+Prefer scoped wording.
+
+RULE 10 — CURRENT INFORMATION
+
+For information that can change:
+
+- company funding
+- pricing
+- acquisitions
+- product features
+- repository counts
+- model counts
+- user counts
+- market statistics
+- competitors
+
+use the most recent reliable source available as of the research date.
+
+Include "as of [date]" where useful.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONFLICT RESOLUTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If P1-P5 conflicts with a current primary source:
+
+DO NOT silently choose one.
+
+Report:
+
+Previous research claimed:
+"[claim]"
+
+Current verified evidence says:
+"[updated claim]"
+
+Final decision:
+Use the current verified source.
+
+If two high-quality sources disagree:
+
+- show both
+- explain why they differ
+- do not manufacture a single number
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONFIDENCE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use these levels:
+
+🟢 HIGH CONFIDENCE
+Directly supported by a primary or authoritative source.
+
+🟡 MEDIUM CONFIDENCE
+Supported by multiple credible sources but not directly authoritative.
+
+🟠 LOW CONFIDENCE
+Limited evidence, indirect evidence, community evidence or directional estimate.
+
+🔴 NOT VERIFIED
+Insufficient evidence.
+
+Do not hide low-confidence information.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL REPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Now write the report.
+
+Use exactly these sections:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 1 — EXECUTIVE SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Include:
+
+1. Problem
+2. Verified evidence that the problem exists
+3. Market-size signal
+4. Top verified gap
+5. GO / NO-GO / PIVOT recommendation
+6. Confidence level
+
+Every important factual statement must have a source.
+
+Do not claim that the opportunity is guaranteed.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 2 — PROBLEM DEEP DIVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Include:
+
+- ICP
+- Roles
+- Company profile
+- Geography
+- Current workflow
+- Current workarounds
+- Documented pain points
+- Cost of not solving
+- User sentiment
+- Verified user quotes or clearly labeled paraphrases
+
+Separate:
+
+FACTS
+from
+ESTIMATES
+from
+INFERENCES.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 3 — COMPETITIVE LANDSCAPE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create a table:
+
+| Tool | Category | What it actually does | Pricing | Relevant capability | Evidence | Verified date | Confidence |
+
+Only include capabilities supported by evidence.
+
+Then classify competitors into 2–4 categories.
+
+Then answer:
+
+"What do these products collectively cover?"
+
+"What remains insufficiently addressed?"
+
+Use:
+
+"Among the products audited..."
+
+instead of unsupported universal claims.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 4 — VERIFIED OPPORTUNITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Rank the top 3 gaps.
+
+For each:
+
+1. Gap
+2. Evidence
+3. Existing alternatives
+4. Why the gap matters
+5. Users affected
+6. Revenue opportunity
+7. Build difficulty
+8. Confidence
+9. What remains unverified
+
+Revenue numbers MUST be labeled:
+
+- Evidence-based
+- Scenario
+- Estimate
+- Assumption
+
+Never label a projection as validated revenue.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 5 — PRODUCT DIRECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MUST BUILD
+
+Only features directly justified by verified evidence.
+
+SHOULD BUILD
+
+Features supported by evidence but not essential.
+
+SKIP FOR NOW
+
+Features that are:
+
+- crowded
+- expensive
+- unvalidated
+- outside the core differentiation
+- dependent on unproven assumptions
+
+For every feature explain the evidence behind the decision.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 6 — 30-DAY VALIDATION PLAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Do NOT treat the business as already validated.
+
+The purpose of the next 30 days is to validate the remaining uncertainty.
+
+WEEK 1 — Demand Validation
+
+- Landing page
+- Clear problem statement
+- Waitlist
+- Measure:
+  - visitors
+  - signups
+  - signup conversion
+
+Do not claim:
+"50 signups = market validated."
+
+Instead:
+
+"50 qualified signups would be a positive demand signal."
+
+Define:
+
+- weak signal
+- moderate signal
+- strong signal
+
+WEEK 2 — Customer Interviews
+
+Interview at least 10 real ICP users.
+
+Ask:
+
+Q1:
+"Tell me about the last time you downloaded or deployed an external AI model."
+
+Q2:
+"What security checks did you perform?"
+
+Q3:
+"What tools did you use?"
+
+Q4:
+"What did those tools fail to detect or explain?"
+
+Q5:
+"How much time did the current workflow take?"
+
+Q6:
+"What would make you trust a weight-level security scanner?"
+
+Q7:
+"Would you pay for it? What budget would this come from?"
+
+Q8:
+"What would prevent adoption?"
+
+WEEK 3 — Technical Validation
+
+Build the smallest technical prototype.
+
+Measure:
+
+- Detection rate
+- False-positive rate
+- False-negative rate where measurable
+- Runtime
+- Memory usage
+- Model formats supported
+- Attack types supported
+- Attack types NOT supported
+
+DO NOT claim:
+
+"Detects malicious models"
+
+unless actual tests demonstrate it.
+
+Use:
+
+"Detects the tested anomaly/attack class under the stated experimental conditions."
+
+WEEK 4 — Real-World Validation
+
+Release the prototype to real users.
+
+Measure:
+
+- Number of installations
+- Number of real models scanned
+- Number of security findings
+- False positives reported
+- Repeat usage
+- User feedback
+- Conversion intent
+- Actual willingness to pay
+
+Final decision:
+
+GO
+PIVOT
+NO-GO
+
+based on evidence collected during the 30 days.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL EVIDENCE SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+At the end of the report include:
+
+### Verified Facts
+
+Only claims directly supported by evidence.
+
+### Estimates
+
+Numbers generated from assumptions or directional market research.
+
+### Inferences
+
+Reasoned conclusions that are not directly observed.
+
+### Unverified Claims
+
+Important claims that could not be independently confirmed.
+
+### Contradicted Claims
+
+Claims from P1-P5 that were contradicted by stronger evidence.
+
+### Research Limitations
+
+Explain:
+
+- What was not checked
+- What could not be verified
+- Where data is incomplete
+- Where competitor coverage may be incomplete
+- Where market estimates are uncertain
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOURCE REGISTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create a source table:
+
+| ID | Source | URL | Source type | Publication date | Access/verification date | Claims supported |
+
+Use stable URLs where possible.
+
+Prefer:
+
+- DOI
+- Official documentation
+- Official GitHub
+- NVD
+- Government
+- Publisher
+- Official company source
+
+Do not fabricate a URL.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EVIDENCE QUALITY RULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The final report must be less confident than the evidence, never more confident.
+
+Example:
+
+Evidence:
+"Three audited products did not document weight-level statistical scanning."
+
+Allowed:
+"Three audited products did not document weight-level statistical scanning."
+
+NOT allowed:
+"Nobody in the industry scans model weights."
+
+Example:
+
+Evidence:
+"One market report estimates a $3.58B AI vulnerability scanning market."
+
+Allowed:
+"One market report estimates the broader AI vulnerability scanning market at $3.58B."
+
+NOT allowed:
+"The startup's market is $3.58B."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL QUALITY GATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Before producing the final answer, run this checklist.
+
+[ ] Every important factual claim has evidence.
+[ ] Every important number has a source or is explicitly labeled an estimate.
+[ ] Every competitor capability was checked.
+[ ] No invented quotes exist.
+[ ] No fabricated URLs exist.
+[ ] Publication dates were verified.
+[ ] Current information was checked.
+[ ] Market size is properly scoped.
+[ ] Revenue projections are labeled assumptions.
+[ ] Universal claims were removed unless exhaustively proven.
+[ ] Conflicting evidence is disclosed.
+[ ] Unsupported claims are labeled UNVERIFIED.
+[ ] Research limitations are disclosed.
+[ ] GO / NO-GO / PIVOT is based on evidence, not enthusiasm.
+[ ] The final language never claims guaranteed success.
+[ ] The confidence level matches the evidence.
+
+IMPORTANT FINAL RULE:
+
+If a claim cannot be verified, DO NOT MAKE THE CLAIM.
+
+It is better to output:
+
+"Not verified"
+
+than to output a precise but unsupported number.
+
+The objective is not to make the report sound impressive.
+
+The objective is to make the report defensible.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OUTPUT STANDARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The final document should read like a research-backed startup diligence memo, not marketing copy.
+
+Use precise language.
+
+Avoid hype.
+
+Avoid absolute statements.
+
+Clearly distinguish:
+
+FACT
+ESTIMATE
+INFERENCE
+UNVERIFIED
+CONTRADICTED
+
+The final report must be reproducible by another researcher following the cited sources.
+
 ```
 
 ---
 
 ## 🗂️ How to Use
 
-1. **Compile all previous outputs** before starting — have P1 through P5 saved and ready to paste
-2. **Do not skip any section** — the report structure is designed to build a complete decision framework
-3. **Fill in today's date** — this timestamps the research and makes the report shareable
-4. **Let Claude finish fully** — this is the longest generation in the pipeline; do not interrupt
-5. **Review before sharing** — mark any figures or claims you want to verify manually
+1. Compile P1-P5 exactly as before.
+2. Turn **Web Search ON**.
+3. Turn **Extended Thinking ON**.
+4. Paste the entire P6 prompt.
+5. Let Claude finish the evidence audit before generating the final report.
+6. Never remove the **Final Evidence Summary**, **Source Register**, or **Quality Gate**.
+7. Before sharing externally, inspect the sources for the 5–10 most important claims.
 
 ---
 
-## ✅ Expected Output
+## ✅ What This Version Fixes
 
-Claude should return a complete 6-section report including:
+Your old P6 effectively did:
 
-- **Executive Summary** — clear GO / NO-GO / PIVOT with 2-line reasoning
-- **Problem Deep Dive** — ICP definition, current workarounds, cost of inaction
-- **Competitive Landscape** — market map and what all 10 competitors collectively miss
-- **Your Opportunity** — top 3 confirmed gaps with revenue potential and build estimates
-- **Product Direction** — MUST BUILD / SHOULD BUILD / SKIP prioritization
-- **30-Day Action Plan** — landing page → user interviews → MVP → launch, with a full interview script
+**P1 → P2 → P3 → P4 → P5 → synthesis**
 
----
+The new P6 does:
 
-## 💡 Pro Tip
+**P1 → P2 → P3 → P4 → P5 → independent verification → contradiction check → evidence classification → final report**
 
-> **Do not share the report immediately after it's generated.** Go through it once and mark any claims that seem doubtful — especially revenue figures, market size estimates, and user numbers. Claude synthesizes research well, but quantitative estimates should always be personally verified before you present them to investors or co-founders.
+That is the major upgrade.
 
-The qualitative sections (gaps, product direction, ICP) are usually very reliable. The numbers are starting points, not ground truth.
+Most importantly, the model is now explicitly forbidden from turning claims like:
 
----
+> "500K+ repositories"
 
-## ⏱️ Time Estimate
+> "0/10 tools"
 
-**~20 minutes** — Claude takes 15–20 minutes in Extended Thinking mode to synthesize all 5 phases. The bulk of your time is in assembling the inputs (5–10 minutes of copy-pasting).
+> "$8–12M ARR"
 
----
+> "90%+ survival"
 
-## 🏁 You're Done
+into facts unless the evidence actually supports them.
 
-You now have a complete startup opportunity report. Here's what to do next:
+It must instead distinguish something like:
 
-| If the verdict is... | Next action |
-|----------------------|-------------|
-| ✅ GO | Build the landing page this week. Start collecting emails. |
-| ↩️ PIVOT | Pick the #1 gap from Section 4 and restart from P1 with the refined problem |
-| ❌ NO-GO | The research saved you months. Pick a new problem and restart. |
+**VERIFIED:** directly supported by the source
+**ESTIMATE:** calculated/modelled
+**INFERENCE:** reasoned conclusion
+**UNVERIFIED:** insufficient evidence
+**CONTRADICTED:** stronger evidence says otherwise
 
----
-
-*Part of the [Startup Research Playbook](./README.md) · 6-phase pipeline*
+That makes the report **defensible and auditable**, rather than merely convincing.
