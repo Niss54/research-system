@@ -27,7 +27,7 @@
 
 This system works with **Claude AI** (using web search + extended thinking mode). Every phase contains a ready-to-paste prompt — just copy it, paste it into Claude, and get your output.
 
----
+
 
 ## 🗂️ File Structure
 
@@ -46,7 +46,7 @@ research-system/
 └── startup_research_playbook.html  ← Interactive web version (rendered UI)
 ```
 
----
+
 
 ## 🔁 The 6-Phase Pipeline
 
