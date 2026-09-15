@@ -114,6 +114,6 @@ Take your verified gaps (✅ and ⚠️ only) → Go to [`P6_Final_Report.md`](.
 
 Compile **all outputs from P1 through P5** — you'll paste everything into P6 to generate the final investor-ready report.
 
----
+
 
 *Part of the [Startup Research Playbook](./README.md) · 6-phase pipeline*
