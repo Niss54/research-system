@@ -123,6 +123,6 @@ Once all 10 profiles are complete → Go to [`P4_Gap_Analysis.md`](./P4_Gap_Anal
 
 Paste **all 10 profiles together** into the P4 prompt in a single session. Do not run P4 with partial profiles — the feature matrix requires all 10 to be meaningful.
 
----
+
 
 *Part of the [Startup Research Playbook](./README.md) · 6-phase pipeline*
