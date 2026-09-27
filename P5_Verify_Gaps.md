@@ -1,7 +1,7 @@
 # P5 — Verify Gaps
 > **Phase 5 of 6** · Problem → Opportunity Playbook
 
----
+
 
 ## 🎯 What This Phase Does
 
@@ -9,7 +9,7 @@ The gaps identified in P4 came from analyzing existing competitors — but the a
 
 **Goal:** A verified list of real, open market gaps — with only confirmed (✅) and partial (⚠️) gaps moving forward to the final report.
 
----
+
 
 ## ⚙️ Tools Required
 
@@ -23,7 +23,7 @@ The gaps identified in P4 came from analyzing existing competitors — but the a
 > - Web Search → toggle via the search icon in the top bar
 > - Deep Research → available in Claude Pro; activates multi-step search automatically
 
----
+
 
 ## 📋 Copy-to-Paste Prompt
 
@@ -66,7 +66,7 @@ Q3: What would a minimal version look like? (3–5 bullet points)
 Output: Verified gap report. Only ✅ and ⚠️ gaps move to the final report.
 ```
 
----
+
 
 ## 🗂️ How to Use
 
@@ -90,7 +90,7 @@ Claude should return:
   - What a minimal version would look like (3–5 features)
 - **A clean final list** of only ✅ and ⚠️ gaps to carry into P6
 
----
+
 
 ## 💡 Pro Tip
 
@@ -100,13 +100,13 @@ Claude should return:
 
 Also: a gap where the only existing solution is a GitHub repo with 12 stars is effectively a confirmed gap. "Technically exists" doesn't mean "adequately served."
 
----
+
 
 ## ⏱️ Time Estimate
 
 **~45 minutes** — the most search-intensive phase. Claude runs 9 searches per gap × 5 gaps = up to 45 search operations. Deep Research mode handles this automatically.
 
----
+
 
 ## ➡️ Next Step
 
