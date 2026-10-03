@@ -76,7 +76,7 @@ Output: Verified gap report. Only ✅ and ⚠️ gaps move to the final report.
 4. **Keep every gap's verdict separate** — don't let Claude combine or merge gaps during verification
 5. **Only carry ✅ and ⚠️ gaps into P6** — remove false gaps from your working list
 
----
+
 
 ## ✅ Expected Output
 
