@@ -1,6 +1,10 @@
 # P6 — Final Report
 
-> **Phase 6 of 6 · Problem → Opportunity Playbook · Evidence-Verified Edition**
+> **Phase 6 of 7 · Problem → Opportunity Playbook · Evidence-Verified Edition · Created by [Nisha](https://nissh.info)**
+
+> 💡 **Two Ways to Run This Phase:**
+> 1. **🤖 Mode 1 (Autonomous Local Engine):** Handled automatically when running `python server.py`.
+> 2. **📋 Mode 2 (Manual Chaining with Claude / ChatGPT):** Paste all handoff blocks from P1 through P5 into this prompt in Claude (Extended Thinking ON). Claude synthesizes the investor diligence memo. Copy `<!-- BEGIN P6_HANDOFF -->` and feed it into [`P7_Make_README.md`](./P7_Make_README.md).
 
 ---
 
@@ -79,23 +83,23 @@ Your job is to:
 10. If evidence is insufficient, say so explicitly.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RESEARCH INPUTS
+RESEARCH INPUTS (ATTACHED FROM PHASES 1–5)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ━━━ P1 — VALIDATION RESULTS ━━━━━━━━━━━━━━━━━━━
-[PASTE P1 OUTPUT]
+[PASTE P1_HANDOFF BLOCK HERE]
 
 ━━━ P2 — TOP 10 SOLUTIONS ━━━━━━━━━━━━━━━━━━━━━
-[PASTE P2 OUTPUT]
+[PASTE P2_HANDOFF BLOCK HERE]
 
 ━━━ P3 — COMPETITIVE PROFILES ━━━━━━━━━━━━━━━━━
-[PASTE ALL P3 OUTPUTS]
+[PASTE ALL P3_PROFILE BLOCKS HERE]
 
 ━━━ P4 — GAP ANALYSIS ━━━━━━━━━━━━━━━━━━━━━━━━━
-[PASTE P4 OUTPUT]
+[PASTE P4_HANDOFF BLOCK HERE]
 
 ━━━ P5 — VERIFIED GAPS ━━━━━━━━━━━━━━━━━━━━━━━━
-[PASTE P5 OUTPUT]
+[PASTE P5_HANDOFF BLOCK HERE]
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -841,19 +845,48 @@ CONTRADICTED
 
 The final report must be reproducible by another researcher following the cited sources.
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LAUNCH & SPECIFICATION HANDOFF (FOR PHASE 7)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+At the very end of your response, output this standardized launch spec block:
+
+<!-- BEGIN P6_HANDOFF -->
+PROJECT_NAME_PROPOSAL: [Proposed name or codename for the solution]
+ONE_LINE_PITCH: [Sharp 1-sentence value proposition — who it is for, what problem it eliminates]
+PROBLEM_STATEMENT: [Verified problem statement backed by the report]
+TARGET_AUDIENCE_ICP: [Primary ideal customer profile and willingness-to-pay tier]
+CORE_DIFFERENTIATOR (THE VERIFIED GAP): [The validated gap that none of the audited competitors solve]
+MVP_CORE_FEATURES:
+- [Must-have capability 1]
+- [Must-have capability 2]
+- [Must-have capability 3]
+TECH_STACK_SUGGESTION: [Optimal lightweight tech stack for rapid build & validation]
+COMPETITIVE_MOAT: [Why competitors will struggle to copy this immediately]
+30_DAY_LAUNCH_PLAN:
+- Week 1: [Landing page & 15 customer discovery interviews]
+- Week 2: [MVP core build]
+- Week 3: [Alpha onboarding with early waitlist]
+- Week 4: [Public launch on Product Hunt / Reddit / Twitter]
+<!-- END P6_HANDOFF -->
 ```
 
 ---
 
 ## 🗂️ How to Use
 
-1. Compile P1-P5 exactly as before.
-2. Turn **Web Search ON**.
-3. Turn **Extended Thinking ON**.
-4. Paste the entire P6 prompt.
-5. Let Claude finish the evidence audit before generating the final report.
-6. Never remove the **Final Evidence Summary**, **Source Register**, or **Quality Gate**.
-7. Before sharing externally, inspect the sources for the 5–10 most important claims.
+1. Collect all handoff blocks from **Phase 1, Phase 2, Phase 3, Phase 4, and Phase 5**.
+2. Turn **Web Search ON** and **Extended Thinking ON**.
+3. Paste the entire P6 prompt with all attached handoff blocks.
+4. Let Claude finish the evidence audit and contradiction check before generating the final report.
+5. Copy the `<!-- BEGIN P6_HANDOFF -->` block at the bottom of the report.
+
+---
+
+## ➡️ Next Step & Data Handoff
+
+1. Copy the `<!-- BEGIN P6_HANDOFF --> ... <!-- END P6_HANDOFF -->` block.
+2. Open [`P7_Make_README.md`](./P7_Make_README.md).
+3. Paste the block into Phase 7 to automatically generate a world-class GitHub README, project positioning, feature comparison table, and launch documentation for your newly validated startup!
 
 ---
 
@@ -865,28 +898,12 @@ Your old P6 effectively did:
 
 The new P6 does:
 
-**P1 → P2 → P3 → P4 → P5 → independent verification → contradiction check → evidence classification → final report**
+**P1 → P2 → P3 → P4 → P5 → independent verification → contradiction check → evidence classification → final report → P6_HANDOFF for launch (P7)**
 
 That is the major upgrade.
+The report is now **defensible, auditable, and seamlessly connected to project execution**.
 
-Most importantly, the model is now explicitly forbidden from turning claims like:
+---
 
-> "500K+ repositories"
+*Part of the [Startup Research Playbook](./README.md) · 6-phase pipeline*
 
-> "0/10 tools"
-
-> "$8–12M ARR"
-
-> "90%+ survival"
-
-into facts unless the evidence actually supports them.
-
-It must instead distinguish something like:
-
-**VERIFIED:** directly supported by the source
-**ESTIMATE:** calculated/modelled
-**INFERENCE:** reasoned conclusion
-**UNVERIFIED:** insufficient evidence
-**CONTRADICTED:** stronger evidence says otherwise
-
-That makes the report **defensible and auditable**, rather than merely convincing.
