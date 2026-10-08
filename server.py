@@ -34,7 +34,12 @@ pipeline_state = {
     "current_agent": 0,
     "current_agent_name": "Idle",
     "status": "idle", # "idle", "running", "completed", "error"
-    "logs": [],
+    "logs": [
+        "$ nissh-system --status ready --agents 7",
+        "[NISSH-CORE] 7 Autonomous Research Agents stand ready.",
+        "[FALLBACK] Auto-failover sequence: Gemini → Groq → Claude → OpenAI → OpenRouter.",
+        "[READY] Waiting for founder problem input. Click 'Launch 7 Autonomous Agents' above."
+    ],
     "fallback_events": [],
     "result": None,
     "error": None
