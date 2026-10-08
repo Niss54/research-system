@@ -1,372 +1,223 @@
-# 🚀 Problem → Opportunity Playbook
+# 🚀 Nissh Research System: 7-Agent Autonomous Startup Intelligence
 
 <div align="center">
 
-**A 6-phase AI-powered startup research system — from problem to opportunity, backed by evidence.**
+**From Multilingual Startup Idea to Investor-Ready Watermarked PDF Report — Powered by 7 Sequential AI Agents with Auto-Fallback.**
 
-![Claude AI](https://img.shields.io/badge/Powered%20by-Claude%20AI-orange?style=flat-square&logo=anthropic)
-![Phases](https://img.shields.io/badge/Phases-6%20Pipeline-blueviolet?style=flat-square)
-![Research Time](https://img.shields.io/badge/Research%20Time-4--5%20Hours-green?style=flat-square)
-![Language](https://img.shields.io/badge/Language-English-blue?style=flat-square)
-![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen?style=flat-square)
+[![Built by Nisha](https://img.shields.io/badge/Author-Nishant%20Maurya%20(Nissh)-6366f1?style=for-the-badge&logo=safari&logoColor=white)](https://nissh.info)
+[![Portfolio](https://img.shields.io/badge/Portfolio-nissh.info-ec4899?style=for-the-badge)](https://nissh.info)
+[![License](https://img.shields.io/badge/License-Apache%202.0-10b981?style=for-the-badge)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.9+-38bdf8?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Models Supported](https://img.shields.io/badge/LLMs-Gemini%20|%20Groq%20|%20Claude%20|%20OpenAI-facc15?style=for-the-badge)](https://github.com/Niss54/research-system)
 
-> *"Validate first, build second. This playbook ensures you solve a real problem — not an assumption."*
+> *"Never build a startup on assumptions. Validate with hard evidence, verify competitor voids across 9 platforms, and generate honest investor-grade diligence."*
+
+[Explore Portfolio (nissh.info)](https://nissh.info) · [View Pipeline Architecture](PIPELINE_FLOW.md) · [Quickstart](#-quickstart-guide)
 
 </div>
 
+---
 
+## 🌟 What Makes This System Unique?
 
-## 📌 Project Overview
+1. **Multilingual Single-Input Field:** Type your startup idea in **any language** (Hindi, Hinglish, Spanish, English, etc.). The system automatically standardizes and translates the hypothesis into crisp English for research.
+2. **Auto-Fallback Multi-Provider Engine:** Set at least 1 compulsory API key, and optionally 2–3 fallback keys (**Gemini → Groq → Claude → OpenAI → OpenRouter**). If provider credits exhaust or rate limits hit mid-pipeline (e.g. at Stage 4), it seamlessly shifts to the next provider without crashing your research!
+3. **7 Sequential Evidence-First Agents:** 100% honest evaluation. If an idea is flawed or has low willingness to pay, the system gives a strict **NO-GO ❌** verdict with cited evidence — zero flattery, zero hallucinations.
+4. **Permanent 'NISSH' Watermark & Clickable Link:** The automatically compiled PDF includes unremovable vector-layer watermarks (`NISSH • NISSH.INFO`) and clickable hyperlinks to Nisha's portfolio: [https://nissh.info](https://nissh.info).
+5. **Two Execution Modes:**
+   - **Mode 1 (Autonomous Local Engine):** Run locally with Flask, stream live agent logs, and download the finished PDF in one click.
+   - **Mode 2 (Manual Prompt Chaining):** For users who don't want to run locally or configure API keys — copy the 7 standardized Markdown files (`P1` to `P7`) one-by-one into Claude.ai or ChatGPT.
 
-**Problem → Opportunity Playbook** is a structured, AI-powered research framework that helps startup founders and indie hackers:
+---
 
-- **Validate** whether a problem is real or just feels real
-- **Map** what solutions already exist in the market
-- **Identify** genuine gaps that competitors are missing
-- **Build** an evidence-backed startup opportunity report — ready for investors and co-founders
+## 🤖 The 7 Autonomous Agents Workflow
 
-This system works with **Claude AI** (using web search + extended thinking mode). Every phase contains a ready-to-paste prompt — just copy it, paste it into Claude, and get your output.
-
-
-
-## 🗂️ File Structure
-
+```text
+[User Startup Idea (Any Language)]
+                │
+                ▼
+Agent 1: Problem Validator ──► Checks frequency, severity (1-10), WTP & GO/MAYBE/NO-GO verdict
+                │
+                ▼
+Agent 2: Landscape Hunter  ──► Maps Top 10 direct, indirect & manual workarounds (Excel, Notion)
+                │
+                ▼
+Agent 3: Forensic Auditor  ──► Conducts 360° competitor teardown & extracts "THIS TOOL DOES NOT"
+                │
+                ▼
+Agent 4: Gap Strategist    ──► Feature Matrix + Mathematical Scoring: (Pain × Market) / Difficulty
+                │
+                ▼
+Agent 5: 9-Platform Verifier──► Audits Google, Product Hunt, GitHub, YC, IndieHackers for False Gaps
+                │
+                ▼
+Agent 6: Diligence Synthesizer──► Synthesizes Investor Memo, Verified Moats & 30-Day Launch Roadmap
+                │
+                ▼
+Agent 7: Launch README Architect──► Builds production GitHub README.md with hero badges & setup
+                │
+                ▼
+[Official Vector PDF Report Generated with Permanent NISSH Watermark & Link to nissh.info]
 ```
+
+| Agent # | Agent Name | Core Mission | Key Output |
+|:---:|---|---|---|
+| **1** | **Problem Validator** | Normalizes language to English; searches Reddit, G2, forums for real pain | `<!-- BEGIN P1_HANDOFF -->` (Verdict: GO/MAYBE/NO-GO) |
+| **2** | **Landscape Hunter** | Discovers existing tools, niche software, and manual workarounds | `<!-- BEGIN P2_HANDOFF -->` (Top 10 Competitors Table) |
+| **3** | **Forensic Auditor** | Deep-dives into user complaints, missing features, and limitations | `<!-- BEGIN P3_PROFILE -->` (10 In-depth teardowns) |
+| **4** | **Gap Strategist** | Builds full feature matrix and scores market gaps | `<!-- BEGIN P4_HANDOFF -->` (Top 5 Scored Gaps & #1 Wedge) |
+| **5** | **9-Platform Verifier** | Verifies voids across 9 platforms to eliminate false leads | `<!-- BEGIN P5_HANDOFF -->` (Confirmed vs False Gaps) |
+| **6** | **Diligence Synthesizer**| Synthesizes investor diligence memo, facts vs assumptions, 30-day GTM | `<!-- BEGIN P6_HANDOFF -->` (Startup Diligence Dossier) |
+| **7** | **Launch Kit Architect**| Generates production-ready GitHub `README.md` and positioning kit | Complete launch `README.md` |
+
+---
+
+## ⚡ Quickstart Guide
+
+### 🤖 Option A: Autonomous Local Engine (Recommended)
+
+Run the autonomous 7-agent system locally with the modern, animated web interface:
+
+```bash
+# 1. Clone repository
+git clone https://github.com/Niss54/research-system.git
+cd research-system
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Configure API keys (or configure directly in the UI modal)
+cp .env.example .env
+
+# 4. Launch the local web server
+python server.py
+```
+
+Now open **`http://localhost:5000`** in your browser:
+1. Click **🔑 API Keys & Fallback Setup** to enter your keys (at least 1 key is required; add 2–3 for auto-fallback protection).
+2. Type or paste your startup idea in **any language** in the main input box.
+3. Click **🚀 Launch 7 Autonomous Agents**.
+4. Watch the live terminal logs and visual status cards as each agent executes.
+5. Click **📥 Download PDF Report** to get your official report with the permanent `NISSH` watermark!
+
+---
+
+### 📋 Option B: Manual Prompt Chaining (Free / No Setup / Claude or ChatGPT)
+
+If you do not wish to clone the repository or set up API keys locally, you can use the 7 standardized Markdown prompt files directly with [Claude.ai](https://claude.ai) or [ChatGPT](https://chatgpt.com):
+
+1. **Step 1:** Open [`P1_Validate.md`](./P1_Validate.md). Copy the prompt, paste your problem statement, turn **Web Search ON**, and run.
+   - *Output:* Claude returns evidence and an `<!-- BEGIN P1_HANDOFF -->` block (or output PDF).
+2. **Step 2:** Open [`P2_Top10.md`](./P2_Top10.md). Paste your P1 handoff block (or attach the P1 output PDF/text) into the designated slot. Run to get `<!-- BEGIN P2_HANDOFF -->`.
+3. **Step 3:** Open [`P3_Research_x10.md`](./P3_Research_x10.md). Attach the competitor list from P2 and generate teardowns for each competitor.
+4. **Step 4:** Open [`P4_Gap_Analysis.md`](./P4_Gap_Analysis.md). Paste the P1 and P3 blocks (Extended Thinking ON). Get `<!-- BEGIN P4_HANDOFF -->`.
+5. **Step 5:** Open [`P5_Verify_Gaps.md`](./P5_Verify_Gaps.md). Paste the P4 gaps and let Claude audit 9 platforms for false gaps. Get `<!-- BEGIN P5_HANDOFF -->`.
+6. **Step 6:** Open [`P6_Final_Report.md`](./P6_Final_Report.md). Paste all previous handoff blocks to synthesize your complete Diligence Memo.
+7. **Step 7:** Open [`P7_Make_README.md`](./P7_Make_README.md). Attach the P6 handoff block to produce your production GitHub `README.md`!
+
+---
+
+## 🔑 Multi-Provider API Keys & Auto-Fallback Architecture
+
+The system connects to multiple AI providers. You must provide **at least ONE** key. If multiple keys are provided, the engine automatically prioritizes and fails over:
+
+```text
+Priority 1: Google Gemini (High Speed / Free Tier)
+   └─► If rate limited or quota exhausted:
+Priority 2: Groq (Llama 3.3 70B Versatile @ 500+ tokens/sec)
+   └─► If failed:
+Priority 3: Anthropic Claude (Claude 3.5 Sonnet / Extended Thinking)
+   └─► If failed:
+Priority 4: OpenAI (GPT-4o / GPT-4o-mini)
+   └─► If failed:
+Priority 5: OpenRouter (Universal AI Gateway)
+```
+
+Configure in your `.env` file or directly in the UI modal:
+```env
+GEMINI_API_KEY="AIzaSy..."
+GROQ_API_KEY="gsk_..."
+ANTHROPIC_API_KEY="sk-ant-..."
+OPENAI_API_KEY="sk-proj-..."
+OPENROUTER_API_KEY="sk-or-..."
+```
+
+---
+
+## 📄 Official Watermarked PDF Report
+
+When the 7-agent cycle completes, the engine compiles a multi-page, publication-grade PDF using vector printing:
+- **Permanent Watermark:** Background diagonal vector layers repeating `NISSH • NISSH.INFO` across every page.
+- **Clickable Hyperlinks:** Active header and footer links directly navigating to **[https://nissh.info](https://nissh.info)**.
+- **Evidence Formatting:** Clear separation between verified facts and assumptions, full feature matrices, competitor limitations, and a 30-day MVP roadmap.
+
+To manually re-render or compile an existing report to PDF:
+```bash
+python pdf_generator.py
+```
+
+---
+
+## 💻 Python CLI Runner
+
+You can also run every phase directly from your command line:
+
+```bash
+# Initialize project
+python research_pipeline.py init "Freelance designers losing money on extra revisions" --audience "Freelance Designers"
+
+# Generate prompt for any phase
+python research_pipeline.py prompt 1
+python research_pipeline.py prompt 2
+
+# Save AI output & extract handoff contract
+python research_pipeline.py save 1 --file p1_output.txt
+
+# Inspect pipeline status
+python research_pipeline.py status
+
+# Compile full research dossier
+python research_pipeline.py compile
+```
+
+---
+
+## 📁 Repository Structure
+
+```text
 research-system/
+├── .env.example                  ← Multi-provider API keys template
+├── requirements.txt              ← Python package dependencies
+├── server.py                     ← Flask backend with REST APIs & background worker
+├── research_engine.py            ← 7-Agent autonomous orchestrator & fallback caller
+├── pdf_generator.py              ← Chrome/Edge headless vector PDF generator (Watermarked)
+├── research_pipeline.py          ← Python CLI runner & state manager
+├── startup_research_playbook.html← Modern animated frontend UI (nissh.info theme)
 │
-├── README.md                   ← You are here
+├── P1_Validate.md                ← Agent 1: Evidence validation & GO/MAYBE/NO-GO verdict
+├── P2_Top10.md                   ← Agent 2: Competitive landscape & Top 10 solutions
+├── P3_Research_x10.md            ← Agent 3: Forensic competitor deep dives & limitations
+├── P4_Gap_Analysis.md            ← Agent 4: Feature matrix & scored market gaps
+├── P5_Verify_Gaps.md             ← Agent 5: 9-platform verification to kill false gaps
+├── P6_Final_Report.md            ← Agent 6: Investor-ready diligence memo & MVP spec
+├── P7_Make_README.md             ← Agent 7: Production GitHub README & launch kit
 │
-├── P1_Validate.md              ← Is the problem real or not?
-├── P2_Top10.md                 ← What solutions already exist in the market?
-├── P3_Research_x10.md          ← Deep dive into each competitor
-├── P4_Gap_Analysis.md          ← Feature matrix + identify real gaps
-├── P5_Verify_Gaps.md           ← Confirm gaps before building
-├── P6_Final_Report.md          ← Investor-ready opportunity report
-│
-└── startup_research_playbook.html  ← Interactive web version (rendered UI)
-```
-
-
-
-## 🔁 The 6-Phase Pipeline
-
-```
-P1 Validate  →  P2 Top 10  →  P3 Research ×10  →  P4 Gap Analysis  →  P5 Verify Gaps  →  P6 Final Report
-```
-
-| Phase | Name | Goal | Time | Claude Settings |
-|-------|------|------|------|-----------------|
-| **P1** | Validate | Is the problem real or just a feeling? Find evidence. | ~20 min | 🌐 Web Search + 🧠 Extended Thinking |
-| **P2** | Top 10 | Identify the top 10 existing solutions in the market | ~15 min | 🌐 Web Search |
-| **P3** | Research ×10 | Deep dive into each competitor (run 10 times) | ~2–3 hrs | 🌐 Web Search + 🔬 Deep Research |
-| **P4** | Gap Analysis | Build a feature matrix and surface real gaps | ~30 min | 🧠 Extended Thinking (no search) |
-| **P5** | Verify Gaps | Confirm no one else is already solving the gaps | ~45 min | 🌐 Web Search + 🔬 Deep Research |
-| **P6** | Final Report | Everything in one professional report | ~20 min | 🧠 Extended Thinking (no search) |
-
-**Total time: ~4–5 hours for a complete research cycle**
-
----
-
-## 🚦 How to Use This System
-
-### Step 1 — Define your problem
-Write your problem statement in 2–3 lines. Be clear and specific.
-
-```
-❌ Weak:  "I want to improve productivity"
-✅ Strong: "Freelance designers struggle to track client invoices —
-            they use 3–4 tools that don't sync with each other"
-```
-
-### Step 2 — Start with P1
-1. Open `P1_Validate.md`
-2. Open **Claude.ai** or any Claude-based tool
-3. Turn **Web Search ON** (toggle in the top bar)
-4. Turn **Extended Thinking ON** (in the model selector)
-5. Copy the prompt, fill in your problem statement, and paste it into Claude
-
-### Step 3 — Save your output and paste it into the next phase
-> ⚠️ **CRITICAL:** This is a chain. Every phase's output must be pasted into the next phase's prompt.
-> Skipping a step will significantly reduce the quality of your results.
-
-```
-P1 output → paste into P2 prompt
-P2 output → paste into P3 prompt (run 10 times, once per competitor)
-P3 outputs (all 10) → paste into P4 prompt
-P4 output → paste into P5 prompt
-P1 + P2 + P3 + P4 + P5 outputs → paste into P6 prompt
-```
-
-### Step 4 — Check the verdict at every phase
-
-| Verdict | Meaning | Action |
-|---------|---------|--------|
-| ✅ GO | Strong signal — move forward | Proceed to the next phase |
-| ⚠️ MAYBE | Mixed signals | Validate with real users first |
-| ❌ NO-GO | Problem is weak | **STOP** — rephrase the problem or pivot |
-
----
-
-## ⚙️ Claude Settings Guide
-
-| Setting | When to turn ON | Where to find it |
-|---------|-----------------|------------------|
-| 🌐 **Web Search** | Required for P1, P2, P3, P5 | Search icon in the Claude.ai top bar |
-| 🧠 **Extended Thinking** | P1, P4, P6 — synthesis tasks | Model selector dropdown |
-| 🔬 **Deep Research Mode** | Best for P3 and P5 | Claude Pro features |
-
-> **Note:** Without the correct settings, prompts will be only half as effective. Always check settings before starting each phase.
-
----
-
-## 📋 Phase Quick Reference
-
-<details>
-<summary><strong>P1 — Validate</strong> (click to expand)</summary>
-
-**Objective:** Is the problem real, or does it just feel real? Find hard evidence first.
-
-**What it searches:**
-- Reddit complaint and frustration threads
-- App Store / Play Store reviews
-- Survey data and statistics
-- Demand signals for existing solutions
-
-**Expected Output:**
-- Validation score: Strong / Moderate / Weak
-- 3–5 source links with real user pain signals
-- Clear **GO / MAYBE / NO-GO** verdict with reasoning
-
-**Pro Tip:** If you get a NO-GO, stop here. Rephrase the problem — define it for a specific user and try again. If it's still weak after 3 rephrases, the problem genuinely doesn't exist at scale or is too niche.
-
-📄 **Full prompt:** [`P1_Validate.md`](P1_Validate.md)
-
-</details>
-
-<details>
-<summary><strong>P2 — Top 10</strong> (click to expand)</summary>
-
-**Objective:** What solutions already exist in the market? Identify the best 10 competitors.
-
-**Searches across:** Product Hunt, G2, Capterra, AlternativeTo, Reddit, App Store, GitHub
-
-**Expected Output:**
-- Table of 10 solutions: URL, pricing, target user, key features
-- Mix of: major players + niche tools + manual workarounds
-- Foundation for P3 deep research
-
-**Pro Tip:** Manual workarounds are gold. If people are building Excel sheets or Notion templates to solve the problem — that's a HUGE gap signal. It means the problem is real but no proper software exists yet.
-
-📄 **Full prompt:** [`P2_Top10.md`](P2_Top10.md)
-
-</details>
-
-<details>
-<summary><strong>P3 — Research ×10</strong> (click to expand)</summary>
-
-**Objective:** Deep dive into each competitor — what it covers, what it doesn't. Run this prompt 10 times.
-
-**Each profile covers:**
-- Product profile + user journey
-- Company intel (funding, team size, revenue)
-- Pricing tiers + pricing complaints
-- What users love ★★★★★
-- What users hate ★☆☆☆☆
-- Critical gaps ← MOST IMPORTANT SECTION
-
-**Expected Output:**
-- 10 detailed competitor profiles (one session per competitor)
-- A "THIS TOOL DOES NOT" summary line for each tool
-- Raw material for the P4 gap analysis
-
-**Pro Tip:** Research 2–3 competitors per session to keep context intact. Always make sure Claude ends each profile with the "THIS TOOL DOES NOT" line — it becomes essential during P4.
-
-📄 **Full prompt:** [`P3_Research_x10.md`](P3_Research_x10.md)
-
-</details>
-
-<details>
-<summary><strong>P4 — Gap Analysis</strong> (click to expand)</summary>
-
-**Objective:** Paste all 10 profiles together — Claude will build a feature matrix and surface the real gaps.
-
-**Produces:**
-- Feature matrix: all 10 solutions × all features found (✓ / ~ / ✗)
-- Gap categories: Feature, Quality, Audience, Pricing, Workflow
-- Scoring formula: `(User Pain × Market Size) ÷ Build Difficulty`
-
-**Expected Output:**
-- Full feature matrix table
-- All gaps categorized and scored
-- Top 5 ranked opportunities with scores and reasoning
-- A single #1 recommended gap to focus on
-
-**Pro Tip:** Make sure Extended Thinking is ON for this step. Add this to the end of the prompt: *"Take extra time before responding. Think through every gap carefully before scoring."*
-
-📄 **Full prompt:** [`P4_Gap_Analysis.md`](P4_Gap_Analysis.md)
-
-</details>
-
-<details>
-<summary><strong>P5 — Verify Gaps</strong> (click to expand)</summary>
-
-**Objective:** Confirm the gaps found in P4 — is anyone already building this?
-
-**Searches:** Google, Product Hunt, Indie Hackers, GitHub, YC Companies, BetaList, TechCrunch, LinkedIn
-
-**Gap Verdicts:**
-- ✅ **CONFIRMED GAP** — Nothing found after exhaustive search. Truly open.
-- ⚠️ **PARTIAL GAP** — 1–2 weak or early solutions exist but a serious gap remains.
-- ❌ **FALSE GAP** — A solid solution already exists. Remove from the list.
-
-**Expected Output:**
-- Verified verdict on each gap with supporting evidence
-- Why the gap exists and what recently changed to make it possible
-- A minimal version description for each confirmed gap
-
-**Pro Tip:** False gaps are NOT bad news — it means someone validated the idea but executed poorly. Search their negative reviews immediately. Partial gap + bad reviews = a massive opportunity to do it 10× better.
-
-📄 **Full prompt:** [`P5_Verify_Gaps.md`](P5_Verify_Gaps.md)
-
-</details>
-
-<details>
-<summary><strong>P6 — Final Report</strong> (click to expand)</summary>
-
-**Objective:** Everything in one place. A professional report you can share directly with co-founders or investors.
-
-**Report Sections:**
-1. Executive Summary (GO / NO-GO / PIVOT recommendation)
-2. Problem Deep Dive (ICP, current workarounds, cost of inaction)
-3. Competitive Landscape (market map, what all competitors miss)
-4. Your Opportunity (top 3 gaps, revenue potential, build effort)
-5. Product Direction (MUST BUILD / SHOULD BUILD / SKIP)
-6. 30-Day Action Plan (landing page → user interviews → MVP → launch)
-
-**Expected Output:**
-- Investor-ready startup opportunity report
-- Prioritized product roadmap
-- 30-day action plan with a real user interview script
-
-**Pro Tip:** Don't share the report immediately after it's generated. Mark any claims that seem doubtful and manually verify them. Claude synthesizes well, but revenue figures and user estimates should always be personally checked.
-
-📄 **Full prompt:** [`P6_Final_Report.md`](P6_Final_Report.md)
-
-</details>
-
----
-
-## 💡 Pro Tips (System-Level)
-
-```
-✅ DO
-├── Complete each phase fully before moving to the next
-├── Use a new Claude session per competitor in P3
-├── Paste ALL 10 P3 outputs together into P4
-├── Manually fact-check key claims after P6
-└── Got a NO-GO at P1? Rephrase — don't waste 4–5 hours on a weak problem
-
-❌ DON'T
-├── Skip P1 — the entire cycle can become a waste without validation
-├── Change web search settings mid-prompt
-├── Put multiple competitors into a single P3 prompt
-├── Share the P6 report without verification
-└── Treat Claude's estimates as ground truth — always verify
+├── PIPELINE_FLOW.md              ← Mermaid sequence diagrams & handshake contracts
+└── workspace/                    ← Saved agent outputs, dossier, and generated PDF
 ```
 
 ---
 
-## 🤝 Contributing
+## 👨‍💻 Created by Nisha
 
-Contributions are welcome! If you have better prompts, improvements, or ideas for new phases — open a PR.
-
-### How to Contribute
-
-1. **Fork** this repository
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/research-system.git
-   cd research-system
-   ```
-
-2. **Create a branch** for your feature
-   ```bash
-   git checkout -b improve/p3-prompt-v2
-   ```
-
-3. **Make your changes** and test them with Claude
-   - For prompt changes: test in an actual Claude session first
-   - Update the expected output section if the output changes
-   - Add or update the pro tip if you have a better one
-
-4. **Commit** with a clear message
-   ```bash
-   git commit -m "feat(P3): add Glassdoor to competitor research search list"
-   ```
-
-5. **Push** and **open a Pull Request**
-   ```bash
-   git push origin improve/p3-prompt-v2
-   ```
-
-### Contribution Ideas
-
-| Type | Examples |
-|------|---------|
-| 🔧 Prompt improvements | Better search queries, clearer output formats |
-| 📊 New gap categories | E.g., geographic gaps, language gaps |
-| 🌐 New search sources | New platforms to check in P2, P3, or P5 |
-| 🌍 Translations | Prompts fully translated to Hindi or other languages |
-| 📝 Case studies | Real examples of the system in action |
-| 🐛 Bug reports | Prompts that produce bad or incomplete output |
-
-### Contribution Guidelines
-
-- **One phase per PR** — avoid mixing changes across multiple phases
-- **Real testing required** — include actual Claude output in the PR description, not just theoretical changes
-- **Keep the voice consistent** — clear, direct, and actionable
-- If you add a new file, update the File Structure section in this README as well
+**Nishant Maurya (Nissh)**  
+- 🌐 **Official Portfolio:** [https://nissh.info](https://nissh.info)  
+- 💡 **Founder:** Sight Pro  
+- 🏆 **Achievements:** MLH Hack Days Winner  
+- 💼 **Focus:** Full-Stack AI Systems, Autonomous Multi-Agent Workflows, High-Impact Product Engineering  
 
 ---
 
-## 📊 Expected Total Output
+## 📜 License
 
-After a complete P1 → P6 cycle, you will have:
-
-- ✅ **Evidence-backed problem validation** (real data, real links)
-- ✅ **Competitive landscape map** (10 solutions, fully profiled)
-- ✅ **Feature matrix** (every feature vs. every competitor)
-- ✅ **Ranked opportunity list** (gaps scored on pain × market × difficulty)
-- ✅ **Verified gaps** (confirmed against an exhaustive search)
-- ✅ **Investor-ready report** (6 sections, GO/NO-GO decision, 30-day plan)
-
----
-
-## ⚠️ Important Disclaimers
-
-- Claude AI can **hallucinate** — especially around revenue figures and user numbers. Manually verify important claims from the P6 report.
-- **Market estimates** are rough signals, not authoritative data. For TAM/SAM, consult proper market research reports.
-- This system **accelerates** market research — it does not replace actual customer conversations. User interviews in the P6 30-day plan are non-negotiable.
-
----
-
-## 📄 License
-
-Licensed under the **Apache License 2.0** — free to use, modify, and distribute.  
-See the [`LICENSE`](LICENSE) file for full terms.
-
----
-
-## 🙌 Acknowledgements
-
-Built for the builder who validates first, builds second.
-Inspired by the startup research frameworks of YC, Indie Hackers, and every founder who wasted 6 months building the wrong thing.
-
----
-
-<div align="center">
-
-**⭐ If this was useful, leave a star — it helps other founders find it too**
-
-Made with ❤️ for the global startup community
-
-</div>
+Licensed under the [Apache License 2.0](LICENSE). Free for founders, builders, and indie hackers worldwide.
