@@ -208,7 +208,7 @@ research-system/
 
 ---
 
-## 👨‍💻 Created by Nisha
+## 👨‍💻 Created by Nissh
 
 **Nishant Maurya (Nissh)**  
 - 🌐 **Official Portfolio:** [https://nissh.info](https://nissh.info)  
