@@ -1,5 +1,9 @@
 # P1 — Validate
-> **Phase 1 of 6** · Problem → Opportunity Playbook
+> **Phase 1 of 7** · Problem → Opportunity Playbook · Created by [Nisha](https://nissh.info)
+
+> 💡 **Two Ways to Run This System:**
+> 1. **🤖 Mode 1 (Autonomous Local Engine - Recommended):** Clone the repo, set any API key in `.env`, run `python server.py`, and type your idea in any language (Hindi, Hinglish, English, etc.). All 7 agents run end-to-end automatically and generate your official watermarked PDF report!
+> 2. **📋 Mode 2 (Manual Chaining with Claude / ChatGPT / Gemini - Free / No Local Setup):** Copy the prompt below into Claude.ai or ChatGPT (turn Web Search ON). When Claude gives the output, copy the `<!-- BEGIN P1_HANDOFF -->` block (or download/attach the output PDF) and feed it into [`P2_Top10.md`](./P2_Top10.md). Repeat until Phase 7!
 
 ---
 
@@ -26,12 +30,15 @@ Is the problem real, or does it just feel real? Don't build a startup on assumpt
 
 ## 📋 Copy-to-Paste Prompt
 
-> **Instructions:** Copy the full prompt below, replace `[WRITE YOUR PROBLEM HERE IN 2–3 LINES]` with your actual problem statement, and paste it into Claude.
+> **Instructions:** Copy the full prompt below, replace `[WRITE YOUR PROBLEM HERE IN 2–3 LINES]` with your actual problem statement, and paste it into Claude (or run via the interactive UI / CLI).
+> 
+> 🔗 **Pipeline Connection:** The output of this phase produces a standardized `<!-- BEGIN P1_HANDOFF -->` block that you will paste directly into [`P2_Top10.md`](./P2_Top10.md).
 
-```
+```text
 Problem statement: [WRITE YOUR PROBLEM HERE IN 2–3 LINES]
+Target audience (optional / rough idea): [e.g. Freelancers, DevOps engineers, Small business owners]
 
-Act as a startup problem validator. Validate if this is a REAL problem worth solving.
+Act as an evidence-driven startup problem validator. Validate if this is a REAL problem worth solving.
 
 Use web search to find hard evidence:
 □ Search "reddit [problem keyword] struggling OR frustrated OR annoying"
@@ -48,10 +55,10 @@ Evaluate on exactly 3 dimensions:
 
 2. SEVERITY — How much does it hurt? (1–10)
    1–3 = minor inconvenience | 4–6 = real friction | 7–10 = they'll pay to fix this
-   Evidence: [real complaints or data found]
+   Evidence: [real complaints, hours wasted, or financial loss found]
 
 3. WILLINGNESS TO PAY — Do people already pay for partial solutions?
-   Look for: paid apps, freelancers hired, courses bought for this
+   Look for: paid apps, freelancers hired, courses bought, spreadsheets sold for this
    Evidence: [what you found]
 
 SCORING:
@@ -59,15 +66,35 @@ SCORING:
 • 2 out of 3 strong → MAYBE ⚠️ — validate with real users before next step
 • 1 out of 3 strong → NO-GO ❌ — rephrase problem or pivot
 
-Output format:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PROBLEM: [clearly restated in one line]
-FREQUENCY: [Daily/Weekly/Monthly/Rarely + evidence]
-SEVERITY: [N/10 + evidence]
-WILLINGNESS TO PAY: [Yes/No + evidence]
-KEY SOURCES: [top 3–5 links found]
-VERDICT: GO ✅ / MAYBE ⚠️ / NO-GO ❌ + 2-line reasoning
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Output format (YOU MUST INCLUDE THE EXACT HANDOFF BLOCK BELOW):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EVIDENCE SUMMARY:
+[Provide 2-3 paragraphs analyzing the evidence found across web search]
+
+<!-- BEGIN P1_HANDOFF -->
+PROBLEM_STATEMENT: [Clearly restated problem in 1–2 sentences]
+TARGET_AUDIENCE: [Specific ICP / audience facing this problem]
+FREQUENCY: [Daily / Weekly / Monthly / Rarely]
+FREQUENCY_EVIDENCE: [Summary of frequency signals from search]
+SEVERITY: [N/10]
+SEVERITY_EVIDENCE: [Summary of severity and pain signals]
+WILLINGNESS_TO_PAY: [Yes / Partial / No]
+WTP_EVIDENCE: [Evidence of monetization or paid workarounds]
+KEY_SOURCES:
+- [Source URL 1] — [Key takeaway]
+- [Source URL 2] — [Key takeaway]
+- [Source URL 3] — [Key takeaway]
+VERDICT: [GO ✅ / MAYBE ⚠️ / NO-GO ❌]
+VERDICT_REASONING: [2-line summary of verdict justification]
+KEY_PAIN_SIGNALS:
+- [Specific real-world complaint 1]
+- [Specific real-world complaint 2]
+- [Specific real-world complaint 3]
+SEARCH_QUERIES_USED:
+- [Query 1]
+- [Query 2]
+<!-- END P1_HANDOFF -->
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ---
@@ -117,12 +144,17 @@ VERDICT: GO ✅ — High frequency daily pain + users already paying = real oppo
 
 ---
 
-## ➡️ Next Step
+## ➡️ Next Step & Data Handoff
 
-**If GO ✅ or MAYBE ⚠️** → Go to [`P2_Top10.md`](./P2_Top10.md) — paste your P1 verdict there.
+**If GO ✅ or MAYBE ⚠️:**
+1. Copy the entire `<!-- BEGIN P1_HANDOFF --> ... <!-- END P1_HANDOFF -->` block from your output.
+2. Open [`P2_Top10.md`](./P2_Top10.md) and paste it directly into the designated `P1_HANDOFF` slot.
+3. Phase 2 will automatically use the validated problem, target audience, and pain signals to find the 10 best competitors.
 
-**If NO-GO ❌** → Rephrase the problem. Don't move to P2 without a GO or MAYBE — the entire 4-hour cycle will be wasted.
+**If NO-GO ❌:**
+> Rephrase the problem or pivot. Don't move to P2 without a GO or MAYBE — otherwise you will spend hours researching a problem people don't care to solve.
 
 ---
 
 *Part of the [Startup Research Playbook](./README.md) · 6-phase pipeline*
+
