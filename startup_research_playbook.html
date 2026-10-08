@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nissh Research System | 7-Agent Autonomous Startup Intelligence</title>
+  <meta name="description" content="Autonomous 7-Agent startup research system from multilingual problem input to investor-ready watermarked PDF report. Built by Nishant Maurya (nissh.info).">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- GSAP & Canvas Confetti -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #07090e;
+      --bg-surface: #0e131f;
+      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(99, 102, 241, 0.4);
+      --card-border-glow: rgba(99, 102, 241, 0.25);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      /* Nissh.info vibrant accents */
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --primary-glow: rgba(99, 102, 241, 0.4);
+      --accent-cyan: #06b6d4;
+      --accent-pink: #ec4899;
+      --accent-orange: #f97316;
+      --accent-yellow: #facc15;
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.35);
+      --danger: #f43f5e;
+      
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-xs: 6px;
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.3);
+      border: 1.5px solid rgba(165, 180, 252, 0.8);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+      mix-blend-mode: screen;
+      display: none;
+    }
+    @media (pointer: fine) { .custom-cursor { display: block; } }
+    .custom-cursor.hovering {
+      width: 44px; height: 44px;
+      background: rgba(236, 72, 153, 0.25);
+      border-color: #f472b6;
+    }
+
+    .grid-overlay {
+      position: fixed; inset: 0;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Playful Stickers */
+    .sticker-badge {
+      position: absolute; padding: 6px 14px;
+      border-radius: 999px; font-size: 0.75rem; font-weight: 800;
+      display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index: 10;
+      user-select: none; pointer-events: none;
+      transition: transform 0.3s ease;
+    }
+    .sticker-pink { background: #ec4899; color: #fff; transform: rotate(-6deg); }
+    .sticker-cyan { background: #06b6d4; color: #082f49; transform: rotate(5deg); }
+    .sticker-yellow { background: #facc15; color: #713f12; transform: rotate(-3deg); }
+    .sticker-green { background: #10b981; color: #022c22; transform: rotate(4deg); }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--card-border);
+      backdrop-filter: blur(20px);
+      background: rgba(7, 9, 14, 0.85);
+      position: sticky; top: 0; z-index: 100;
+      padding: 0.85rem 2rem;
+    }
+    .nav-container {
+      max-width: 1440px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 0.85rem; text-decoration: none; cursor: pointer;
+    }
+    .brand-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; box-shadow: 0 0 20px var(--primary-glow);
+    }
+    .brand-title {
+      font-weight: 800; font-size: 1.25rem; letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .brand-subtitle {
+      font-size: 0.72rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .brand-subtitle a {
+      color: #38bdf8; text-decoration: none; font-weight: 700;
+    }
+
+    .header-actions {
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.2rem; border-radius: var(--radius-sm);
+      font-size: 0.82rem; font-weight: 700; cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent; text-decoration: none; font-family: inherit;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #4338ca);
+      color: #fff; box-shadow: 0 4px 15px var(--primary-glow);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6); transform: translateY(-2px);
+    }
+    .btn-demo {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(244, 63, 94, 0.25));
+      color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4);
+    }
+    .btn-demo:hover {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(244, 63, 94, 0.4));
+      color: #fff; transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04); color: var(--text); border-color: var(--card-border);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-1px);
+    }
+    .btn-pdf {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff; box-shadow: 0 4px 20px var(--success-glow); font-weight: 800;
+    }
+    .btn-pdf:hover {
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6); transform: translateY(-2px);
+    }
+    .btn-sm { padding: 0.42rem 0.85rem; font-size: 0.75rem; }
+
+    main {
+      max-width: 1440px; margin: 1.5rem auto 4rem auto;
+      padding: 0 2rem; position: relative; z-index: 1;
+    }
+
+    /* Mode Navigation Tabs */
+    .mode-tabs {
+      display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;
+    }
+    .mode-tab {
+      padding: 0.65rem 1.5rem; border-radius: 999px; font-weight: 800; font-size: 0.85rem;
+      cursor: pointer; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--card-border);
+      color: var(--text-muted); transition: all 0.25s ease; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .mode-tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+      color: #fff; border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+
+    /* Hero Input Section */
+    .hero-input-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      margin-bottom: 2.5rem;
+      backdrop-filter: blur(24px);
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .hero-input-card:focus-within {
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.4);
+    }
+    .hero-heading {
+      font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;
+    }
+    .hero-heading .gradient-text {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--primary), var(--accent-pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;
+    }
+
+    .input-control {
+      width: 100%;
+      background: rgba(9, 14, 24, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1.3rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.25s ease;
+      line-height: 1.6;
+    }
+    .input-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+      background: #090e17;
+    }
+
+    .key-settings-strip {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--card-border);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .key-indicators {
+      display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font-size: 0.78rem;
+    }
+    .key-pill {
+      padding: 3px 10px; border-radius: 999px; font-weight: 700;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border);
+      color: var(--text-dim); display: flex; align-items: center; gap: 4px;
+    }
+    .key-pill.active {
+      background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    /* 7 Autonomous Agents Live Grid */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .agent-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .agent-card.running {
+      border-color: var(--primary);
+      box-shadow: 0 0 20px var(--primary-glow);
+      transform: translateY(-3px);
+      background: rgba(99, 102, 241, 0.08);
+    }
+    .agent-card.completed {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.05);
+    }
+    .agent-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #1e293b; color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.8rem;
+    }
+    .agent-card.running .agent-num {
+      background: var(--primary); color: #fff;
+    }
+    .agent-card.completed .agent-num {
+      background: var(--success); color: #fff;
+    }
+    .agent-title {
+      font-weight: 800; font-size: 0.85rem; color: #fff;
+    }
+    .agent-status-tag {
+      font-size: 0.68rem; font-weight: 700; color: var(--text-dim);
+    }
+    .agent-card.running .agent-status-tag { color: #818cf8; }
+    .agent-card.completed .agent-status-tag { color: #34d399; }
+
+    /* Terminal Console Live Stream */
+    .terminal-box {
+      background: #060910;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      max-height: 280px;
+      overflow-y: auto;
+      margin-bottom: 2.5rem;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .terminal-line { margin-bottom: 0.35rem; line-height: 1.5; }
+    .terminal-switch { color: #f59e0b; font-weight: 700; }
+    .terminal-success { color: #34d399; font-weight: 700; }
+
+    /* Modal for API Keys */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px); display: none; justify-content: center; align-items: center;
+      z-index: 10000; padding: 2rem;
+    }
+    .modal-backdrop.show { display: flex; }
+    .modal-box {
+      background: #0e1320; border: 1px solid var(--card-border);
+      border-radius: var(--radius); padding: 2rem; width: 100%; max-width: 580px;
+      display: flex; flex-direction: column; gap: 1.25rem; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+    .modal-title {
+      font-size: 1.25rem; font-weight: 800; display: flex; justify-content: space-between; align-items: center;
+    }
+
+    /* Nissh Watermark Banner Box */
+    .nissh-creator-banner {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      margin-top: 3rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .creator-left {
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .creator-avatar {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
+      color: #fff; border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.85rem 1.4rem; border-radius: var(--radius-sm);
+      font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      transform: translateY(120px); opacity: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="brand" onclick="window.location.reload()">
+        <div class="brand-icon">🔬</div>
+        <div>
+          <div class="brand-title">
+            Nissh Research System
+            <span class="sticker-badge sticker-pink" style="position:static; margin-left:0.5rem; font-size:0.65rem;">Auto-Fallback Engine</span>
+          </div>
+          <div class="brand-subtitle">
+            <span>Built by </span>
+            <a href="https://nissh.info" target="_blank" rel="noopener noreferrer">Nishant Maurya (nissh.info)</a>
+            <span>• Sight Pro Founder</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" onclick="openKeyModal()">
+          🔑 API Keys & Fallback Setup
+        </button>
+        <button class="btn btn-demo btn-sm" onclick="loadDemoProject()">
+          ⚡ Load Sample Demo (ScopeLock)
+        </button>
+        <button class="btn btn-pdf btn-sm" id="top-pdf-btn" onclick="downloadPdf()">
+          📥 Download PDF Report
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Mode Switcher -->
+    <div class="mode-tabs">
+      <div class="mode-tab active" id="tab-auto" onclick="switchMode('auto')">
+        <span>🤖 Mode 1: 7 Autonomous AI Agents (Local Run)</span>
+      </div>
+      <div class="mode-tab" id="tab-manual" onclick="switchMode('manual')">
+        <span>📋 Mode 2: Manual Prompt Chaining (Claude / ChatGPT)</span>
+      </div>
+    </div>
+
+    <!-- MODE 1: AUTONOMOUS 7-AGENT ENGINE -->
+    <div id="section-auto">
+      <div class="hero-input-card">
+        <span class="sticker-badge sticker-cyan" style="top: -12px; left: 8%;">🌐 Any Language Input</span>
+        <span class="sticker-badge sticker-yellow" style="top: -12px; right: 8%;">📄 Instant PDF with Watermark</span>
+
+        <h1 class="hero-heading">
+          Enter your startup idea. <span class="gradient-text">7 Autonomous Agents</span> do the rest.
+        </h1>
+        <p class="hero-sub">
+          Type your idea in Hindi, Hinglish, English, or any language. The system standardizes it to English, executes 7 evidence-audited research phases with automatic provider fallback, and compiles an investor-ready watermarked PDF report.
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <textarea id="idea-input" class="input-control" rows="3" placeholder="Apna startup idea yahan likhein (kisi bhi language mein): E.g. 'Freelance designers client revision loop mein fas jaate hain aur extra revision ke paise nahi milte...'"></textarea>
+          
+          <div style="display:grid; grid-template-columns: 1fr auto; gap: 1rem; align-items:center;">
+            <input type="text" id="audience-input" class="input-control" style="padding:0.75rem 1rem;" placeholder="Target Audience / ICP (Optional, e.g. Freelancers, DevOps Leads, Agency Owners)">
+            <button class="btn btn-primary" id="run-agents-btn" onclick="startAutonomousPipeline()" style="padding:0.85rem 1.75rem; font-size:0.95rem;">
+              🚀 Launch 7 Autonomous Agents
+            </button>
+          </div>
+        </div>
+
+        <div class="key-settings-strip">
+          <div class="key-indicators">
+            <span style="font-weight:700; color:var(--text-muted);">Active Providers & Fallback:</span>
+            <span class="key-pill" id="pill-gemini"><span>Gemini</span></span>
+            <span class="key-pill" id="pill-groq"><span>Groq</span></span>
+            <span class="key-pill" id="pill-claude"><span>Claude</span></span>
+            <span class="key-pill" id="pill-openai"><span>OpenAI</span></span>
+            <span class="key-pill" id="pill-openrouter"><span>OpenRouter</span></span>
+          </div>
+          <div>
+            <a href="javascript:void(0)" onclick="openKeyModal()" style="font-size:0.8rem; color:#818cf8; text-decoration:none; font-weight:700;">
+              ⚙️ Add More Keys for Zero-Failure Fallback →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 Autonomous Agents Visual Status Grid -->
+      <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+        <span>🤖 The 7 Autonomous Agents Pipeline</span>
+        <span style="font-size:0.75rem; color:var(--text-dim); font-weight:600;">(Run sequentially with evidence checks)</span>
+      </h3>
+      
+      <div class="agents-grid">
+        <div class="agent-card" id="agent-card-1">
+          <div class="agent-num">1</div>
+          <div class="agent-title">Problem Validator</div>
+          <div class="agent-status-tag" id="agent-status-1">Waiting</div>
+        </div>
+        <div class="agent-card" id="agent-card-2">
+          <div class="agent-num">2</div>
+          <div class="agent-title">Landscape Hunter</div>
+          <div class="agent-status-tag" id="agent-status-2">Waiting</div>
+        </div>
+        <div class="agent-card" id="agent-card-3">
+          <div class="agent-num">3</div>
+          <div class="agent-title">Forensic Auditor</div>
+          <div class="agent-status-tag" id="agent-status-3">Waiting</div>
+        </div>
+        <div class="agent-card" id="agent-card-4">
+          <div class="agent-num">4</div>
+          <div class="agent-title">Gap Strategist</div>
+          <div class="agent-status-tag" id="agent-status-4">Waiting</div>
+        </div>
+        <div class="agent-card" id="agent-card-5">
+          <div class="agent-num">5</div>
+          <div class="agent-title">9-Platform Verifier</div>
+          <div class="agent-status-tag" id="agent-status-5">Waiting</div>
+        </div>
+        <div class="agent-card" id="agent-card-6">
+          <div class="agent-num">6</div>
+          <div class="agent-title">Diligence Synthesizer</div>
+          <div class="agent-status-tag" id="agent-status-6">Waiting</div>
+        </div>
+        <div class="agent-card" id="agent-card-7">
+          <div class="agent-num">7</div>
+          <div class="agent-title">Launch Kit Architect</div>
+          <div class="agent-status-tag" id="agent-status-7">Waiting</div>
+        </div>
+      </div>
+
+      <!-- Live Terminal Console -->
+      <div class="terminal-box" id="terminal-logs">
+        <div class="terminal-line" style="color:var(--text-dim);">[SYSTEM] Ready. Configure at least one API key and enter an idea to begin autonomous execution.</div>
+      </div>
+
+      <!-- Completed Report & Download Action -->
+      <div id="completed-box" style="display:none; margin-bottom:2.5rem; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:var(--radius); padding:2rem; text-align:center;">
+        <h2 style="font-size:1.6rem; font-weight:800; color:#34d399; margin-bottom:0.5rem;">🎉 7-Agent Research Cycle Complete!</h2>
+        <p style="color:var(--text-muted); margin-bottom:1.5rem; max-width:650px; margin-left:auto; margin-right:auto;">
+          Your evidence-audited startup opportunity report has been generated with permanent Nissh watermark and clickable portfolio link.
+        </p>
+        <button class="btn btn-pdf" onclick="downloadPdf()" style="padding:0.9rem 2.2rem; font-size:1.05rem;">
+          📥 Download Official Research Report (PDF)
+        </button>
+      </div>
+    </div>
+
+    <!-- MODE 2: MANUAL PROMPT CHAINING (FOR USERS WITHOUT API KEYS) -->
+    <div id="section-manual" style="display:none;">
+      <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); padding:2rem; margin-bottom:2rem;">
+        <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.5rem;">📋 Manual Mode (Copy / Paste to Claude.ai or ChatGPT)</h2>
+        <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+          Agar aap API keys use nahi karna chahte, toh aap har step ke prompt ko copy karke apne Claude ya GPT chat mein paste kar sakte hain. AI se milne wale output block ko agle step mein attach karte jayein:
+        </p>
+        
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:1rem;">
+          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 1: P1_Validate.md</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Copy prompt, paste to Claude with Web Search ON. Copy <code>&lt;!-- BEGIN P1_HANDOFF --&gt;</code> block.</p>
+            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P1_Validate.md" target="_blank" class="btn btn-secondary btn-sm">Open P1_Validate.md ↗</a>
+          </div>
+
+          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 2: P2_Top10.md</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P1 handoff block. Produces Top 10 solutions table and <code>&lt;!-- BEGIN P2_HANDOFF --&gt;</code>.</p>
+            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P2_Top10.md" target="_blank" class="btn btn-secondary btn-sm">Open P2_Top10.md ↗</a>
+          </div>
+
+          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 3: P3_Research_x10.md</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P2 competitor list. Collect 10 profiles with <code>THIS TOOL DOES NOT</code> lines.</p>
+            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P3_Research_x10.md" target="_blank" class="btn btn-secondary btn-sm">Open P3_Research_x10.md ↗</a>
+          </div>
+
+          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 4: P4_Gap_Analysis.md</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P1 + P3 profiles. Builds feature matrix & scores Top 5 Gaps.</p>
+            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P4_Gap_Analysis.md" target="_blank" class="btn btn-secondary btn-sm">Open P4_Gap_Analysis.md ↗</a>
+          </div>
+
+          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 5: P5_Verify_Gaps.md</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P4 gaps. Verifies across 9 platforms and filters out false gaps.</p>
+            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P5_Verify_Gaps.md" target="_blank" class="btn btn-secondary btn-sm">Open P5_Verify_Gaps.md ↗</a>
+          </div>
+
+          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 6: P6_Final_Report.md</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P1-P5 blocks. Generates investor diligence memo & MVP spec.</p>
+            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P6_Final_Report.md" target="_blank" class="btn btn-secondary btn-sm">Open P6_Final_Report.md ↗</a>
+          </div>
+
+          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 7: P7_Make_README.md</div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P6 spec. Generates complete production-grade GitHub README!</p>
+            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P7_Make_README.md" target="_blank" class="btn btn-secondary btn-sm">Open P7_Make_README.md ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nissh Creator Watermark & Portfolio Banner -->
+    <div class="nissh-creator-banner">
+      <div class="creator-left">
+        <div class="creator-avatar">👨‍💻</div>
+        <div>
+          <div style="font-weight:800; font-size:1.15rem; color:#fff;">
+            Researched with Nissh System &bull; Nishant Maurya
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-muted);">
+            Full Stack AI Developer &bull; Founder of Sight Pro &bull; MLH Hack Days Winner
+          </div>
+        </div>
+      </div>
+      <div>
+        <a href="https://nissh.info" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background:linear-gradient(135deg, #ec4899, #6366f1);">
+          🌐 Explore Official Portfolio (nissh.info) →
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- API Key Setup Modal -->
+  <div class="modal-backdrop" id="key-modal">
+    <div class="modal-box">
+      <div class="modal-title">
+        <span>🔑 Configure AI Keys & Fallback Engine</span>
+        <button onclick="closeKeyModal()" style="background:none; border:none; color:#fff; font-size:1.25rem; cursor:pointer;">&times;</button>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-muted);">
+        At least <strong>1 API key is compulsory</strong>. We strongly recommend adding 2–3 keys (e.g. Gemini + Groq + Claude) so if one runs out of credits or rate limits, the system auto-switches to the next fallback without stopping your research.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:#38bdf8;">Google Gemini API Key (Fast & Free)</label>
+          <input type="password" id="input-gemini" class="input-control" placeholder="AIzaSy...">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:#f97316;">Groq API Key (High Speed Llama 3.3)</label>
+          <input type="password" id="input-groq" class="input-control" placeholder="gsk_...">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:#ec4899;">Anthropic Claude API Key (Deep Reasoning)</label>
+          <input type="password" id="input-claude" class="input-control" placeholder="sk-ant-...">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:#10b981;">OpenAI API Key (GPT-4o)</label>
+          <input type="password" id="input-openai" class="input-control" placeholder="sk-proj-...">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:#a855f7;">OpenRouter API Key (Optional)</label>
+          <input type="password" id="input-openrouter" class="input-control" placeholder="sk-or-...">
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:0.5rem;">
+        <button class="btn btn-secondary btn-sm" onclick="closeKeyModal()">Cancel</button>
+        <button class="btn btn-primary btn-sm" onclick="saveKeys()">💾 Save Keys to .env</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <span id="toast-msg">Notification</span>
+  </div>
+
+  <script>
+    // Cursor Tracking
+    const cursor = document.getElementById("cursor");
+    window.addEventListener("mousemove", (e) => {
+      if (!cursor) return;
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+
+    let pollInterval = null;
+
+    window.onload = function() {
+      fetchKeysStatus();
+      checkBackendStatus();
+    };
+
+    function switchMode(mode) {
+      document.getElementById("tab-auto").classList.toggle("active", mode === "auto");
+      document.getElementById("tab-manual").classList.toggle("active", mode === "manual");
+      document.getElementById("section-auto").style.display = mode === "auto" ? "block" : "none";
+      document.getElementById("section-manual").style.display = mode === "manual" ? "block" : "none";
+    }
+
+    function openKeyModal() {
+      document.getElementById("key-modal").classList.add("show");
+    }
+    function closeKeyModal() {
+      document.getElementById("key-modal").classList.remove("show");
+    }
+
+    function fetchKeysStatus() {
+      fetch("/api/keys")
+        .then(r => r.json())
+        .then(data => {
+          const keys = data.keys || {};
+          document.getElementById("pill-gemini").classList.toggle("active", Boolean(keys.GEMINI_API_KEY));
+          document.getElementById("pill-groq").classList.toggle("active", Boolean(keys.GROQ_API_KEY));
+          document.getElementById("pill-claude").classList.toggle("active", Boolean(keys.ANTHROPIC_API_KEY));
+          document.getElementById("pill-openai").classList.toggle("active", Boolean(keys.OPENAI_API_KEY));
+          document.getElementById("pill-openrouter").classList.toggle("active", Boolean(keys.OPENROUTER_API_KEY));
+
+          if (keys.GEMINI_API_KEY) document.getElementById("input-gemini").value = keys.GEMINI_API_KEY;
+          if (keys.GROQ_API_KEY) document.getElementById("input-groq").value = keys.GROQ_API_KEY;
+          if (keys.ANTHROPIC_API_KEY) document.getElementById("input-claude").value = keys.ANTHROPIC_API_KEY;
+          if (keys.OPENAI_API_KEY) document.getElementById("input-openai").value = keys.OPENAI_API_KEY;
+          if (keys.OPENROUTER_API_KEY) document.getElementById("input-openrouter").value = keys.OPENROUTER_API_KEY;
+        })
+        .catch(() => {});
+    }
+
+    function saveKeys() {
+      const payload = {
+        GEMINI_API_KEY: document.getElementById("input-gemini").value,
+        GROQ_API_KEY: document.getElementById("input-groq").value,
+        ANTHROPIC_API_KEY: document.getElementById("input-claude").value,
+        OPENAI_API_KEY: document.getElementById("input-openai").value,
+        OPENROUTER_API_KEY: document.getElementById("input-openrouter").value
+      };
+
+      fetch("/api/save-keys", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(r => r.json())
+      .then(data => {
+        showToast("✅ API Keys saved securely to .env!");
+        closeKeyModal();
+        fetchKeysStatus();
+      })
+      .catch(e => showToast("Error saving keys: " + e));
+    }
+
+    function startAutonomousPipeline() {
+      const idea = document.getElementById("idea-input").value.trim();
+      const audience = document.getElementById("audience-input").value.trim();
+
+      if (!idea) {
+        showToast("⚠️ Please enter a startup idea statement first!");
+        return;
+      }
+
+      document.getElementById("run-agents-btn").innerText = "⏳ Running 7 Agents...";
+      document.getElementById("run-agents-btn").disabled = true;
+
+      fetch("/api/run", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idea: idea, audience: audience })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === "error") {
+          showToast(data.message);
+          document.getElementById("run-agents-btn").innerText = "🚀 Launch 7 Autonomous Agents";
+          document.getElementById("run-agents-btn").disabled = false;
+        } else {
+          showToast("🚀 7 Autonomous Agents launched!");
+          startPolling();
+        }
+      })
+      .catch(e => {
+        showToast("Error: " + e);
+        document.getElementById("run-agents-btn").innerText = "🚀 Launch 7 Autonomous Agents";
+        document.getElementById("run-agents-btn").disabled = false;
+      });
+    }
+
+    function startPolling() {
+      if (pollInterval) clearInterval(pollInterval);
+      pollInterval = setInterval(checkBackendStatus, 1500);
+    }
+
+    function checkBackendStatus() {
+      fetch("/api/status")
+        .then(r => r.json())
+        .then(state => {
+          // Update Terminal Logs
+          const term = document.getElementById("terminal-logs");
+          term.innerHTML = "";
+          (state.logs || []).forEach(l => {
+            const div = document.createElement("div");
+            div.className = "terminal-line";
+            if (l.includes("Auto-switched") || l.includes("API Switch")) {
+              div.className += " terminal-switch";
+            } else if (l.includes("Complete!") || l.includes("PDF Successfully")) {
+              div.className += " terminal-success";
+            }
+            div.innerText = l;
+            term.appendChild(div);
+          });
+          term.scrollTop = term.scrollHeight;
+
+          // Update Agent Cards
+          for (let i = 1; i <= 7; i++) {
+            const card = document.getElementById(`agent-card-${i}`);
+            const tag = document.getElementById(`agent-status-${i}`);
+            card.classList.remove("running", "completed");
+
+            if (state.current_agent === i && state.is_running) {
+              card.classList.add("running");
+              tag.innerText = "Running ⚡";
+            } else if (state.current_agent > i || state.status === "completed") {
+              card.classList.add("completed");
+              tag.innerText = "Completed ✅";
+            } else {
+              tag.innerText = "Waiting";
+            }
+          }
+
+          if (state.status === "completed") {
+            clearInterval(pollInterval);
+            document.getElementById("run-agents-btn").innerText = "🚀 Run New Research";
+            document.getElementById("run-agents-btn").disabled = false;
+            document.getElementById("completed-box").style.display = "block";
+            if (window.confetti) {
+              confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            }
+          } else if (state.status === "error") {
+            clearInterval(pollInterval);
+            document.getElementById("run-agents-btn").innerText = "🚀 Retry Agents";
+            document.getElementById("run-agents-btn").disabled = false;
+            showToast("❌ " + (state.error || "Execution error"));
+          }
+        })
+        .catch(() => {});
+    }
+
+    function loadDemoProject() {
+      fetch("/api/demo", { method: "POST" })
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById("idea-input").value = "Freelance web designers and developers in India and Southeast Asia struggle to manage scope creep and get paid for extra revision rounds. Clients repeatedly ask for 'one minor tweak' without approving change orders, causing freelancers to lose $500–$2,000/month in unbilled labor.";
+          document.getElementById("audience-input").value = "Freelance web designers, UI/UX developers, and boutique creative agency owners";
+          
+          for (let i = 1; i <= 7; i++) {
+            document.getElementById(`agent-card-${i}`).classList.add("completed");
+            document.getElementById(`agent-status-${i}`).innerText = "Completed ✅";
+          }
+          document.getElementById("completed-box").style.display = "block";
+          if (window.confetti) confetti({ particleCount: 100, spread: 70 });
+          showToast("⚡ ScopeLock Sample Demo Loaded & PDF Ready!");
+        });
+    }
+
+    function downloadPdf() {
+      window.location.href = "/api/download-pdf";
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      document.getElementById("toast-msg").innerText = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2800);
+    }
+  </script>
+</body>
+</html>
