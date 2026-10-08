@@ -4,416 +4,616 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nissh Research System | 7-Agent Autonomous Startup Intelligence</title>
-  <meta name="description" content="Autonomous 7-Agent startup research system from multilingual problem input to investor-ready watermarked PDF report. Built by Nishant Maurya (nissh.info).">
+  <meta name="description" content="Autonomous 7-Agent startup research system from multilingual problem input to investor-ready watermarked PDF report. Designed with love by Nishant Maurya (nissh.info).">
   
-  <!-- Fonts -->
+  <!-- Modern Typography (Plus Jakarta Sans & JetBrains Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- GSAP & Canvas Confetti -->
+  <!-- GSAP Animation Suite & Confetti -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --bg: #07090e;
-      --bg-surface: #0e131f;
-      --card-bg: rgba(17, 24, 39, 0.75);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-border-hover: rgba(99, 102, 241, 0.4);
-      --card-border-glow: rgba(99, 102, 241, 0.25);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      /* Clean Light Theme Palette (nissh.info inspired) */
+      --bg: #f8fafc;
+      --bg-page: #fbfbfe;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --surface-hover: #e2e8f0;
+      --border-subtle: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-dark: #0f172a;
       
-      /* Nissh.info vibrant accents */
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --primary-glow: rgba(99, 102, 241, 0.4);
-      --accent-cyan: #06b6d4;
-      --accent-pink: #ec4899;
-      --accent-orange: #f97316;
-      --accent-yellow: #facc15;
-      --success: #10b981;
-      --success-glow: rgba(16, 185, 129, 0.35);
-      --danger: #f43f5e;
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+
+      /* Vibrant Nissh.info Accent Colors */
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --pink: #ec4899;
+      --pink-light: #fdf2f8;
+      --cyan: #0284c7;
+      --cyan-light: #f0f9ff;
+      --amber: #f59e0b;
+      --amber-light: #fffbeb;
+      --emerald: #10b981;
+      --emerald-light: #ecfdf5;
+      --purple: #8b5cf6;
+      --purple-light: #f5f3ff;
       
-      --radius: 16px;
       --radius-sm: 10px;
-      --radius-xs: 6px;
-      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-      --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 12px 35px -8px rgba(15, 23, 42, 0.08), 0 2px 10px -2px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 20px 45px -10px rgba(79, 70, 229, 0.15), 0 4px 15px -2px rgba(15, 23, 42, 0.04);
+      --shadow-sticker: 0 8px 22px rgba(15, 23, 42, 0.12);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--bg);
+      background-color: var(--bg-page);
       background-image: 
-        radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 50% 85%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+        radial-gradient(circle at 10% 12%, rgba(99, 102, 241, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 18%, rgba(236, 72, 153, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 88%, rgba(16, 185, 129, 0.05) 0%, transparent 45%);
       background-attachment: fixed;
-      color: var(--text);
+      color: var(--text-main);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.6;
     }
 
-    /* Custom Cursor */
-    .custom-cursor {
-      position: fixed;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: rgba(99, 102, 241, 0.3);
-      border: 1.5px solid rgba(165, 180, 252, 0.8);
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background 0.2s;
-      mix-blend-mode: screen;
-      display: none;
-    }
-    @media (pointer: fine) { .custom-cursor { display: block; } }
-    .custom-cursor.hovering {
-      width: 44px; height: 44px;
-      background: rgba(236, 72, 153, 0.25);
-      border-color: #f472b6;
-    }
-
-    .grid-overlay {
+    /* Subtle Architectural Grid Pattern */
+    .bg-grid {
       position: fixed; inset: 0;
-      background-size: 40px 40px;
+      background-size: 36px 36px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
       pointer-events: none; z-index: 0;
     }
 
-    /* Playful Stickers */
-    .sticker-badge {
-      position: absolute; padding: 6px 14px;
-      border-radius: 999px; font-size: 0.75rem; font-weight: 800;
-      display: inline-flex; align-items: center; gap: 6px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index: 10;
-      user-select: none; pointer-events: none;
-      transition: transform 0.3s ease;
+    /* Playful Interactive Custom Cursor Bubble (nissh.info style) */
+    .cursor-dot {
+      position: fixed; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--primary); pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%); transition: transform 0.05s ease;
+      box-shadow: 0 0 10px rgba(79, 70, 229, 0.4);
     }
-    .sticker-pink { background: #ec4899; color: #fff; transform: rotate(-6deg); }
-    .sticker-cyan { background: #06b6d4; color: #082f49; transform: rotate(5deg); }
-    .sticker-yellow { background: #facc15; color: #713f12; transform: rotate(-3deg); }
-    .sticker-green { background: #10b981; color: #022c22; transform: rotate(4deg); }
+    .cursor-bubble {
+      position: fixed; padding: 5px 12px; border-radius: 999px;
+      background: var(--text-main); color: #ffffff; font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.02em; pointer-events: none; z-index: 9998;
+      transform: translate(14px, 14px); transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2); opacity: 0;
+    }
+    @media (pointer: coarse) {
+      .cursor-dot, .cursor-bubble { display: none !important; }
+    }
 
-    /* Header */
+    /* Navbar / Header */
     header {
-      border-bottom: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(20px);
-      background: rgba(7, 9, 14, 0.85);
+      border-bottom: 1px solid var(--border-subtle);
       position: sticky; top: 0; z-index: 100;
       padding: 0.85rem 2rem;
+      transition: all 0.3s ease;
     }
     .nav-container {
-      max-width: 1440px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+      max-width: 1400px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
     }
-    .brand {
-      display: flex; align-items: center; gap: 0.85rem; text-decoration: none; cursor: pointer;
+    .brand-wrap {
+      display: flex; align-items: center; gap: 0.9rem; text-decoration: none; cursor: pointer;
     }
-    .brand-icon {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--primary), var(--accent-pink));
-      border-radius: var(--radius-sm);
+    .brand-avatar {
+      width: 44px; height: 44px; border-radius: 14px;
+      background: linear-gradient(135deg, #4f46e5, #ec4899);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.35rem; box-shadow: 0 0 20px var(--primary-glow);
+      color: #fff; font-size: 1.35rem; font-weight: 900;
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
     }
     .brand-title {
-      font-weight: 800; font-size: 1.25rem; letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      display: flex; align-items: center; gap: 0.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800; font-size: 1.28rem; color: var(--text-main);
+      display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.02em;
     }
-    .brand-subtitle {
-      font-size: 0.72rem; color: var(--text-muted);
-      display: flex; align-items: center; gap: 0.4rem;
+    .brand-byline {
+      font-size: 0.75rem; color: var(--text-muted); font-weight: 600;
+      display: flex; align-items: center; gap: 0.35rem;
     }
-    .brand-subtitle a {
-      color: #38bdf8; text-decoration: none; font-weight: 700;
+    .brand-byline a {
+      color: var(--primary); text-decoration: none; font-weight: 700;
+      position: relative;
     }
+    .brand-byline a:hover { text-decoration: underline; }
 
-    .header-actions {
-      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
-    }
-
-    /* Buttons */
+    /* Nav Action Buttons */
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    
     .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.6rem 1.2rem; border-radius: var(--radius-sm);
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.65rem 1.25rem; border-radius: 999px;
       font-size: 0.82rem; font-weight: 700; cursor: pointer;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       border: 1px solid transparent; text-decoration: none; font-family: inherit;
     }
     .btn:active { transform: scale(0.97); }
+    
+    .btn-white {
+      background: #ffffff; color: var(--text-main);
+      border: 1.5px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-white:hover {
+      border-color: var(--primary); color: var(--primary);
+      transform: translateY(-2px); box-shadow: var(--shadow-card);
+    }
+
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #4338ca);
-      color: #fff; box-shadow: 0 4px 15px var(--primary-glow);
-      border-color: rgba(255, 255, 255, 0.15);
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      color: #ffffff; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
     }
     .btn-primary:hover {
-      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6); transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.45); transform: translateY(-2px);
     }
-    .btn-demo {
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(244, 63, 94, 0.25));
-      color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4);
+
+    .btn-pink {
+      background: linear-gradient(135deg, #ec4899, #db2777);
+      color: #ffffff; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
     }
-    .btn-demo:hover {
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(244, 63, 94, 0.4));
-      color: #fff; transform: translateY(-2px);
+    .btn-pink:hover {
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.45); transform: translateY(-2px);
     }
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.04); color: var(--text); border-color: var(--card-border);
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-1px);
-    }
-    .btn-pdf {
+
+    .btn-emerald {
       background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff; box-shadow: 0 4px 20px var(--success-glow); font-weight: 800;
+      color: #ffffff; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
     }
-    .btn-pdf:hover {
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6); transform: translateY(-2px);
+    .btn-emerald:hover {
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45); transform: translateY(-2px);
     }
-    .btn-sm { padding: 0.42rem 0.85rem; font-size: 0.75rem; }
+    .btn-sm { padding: 0.45rem 0.95rem; font-size: 0.76rem; }
 
+    /* Playful Badges / Stickers (Inspired by nissh.info) */
+    .sticker {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 5px 12px; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.04em; box-shadow: var(--shadow-sticker);
+      user-select: none; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .sticker:hover { transform: scale(1.08) rotate(0deg) !important; }
+    
+    .sticker-pink { background: #fdf2f8; color: #db2777; border: 1.5px solid #fbcfe8; transform: rotate(-4deg); }
+    .sticker-cyan { background: #f0f9ff; color: #0284c7; border: 1.5px solid #bae6fd; transform: rotate(3deg); }
+    .sticker-amber { background: #fffbeb; color: #d97706; border: 1.5px solid #fde68a; transform: rotate(-3deg); }
+    .sticker-emerald { background: #ecfdf5; color: #059669; border: 1.5px solid #a7f3d0; transform: rotate(4deg); }
+    .sticker-purple { background: #f5f3ff; color: #7c3aed; border: 1.5px solid #ddd6fe; transform: rotate(-2deg); }
+
+    /* Hand-drawn Doodles & Lines */
+    .doodle-underline {
+      position: absolute; bottom: -8px; left: 0; width: 100%; height: 12px;
+      pointer-events: none;
+    }
+
+    /* Main Container */
     main {
-      max-width: 1440px; margin: 1.5rem auto 4rem auto;
-      padding: 0 2rem; position: relative; z-index: 1;
+      max-width: 1320px; margin: 2rem auto 5rem auto;
+      padding: 0 1.5rem; position: relative; z-index: 1;
     }
 
-    /* Mode Navigation Tabs */
-    .mode-tabs {
-      display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;
+    /* Mode Selection Tabs (Pill Switcher) */
+    .mode-nav-wrap {
+      display: flex; justify-content: center; margin-bottom: 2.5rem;
     }
-    .mode-tab {
-      padding: 0.65rem 1.5rem; border-radius: 999px; font-weight: 800; font-size: 0.85rem;
-      cursor: pointer; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--card-border);
-      color: var(--text-muted); transition: all 0.25s ease; display: flex; align-items: center; gap: 0.5rem;
+    .mode-nav-box {
+      background: #ffffff; border: 1.5px solid var(--border-subtle);
+      border-radius: 999px; padding: 5px;
+      display: flex; gap: 6px; box-shadow: var(--shadow-sm);
     }
-    .mode-tab.active {
-      background: linear-gradient(135deg, var(--primary), var(--accent-pink));
-      color: #fff; border-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 20px var(--primary-glow);
+    .mode-tab-btn {
+      padding: 0.65rem 1.6rem; border-radius: 999px;
+      font-size: 0.86rem; font-weight: 800; cursor: pointer;
+      border: none; background: transparent; color: var(--text-muted);
+      transition: all 0.25s ease; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .mode-tab-btn.active {
+      background: var(--text-main); color: #ffffff;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
     }
 
-    /* Hero Input Section */
-    .hero-input-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 2.25rem;
+    /* Hero / Input Bento Box */
+    .hero-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 2.75rem 2.5rem;
       margin-bottom: 2.5rem;
-      backdrop-filter: blur(24px);
       box-shadow: var(--shadow-card);
       position: relative;
+      overflow: hidden;
     }
-    .hero-input-card:focus-within {
-      border-color: rgba(99, 102, 241, 0.5);
-      box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.4);
+    .hero-card:focus-within {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-hover);
     }
+
+    .hero-badge-row {
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem;
+    }
+    
     .hero-heading {
-      font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.2; margin-bottom: 0.75rem; color: var(--text-main);
     }
     .hero-heading .gradient-text {
-      background: linear-gradient(135deg, var(--accent-cyan), var(--primary), var(--accent-pink));
+      background: linear-gradient(135deg, #4f46e5, #ec4899);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      position: relative; display: inline-block;
     }
-    .hero-sub {
-      color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;
+    .hero-desc {
+      color: var(--text-sub); font-size: 1.05rem; max-width: 820px;
+      margin-bottom: 1.75rem; line-height: 1.65;
     }
 
-    .input-control {
+    /* Input Field Elements */
+    .input-box {
       width: 100%;
-      background: rgba(9, 14, 24, 0.85);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 1.1rem 1.3rem;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.25s ease;
+      background: #f8fafc;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      color: var(--text-main);
+      font-family: inherit; font-size: 1.02rem;
+      outline: none; transition: all 0.25s ease;
       line-height: 1.6;
     }
-    .input-control:focus {
+    .input-box:focus {
+      background: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px var(--primary-glow);
-      background: #090e17;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
     }
 
-    .key-settings-strip {
+    /* Quick Suggestion Chips (Hindi & English Idea Prompts) */
+    .chips-label {
+      font-size: 0.76rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .chips-row {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem;
+    }
+    .idea-chip {
+      background: #f1f5f9; border: 1px solid var(--border-subtle);
+      padding: 5px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 700;
+      color: var(--text-sub); cursor: pointer; transition: all 0.2s ease;
+    }
+    .idea-chip:hover {
+      background: #e2e8f0; color: var(--text-main); transform: translateY(-1px);
+    }
+
+    /* Run Bar & Action Button */
+    .run-bar-grid {
+      display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .run-bar-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Active API Key Indicators Strip */
+    .keys-strip {
       display: flex; justify-content: space-between; align-items: center;
-      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--card-border);
-      flex-wrap: wrap; gap: 1rem;
+      margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-subtle);
+      flex-wrap: wrap; gap: 0.75rem;
     }
-    .key-indicators {
-      display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font-size: 0.78rem;
+    .keys-pills-list {
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.8rem;
     }
-    .key-pill {
-      padding: 3px 10px; border-radius: 999px; font-weight: 700;
-      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border);
-      color: var(--text-dim); display: flex; align-items: center; gap: 4px;
+    .key-indicator {
+      padding: 4px 10px; border-radius: 999px; font-size: 0.73rem; font-weight: 800;
+      background: #f1f5f9; color: var(--text-dim); border: 1px solid var(--border-subtle);
+      display: flex; align-items: center; gap: 4px;
     }
-    .key-pill.active {
-      background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);
+    .key-indicator.active {
+      background: var(--emerald-light); color: var(--emerald); border-color: #a7f3d0;
     }
 
-    /* 7 Autonomous Agents Live Grid */
+    /* Section Title */
+    .section-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem; font-weight: 800; color: var(--text-main);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    /* 7 Sequential Agents Bento Grid */
     .agents-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.1rem;
       margin-bottom: 2rem;
     }
     .agent-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      display: flex; flex-direction: column; gap: 0.5rem;
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      box-shadow: var(--shadow-sm);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
+    .agent-card:hover {
+      transform: translateY(-3px); box-shadow: var(--shadow-card);
+    }
     .agent-card.running {
       border-color: var(--primary);
-      box-shadow: 0 0 20px var(--primary-glow);
-      transform: translateY(-3px);
-      background: rgba(99, 102, 241, 0.08);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.18);
+      background: #fafafe;
+      transform: translateY(-4px);
     }
     .agent-card.completed {
-      border-color: rgba(16, 185, 129, 0.4);
-      background: rgba(16, 185, 129, 0.05);
+      border-color: #a7f3d0;
+      background: #fafdfb;
     }
-    .agent-num {
-      width: 28px; height: 28px; border-radius: 50%;
-      background: #1e293b; color: var(--text-muted);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 0.8rem;
-    }
-    .agent-card.running .agent-num {
-      background: var(--primary); color: #fff;
-    }
-    .agent-card.completed .agent-num {
-      background: var(--success); color: #fff;
-    }
-    .agent-title {
-      font-weight: 800; font-size: 0.85rem; color: #fff;
-    }
-    .agent-status-tag {
-      font-size: 0.68rem; font-weight: 700; color: var(--text-dim);
-    }
-    .agent-card.running .agent-status-tag { color: #818cf8; }
-    .agent-card.completed .agent-status-tag { color: #34d399; }
 
-    /* Terminal Console Live Stream */
-    .terminal-box {
-      background: #060910;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
-      color: #94a3b8;
-      max-height: 280px;
-      overflow-y: auto;
-      margin-bottom: 2.5rem;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    .agent-header {
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .terminal-line { margin-bottom: 0.35rem; line-height: 1.5; }
-    .terminal-switch { color: #f59e0b; font-weight: 700; }
-    .terminal-success { color: #34d399; font-weight: 700; }
+    .agent-step-badge {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: #f1f5f9; color: var(--text-sub);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.9rem;
+    }
+    .agent-card.running .agent-step-badge {
+      background: var(--primary); color: #ffffff;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.4);
+    }
+    .agent-card.completed .agent-step-badge {
+      background: var(--emerald); color: #ffffff;
+    }
+
+    .agent-status-pill {
+      font-size: 0.72rem; font-weight: 800; padding: 3px 9px; border-radius: 999px;
+      background: #f1f5f9; color: var(--text-dim);
+    }
+    .agent-card.running .agent-status-pill {
+      background: #eef2ff; color: var(--primary);
+      animation: pulse 1.5s infinite;
+    }
+    .agent-card.completed .agent-status-pill {
+      background: var(--emerald-light); color: var(--emerald);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .agent-name {
+      font-family: 'Outfit', sans-serif; font-weight: 800;
+      font-size: 1.05rem; color: var(--text-main);
+    }
+    .agent-mission {
+      font-size: 0.8rem; color: var(--text-sub); line-height: 1.5;
+    }
+
+    /* Mac-Style Crisp White Terminal Console */
+    .terminal-container {
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 2.5rem;
+    }
+    .terminal-titlebar {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.75rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .terminal-dots {
+      display: flex; align-items: center; gap: 6px;
+    }
+    .t-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .t-red { background: #f43f5e; }
+    .t-yellow { background: #facc15; }
+    .t-green { background: #10b981; }
+
+    .terminal-content {
+      padding: 1.25rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+      color: #334155;
+      background: #ffffff;
+      min-height: 135px;
+      max-height: 320px;
+      overflow-y: auto;
+      line-height: 1.65;
+    }
+    .term-line { margin-bottom: 0.35rem; }
+    .term-highlight { color: #4f46e5; font-weight: 700; }
+    .term-success { color: #059669; font-weight: 700; }
+    .term-fallback { color: #d97706; font-weight: 700; background: #fef3c7; padding: 2px 6px; border-radius: 4px; }
+
+    /* Completion Callout Banner */
+    .success-callout {
+      background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+      border: 2px solid #6ee7b7;
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.12);
+      display: none;
+    }
+    .success-callout h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.85rem; font-weight: 900; color: #065f46;
+      margin-bottom: 0.5rem;
+    }
+    .success-callout p {
+      color: #047857; font-size: 0.98rem; max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    /* Mode 2: Manual Prompt Chaining Cards */
+    .manual-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .manual-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; justify-content: space-between;
+      gap: 1rem; transition: all 0.25s ease;
+    }
+    .manual-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+    .manual-card-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .manual-phase-num {
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--primary); background: var(--primary-light);
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .manual-title {
+      font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800;
+      color: var(--text-main); margin-top: 0.5rem; margin-bottom: 0.35rem;
+    }
+    .manual-desc {
+      font-size: 0.82rem; color: var(--text-sub); line-height: 1.55;
+    }
+
+    /* Creator Banner (Inspired by nissh.info Footer) */
+    .creator-banner {
+      background: #ffffff;
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 2.5rem;
+      margin-top: 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1.5rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .creator-info { display: flex; align-items: center; gap: 1.25rem; }
+    .creator-avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, #4f46e5, #ec4899);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; color: #fff; box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+    }
+    .creator-name {
+      font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 900;
+      color: var(--text-main);
+    }
+    .creator-bio {
+      font-size: 0.85rem; color: var(--text-muted);
+    }
 
     /* Modal for API Keys */
     .modal-backdrop {
-      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(12px); display: none; justify-content: center; align-items: center;
-      z-index: 10000; padding: 2rem;
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center;
+      z-index: 10000; padding: 1.5rem;
     }
     .modal-backdrop.show { display: flex; }
-    .modal-box {
-      background: #0e1320; border: 1px solid var(--card-border);
-      border-radius: var(--radius); padding: 2rem; width: 100%; max-width: 580px;
-      display: flex; flex-direction: column; gap: 1.25rem; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    .modal-card {
+      background: #ffffff; border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-xl); padding: 2.25rem; width: 100%; max-width: 580px;
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+      display: flex; flex-direction: column; gap: 1.25rem;
     }
-    .modal-title {
-      font-size: 1.25rem; font-weight: 800; display: flex; justify-content: space-between; align-items: center;
+    .modal-title-row {
+      display: flex; justify-content: space-between; align-items: center;
     }
+    .modal-title-row h3 {
+      font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800;
+    }
+    .close-btn {
+      background: #f1f5f9; border: none; width: 32px; height: 32px;
+      border-radius: 50%; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .close-btn:hover { background: #e2e8f0; color: var(--text-main); }
 
-    /* Nissh Watermark Banner Box */
-    .nissh-creator-banner {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
-      border: 1px solid rgba(99, 102, 241, 0.25);
-      border-radius: var(--radius);
-      padding: 1.5rem 2rem;
-      margin-top: 3rem;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
-    }
-    .creator-left {
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .creator-avatar {
-      width: 54px; height: 54px; border-radius: 50%;
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
-      box-shadow: 0 0 20px var(--primary-glow);
-    }
-
+    /* Toast Notification */
     .toast {
       position: fixed; bottom: 2rem; right: 2rem;
-      background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
-      color: #fff; border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 0.85rem 1.4rem; border-radius: var(--radius-sm);
-      font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      background: #0f172a; color: #ffffff;
+      padding: 0.9rem 1.4rem; border-radius: var(--radius-md);
+      font-size: 0.86rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.3);
       transform: translateY(120px); opacity: 0;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10001;
     }
     .toast.show { transform: translateY(0); opacity: 1; }
   </style>
 </head>
 <body>
 
-  <div class="custom-cursor" id="cursor"></div>
-  <div class="grid-overlay"></div>
+  <!-- Custom Cursor Bubble -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-bubble" id="cursor-bubble">explore</div>
 
-  <!-- Header -->
+  <!-- Background Grid Pattern -->
+  <div class="bg-grid"></div>
+
+  <!-- Navbar -->
   <header>
     <div class="nav-container">
-      <div class="brand" onclick="window.location.reload()">
-        <div class="brand-icon">🔬</div>
+      <div class="brand-wrap" onclick="window.location.reload()">
+        <div class="brand-avatar">🔬</div>
         <div>
           <div class="brand-title">
             Nissh Research System
-            <span class="sticker-badge sticker-pink" style="position:static; margin-left:0.5rem; font-size:0.65rem;">Auto-Fallback Engine</span>
+            <span class="sticker sticker-pink" style="font-size:0.62rem; margin-left:0.3rem;">Auto-Fallback Engine</span>
           </div>
-          <div class="brand-subtitle">
-            <span>Built by </span>
+          <div class="brand-byline">
+            <span>Built with ❤️ by</span>
             <a href="https://nissh.info" target="_blank" rel="noopener noreferrer">Nishant Maurya (nissh.info)</a>
             <span>• Sight Pro Founder</span>
           </div>
         </div>
       </div>
 
-      <div class="header-actions">
-        <button class="btn btn-secondary btn-sm" onclick="openKeyModal()">
-          🔑 API Keys & Fallback Setup
+      <div class="nav-actions">
+        <button class="btn btn-white btn-sm" onclick="openKeyModal()">
+          🔑 API Keys &amp; Fallback
         </button>
-        <button class="btn btn-demo btn-sm" onclick="loadDemoProject()">
-          ⚡ Load Sample Demo (ScopeLock)
+        <button class="btn btn-pink btn-sm" onclick="loadDemoProject()">
+          ⚡ Load ScopeLock Demo
         </button>
-        <button class="btn btn-pdf btn-sm" id="top-pdf-btn" onclick="downloadPdf()">
+        <button class="btn btn-emerald btn-sm" id="top-pdf-btn" onclick="downloadPdf()">
           📥 Download PDF Report
         </button>
       </div>
@@ -421,259 +621,469 @@
   </header>
 
   <main>
-    <!-- Mode Switcher -->
-    <div class="mode-tabs">
-      <div class="mode-tab active" id="tab-auto" onclick="switchMode('auto')">
-        <span>🤖 Mode 1: 7 Autonomous AI Agents (Local Run)</span>
-      </div>
-      <div class="mode-tab" id="tab-manual" onclick="switchMode('manual')">
-        <span>📋 Mode 2: Manual Prompt Chaining (Claude / ChatGPT)</span>
+    <!-- Mode Switcher Tabs -->
+    <div class="mode-nav-wrap">
+      <div class="mode-nav-box">
+        <button class="mode-tab-btn active" id="tab-auto" onclick="switchMode('auto')">
+          <span>🤖 Mode 1: 7 Autonomous AI Agents (Local Run)</span>
+        </button>
+        <button class="mode-tab-btn" id="tab-manual" onclick="switchMode('manual')">
+          <span>📋 Mode 2: Manual Prompt Chaining (Claude / ChatGPT)</span>
+        </button>
       </div>
     </div>
 
-    <!-- MODE 1: AUTONOMOUS 7-AGENT ENGINE -->
+    <!-- ========================================== -->
+    <!-- MODE 1: 7 AUTONOMOUS AGENTS (LOCAL RUN)     -->
+    <!-- ========================================== -->
     <div id="section-auto">
-      <div class="hero-input-card">
-        <span class="sticker-badge sticker-cyan" style="top: -12px; left: 8%;">🌐 Any Language Input</span>
-        <span class="sticker-badge sticker-yellow" style="top: -12px; right: 8%;">📄 Instant PDF with Watermark</span>
+      <div class="hero-card">
+        <!-- Floating Sticker Badges -->
+        <div class="hero-badge-row">
+          <span class="sticker sticker-cyan">🌐 Any Language Input (Hindi/Hinglish/English)</span>
+          <span class="sticker sticker-amber">⚡ Multi-Provider Auto-Fallback</span>
+          <span class="sticker sticker-emerald">📄 Vector PDF with Nissh Watermark</span>
+        </div>
 
         <h1 class="hero-heading">
-          Enter your startup idea. <span class="gradient-text">7 Autonomous Agents</span> do the rest.
+          Enter your startup idea.<br>
+          <span class="gradient-text">
+            7 Autonomous Agents
+            <svg class="doodle-underline" viewBox="0 0 260 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 9C60 3 140 2 258 7" stroke="#ec4899" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>
+          </span> handle the research.
         </h1>
-        <p class="hero-sub">
-          Type your idea in Hindi, Hinglish, English, or any language. The system standardizes it to English, executes 7 evidence-audited research phases with automatic provider fallback, and compiles an investor-ready watermarked PDF report.
+        <p class="hero-desc">
+          Describe your problem hypothesis in <strong>Hindi, Hinglish, English, or any language</strong>. The engine normalizes it to English, executes 7 sequential evidence-backed research phases, audits 9 platforms for competitor gaps, and compiles an investor-ready watermarked PDF report.
         </p>
 
+        <!-- Quick Idea Starters -->
+        <div class="chips-label">💡 Or try a pre-made startup hypothesis:</div>
+        <div class="chips-row">
+          <div class="idea-chip" onclick="fillIdea('Freelance web designers client revision loop mein fas jaate hain aur extra changes ke paise nahi milte.', 'Freelancers & Agency Owners')">
+            🇮🇳 Freelancer Revision Loop (Hinglish)
+          </div>
+          <div class="idea-chip" onclick="fillIdea('DevOps engineers lack an automated tool to detect silent credential leaks in internal Slack channels before they hit GitHub.', 'DevOps & Security Leads')">
+            🔒 Slack Credential Leaks (English)
+          </div>
+          <div class="idea-chip" onclick="fillIdea('D2C brands face heavy return frauds in COD orders without automated customer verification at checkout.', 'D2C Founders & E-commerce')">
+            🛒 COD Return Frauds
+          </div>
+          <div class="idea-chip" onclick="fillIdea('Indie makers spend weeks building Stripe subscription billing instead of testing their core product.', 'Indie Hackers & Founders')">
+            💳 SaaS Stripe Setup Friction
+          </div>
+        </div>
+
+        <!-- Main Input Form -->
         <div style="display:flex; flex-direction:column; gap:1rem;">
-          <textarea id="idea-input" class="input-control" rows="3" placeholder="Apna startup idea yahan likhein (kisi bhi language mein): E.g. 'Freelance designers client revision loop mein fas jaate hain aur extra revision ke paise nahi milte...'"></textarea>
+          <textarea id="idea-input" class="input-box" rows="3" placeholder="Apna startup idea yahan likhein (kisi bhi language mein): E.g. 'Freelance designers client revision loop mein fas jaate hain aur extra revision ke paise nahi milte...'"></textarea>
           
-          <div style="display:grid; grid-template-columns: 1fr auto; gap: 1rem; align-items:center;">
-            <input type="text" id="audience-input" class="input-control" style="padding:0.75rem 1rem;" placeholder="Target Audience / ICP (Optional, e.g. Freelancers, DevOps Leads, Agency Owners)">
-            <button class="btn btn-primary" id="run-agents-btn" onclick="startAutonomousPipeline()" style="padding:0.85rem 1.75rem; font-size:0.95rem;">
+          <div class="run-bar-grid">
+            <input type="text" id="audience-input" class="input-box" style="padding:0.85rem 1.2rem;" placeholder="Target Audience / ICP (Optional, e.g. Freelancers, DevOps Leads, Agency Owners)">
+            <button class="btn btn-primary" id="run-agents-btn" onclick="startAutonomousPipeline()" style="padding:0.95rem 2rem; font-size:0.95rem;">
               🚀 Launch 7 Autonomous Agents
             </button>
           </div>
         </div>
 
-        <div class="key-settings-strip">
-          <div class="key-indicators">
-            <span style="font-weight:700; color:var(--text-muted);">Active Providers & Fallback:</span>
-            <span class="key-pill" id="pill-gemini"><span>Gemini</span></span>
-            <span class="key-pill" id="pill-groq"><span>Groq</span></span>
-            <span class="key-pill" id="pill-claude"><span>Claude</span></span>
-            <span class="key-pill" id="pill-openai"><span>OpenAI</span></span>
-            <span class="key-pill" id="pill-openrouter"><span>OpenRouter</span></span>
+        <!-- Active Keys & Fallback Status Bar -->
+        <div class="keys-strip">
+          <div class="keys-pills-list">
+            <span style="font-weight:800; color:var(--text-sub);">Active Fallback Chain:</span>
+            <span class="key-indicator" id="pill-gemini"><span>Gemini (P1)</span></span>
+            <span class="key-indicator" id="pill-groq"><span>Groq (P2)</span></span>
+            <span class="key-indicator" id="pill-claude"><span>Claude (P3)</span></span>
+            <span class="key-indicator" id="pill-openai"><span>OpenAI (P4)</span></span>
+            <span class="key-indicator" id="pill-openrouter"><span>OpenRouter (P5)</span></span>
           </div>
           <div>
-            <a href="javascript:void(0)" onclick="openKeyModal()" style="font-size:0.8rem; color:#818cf8; text-decoration:none; font-weight:700;">
-              ⚙️ Add More Keys for Zero-Failure Fallback →
+            <a href="javascript:void(0)" onclick="openKeyModal()" style="font-size:0.8rem; color:var(--primary); font-weight:800; text-decoration:none;">
+              ⚙️ Manage Keys &amp; Fallback Sequence →
             </a>
           </div>
         </div>
       </div>
 
-      <!-- 7 Autonomous Agents Visual Status Grid -->
-      <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
-        <span>🤖 The 7 Autonomous Agents Pipeline</span>
-        <span style="font-size:0.75rem; color:var(--text-dim); font-weight:600;">(Run sequentially with evidence checks)</span>
-      </h3>
-      
+      <!-- 7 Sequential Agents Bento Grid -->
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>🤖 The 7 Autonomous Agents Pipeline</span>
+        </h2>
+        <span style="font-size:0.82rem; color:var(--text-muted); font-weight:700;">
+          Runs sequentially with evidence checks &bull; Zero Hallucinations
+        </span>
+      </div>
+
       <div class="agents-grid">
+        <!-- Agent 1 -->
         <div class="agent-card" id="agent-card-1">
-          <div class="agent-num">1</div>
-          <div class="agent-title">Problem Validator</div>
-          <div class="agent-status-tag" id="agent-status-1">Waiting</div>
+          <div class="agent-header">
+            <div class="agent-step-badge">1</div>
+            <div class="agent-status-pill" id="agent-status-1">Waiting</div>
+          </div>
+          <div class="agent-name">Problem Validator</div>
+          <div class="agent-mission">Translates input to English; searches Reddit, G2, reviews to issue GO / MAYBE / NO-GO verdict.</div>
         </div>
+
+        <!-- Agent 2 -->
         <div class="agent-card" id="agent-card-2">
-          <div class="agent-num">2</div>
-          <div class="agent-title">Landscape Hunter</div>
-          <div class="agent-status-tag" id="agent-status-2">Waiting</div>
+          <div class="agent-header">
+            <div class="agent-step-badge">2</div>
+            <div class="agent-status-pill" id="agent-status-2">Waiting</div>
+          </div>
+          <div class="agent-name">Landscape Hunter</div>
+          <div class="agent-mission">Maps Top 10 solutions across direct tools, indirect apps, and manual Excel/Notion workarounds.</div>
         </div>
+
+        <!-- Agent 3 -->
         <div class="agent-card" id="agent-card-3">
-          <div class="agent-num">3</div>
-          <div class="agent-title">Forensic Auditor</div>
-          <div class="agent-status-tag" id="agent-status-3">Waiting</div>
+          <div class="agent-header">
+            <div class="agent-step-badge">3</div>
+            <div class="agent-status-pill" id="agent-status-3">Waiting</div>
+          </div>
+          <div class="agent-name">Forensic Auditor</div>
+          <div class="agent-mission">Conducts deep teardowns of competitor complaints and extracts "THIS TOOL DOES NOT" lines.</div>
         </div>
+
+        <!-- Agent 4 -->
         <div class="agent-card" id="agent-card-4">
-          <div class="agent-num">4</div>
-          <div class="agent-title">Gap Strategist</div>
-          <div class="agent-status-tag" id="agent-status-4">Waiting</div>
+          <div class="agent-header">
+            <div class="agent-step-badge">4</div>
+            <div class="agent-status-pill" id="agent-status-4">Waiting</div>
+          </div>
+          <div class="agent-name">Gap Strategist</div>
+          <div class="agent-mission">Builds feature matrix and scores market voids using (Pain × Market) / Build Difficulty formula.</div>
         </div>
+
+        <!-- Agent 5 -->
         <div class="agent-card" id="agent-card-5">
-          <div class="agent-num">5</div>
-          <div class="agent-title">9-Platform Verifier</div>
-          <div class="agent-status-tag" id="agent-status-5">Waiting</div>
+          <div class="agent-header">
+            <div class="agent-step-badge">5</div>
+            <div class="agent-status-pill" id="agent-status-5">Waiting</div>
+          </div>
+          <div class="agent-name">9-Platform Verifier</div>
+          <div class="agent-mission">Forensically verifies gaps across Google, PH, GitHub, YC, IndieHackers to eliminate false leads.</div>
         </div>
+
+        <!-- Agent 6 -->
         <div class="agent-card" id="agent-card-6">
-          <div class="agent-num">6</div>
-          <div class="agent-title">Diligence Synthesizer</div>
-          <div class="agent-status-tag" id="agent-status-6">Waiting</div>
+          <div class="agent-header">
+            <div class="agent-step-badge">6</div>
+            <div class="agent-status-pill" id="agent-status-6">Waiting</div>
+          </div>
+          <div class="agent-name">Diligence Synthesizer</div>
+          <div class="agent-mission">Synthesizes investor-ready diligence memo, separates facts from assumptions, and defines 30-day GTM.</div>
         </div>
+
+        <!-- Agent 7 -->
         <div class="agent-card" id="agent-card-7">
-          <div class="agent-num">7</div>
-          <div class="agent-title">Launch Kit Architect</div>
-          <div class="agent-status-tag" id="agent-status-7">Waiting</div>
+          <div class="agent-header">
+            <div class="agent-step-badge">7</div>
+            <div class="agent-status-pill" id="agent-status-7">Waiting</div>
+          </div>
+          <div class="agent-name">Launch Kit Architect</div>
+          <div class="agent-mission">Builds production-grade GitHub README.md with badges, ASCII branding, and launch kit.</div>
         </div>
       </div>
 
-      <!-- Live Terminal Console -->
-      <div class="terminal-box" id="terminal-logs">
-        <div class="terminal-line" style="color:var(--text-dim);">[SYSTEM] Ready. Configure at least one API key and enter an idea to begin autonomous execution.</div>
+      <!-- Live Terminal Console (Mac Light Style) -->
+      <div class="terminal-container">
+        <div class="terminal-titlebar">
+          <div class="terminal-dots">
+            <div class="t-dot t-red"></div>
+            <div class="t-dot t-yellow"></div>
+            <div class="t-dot t-green"></div>
+          </div>
+          <div style="font-size:0.75rem; font-weight:800; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">
+            nissh-research-terminal &bull; live stream
+          </div>
+          <div style="font-size:0.72rem; color:var(--text-dim); font-family:'JetBrains Mono',monospace;">UTF-8</div>
+        </div>
+        <div class="terminal-content" id="terminal-logs">
+          <div class="term-line" style="color:var(--text-dim);">[SYSTEM] Ready. Configure at least one API key and click "Launch 7 Autonomous Agents" to begin.</div>
+        </div>
       </div>
 
-      <!-- Completed Report & Download Action -->
-      <div id="completed-box" style="display:none; margin-bottom:2.5rem; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:var(--radius); padding:2rem; text-align:center;">
-        <h2 style="font-size:1.6rem; font-weight:800; color:#34d399; margin-bottom:0.5rem;">🎉 7-Agent Research Cycle Complete!</h2>
-        <p style="color:var(--text-muted); margin-bottom:1.5rem; max-width:650px; margin-left:auto; margin-right:auto;">
-          Your evidence-audited startup opportunity report has been generated with permanent Nissh watermark and clickable portfolio link.
+      <!-- Success Callout Banner -->
+      <div class="success-callout" id="completed-box">
+        <h2>🎉 7-Agent Research Cycle Complete!</h2>
+        <p>
+          Your verified startup opportunity report has been compiled with permanent unremovable Nissh watermark layers and active portfolio hyperlinks to nissh.info.
         </p>
-        <button class="btn btn-pdf" onclick="downloadPdf()" style="padding:0.9rem 2.2rem; font-size:1.05rem;">
+        <button class="btn btn-emerald" onclick="downloadPdf()" style="padding:0.95rem 2.4rem; font-size:1.05rem;">
           📥 Download Official Research Report (PDF)
         </button>
       </div>
     </div>
 
-    <!-- MODE 2: MANUAL PROMPT CHAINING (FOR USERS WITHOUT API KEYS) -->
+    <!-- ========================================== -->
+    <!-- MODE 2: MANUAL PROMPT CHAINING (NO KEYS)   -->
+    <!-- ========================================== -->
     <div id="section-manual" style="display:none;">
-      <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); padding:2rem; margin-bottom:2rem;">
-        <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.5rem;">📋 Manual Mode (Copy / Paste to Claude.ai or ChatGPT)</h2>
-        <p style="color:var(--text-muted); margin-bottom:1.5rem;">
-          Agar aap API keys use nahi karna chahte, toh aap har step ke prompt ko copy karke apne Claude ya GPT chat mein paste kar sakte hain. AI se milne wale output block ko agle step mein attach karte jayein:
+      <div style="background:#ffffff; border:1.5px solid var(--border-subtle); border-radius:var(--radius-xl); padding:2.5rem; margin-bottom:2rem; box-shadow:var(--shadow-card);">
+        <h2 style="font-family:'Outfit',sans-serif; font-size:1.75rem; font-weight:900; margin-bottom:0.5rem; color:var(--text-main);">
+          📋 No-Code Manual Chaining (Claude / ChatGPT / Gemini)
+        </h2>
+        <p style="color:var(--text-sub); margin-bottom:2rem; font-size:0.98rem; max-width:850px;">
+          Agar aap API keys ya local Python script setup nahi karna chahte, toh aap niche diye gaye 7 Markdown prompt files ko ek ek karke Claude.ai ya ChatGPT mein paste kar sakte hain. AI se mile handoff block ko copy karein (ya output PDF download karein) aur agle step mein attach karein:
         </p>
-        
-        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:1rem;">
-          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
-            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 1: P1_Validate.md</div>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Copy prompt, paste to Claude with Web Search ON. Copy <code>&lt;!-- BEGIN P1_HANDOFF --&gt;</code> block.</p>
-            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P1_Validate.md" target="_blank" class="btn btn-secondary btn-sm">Open P1_Validate.md ↗</a>
+
+        <div class="manual-steps-grid">
+          <!-- Step 1 -->
+          <div class="manual-card">
+            <div>
+              <div class="manual-card-top">
+                <span class="manual-phase-num">Step 1 of 7</span>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">Web Search ON</span>
+              </div>
+              <div class="manual-title">P1 — Validate Problem</div>
+              <p class="manual-desc">Paste your problem statement. AI searches Reddit, forums, and app reviews to verify pain frequency and severity.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P1_Validate.md" target="_blank" class="btn btn-white btn-sm" style="flex:1;">View P1.md ↗</a>
+              <button class="btn btn-primary btn-sm" onclick="copyFilePath('P1_Validate.md')">📋 Copy Path</button>
+            </div>
           </div>
 
-          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
-            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 2: P2_Top10.md</div>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P1 handoff block. Produces Top 10 solutions table and <code>&lt;!-- BEGIN P2_HANDOFF --&gt;</code>.</p>
-            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P2_Top10.md" target="_blank" class="btn btn-secondary btn-sm">Open P2_Top10.md ↗</a>
+          <!-- Step 2 -->
+          <div class="manual-card">
+            <div>
+              <div class="manual-card-top">
+                <span class="manual-phase-num">Step 2 of 7</span>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">Web Search ON</span>
+              </div>
+              <div class="manual-title">P2 — Top 10 Solutions</div>
+              <p class="manual-desc">Feed in <code>&lt;!-- BEGIN P1_HANDOFF --&gt;</code>. AI maps Top 10 competitors, adjacent tools, and manual workarounds.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P2_Top10.md" target="_blank" class="btn btn-white btn-sm" style="flex:1;">View P2.md ↗</a>
+              <button class="btn btn-primary btn-sm" onclick="copyFilePath('P2_Top10.md')">📋 Copy Path</button>
+            </div>
           </div>
 
-          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
-            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 3: P3_Research_x10.md</div>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P2 competitor list. Collect 10 profiles with <code>THIS TOOL DOES NOT</code> lines.</p>
-            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P3_Research_x10.md" target="_blank" class="btn btn-secondary btn-sm">Open P3_Research_x10.md ↗</a>
+          <!-- Step 3 -->
+          <div class="manual-card">
+            <div>
+              <div class="manual-card-top">
+                <span class="manual-phase-num">Step 3 of 7</span>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">Deep Research</span>
+              </div>
+              <div class="manual-title">P3 — Research ×10</div>
+              <p class="manual-desc">Feed competitor list from P2. Produces 10 deep profiles ending with <code>THIS TOOL DOES NOT:</code> limitations.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P3_Research_x10.md" target="_blank" class="btn btn-white btn-sm" style="flex:1;">View P3.md ↗</a>
+              <button class="btn btn-primary btn-sm" onclick="copyFilePath('P3_Research_x10.md')">📋 Copy Path</button>
+            </div>
           </div>
 
-          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
-            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 4: P4_Gap_Analysis.md</div>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P1 + P3 profiles. Builds feature matrix & scores Top 5 Gaps.</p>
-            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P4_Gap_Analysis.md" target="_blank" class="btn btn-secondary btn-sm">Open P4_Gap_Analysis.md ↗</a>
+          <!-- Step 4 -->
+          <div class="manual-card">
+            <div>
+              <div class="manual-card-top">
+                <span class="manual-phase-num">Step 4 of 7</span>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">Extended Thinking</span>
+              </div>
+              <div class="manual-title">P4 — Gap Analysis</div>
+              <p class="manual-desc">Attach P1 and all 10 P3 profiles. AI creates feature matrix and mathematically scores Top 5 market opportunities.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P4_Gap_Analysis.md" target="_blank" class="btn btn-white btn-sm" style="flex:1;">View P4.md ↗</a>
+              <button class="btn btn-primary btn-sm" onclick="copyFilePath('P4_Gap_Analysis.md')">📋 Copy Path</button>
+            </div>
           </div>
 
-          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
-            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 5: P5_Verify_Gaps.md</div>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P4 gaps. Verifies across 9 platforms and filters out false gaps.</p>
-            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P5_Verify_Gaps.md" target="_blank" class="btn btn-secondary btn-sm">Open P5_Verify_Gaps.md ↗</a>
+          <!-- Step 5 -->
+          <div class="manual-card">
+            <div>
+              <div class="manual-card-top">
+                <span class="manual-phase-num">Step 5 of 7</span>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">9-Platform Audit</span>
+              </div>
+              <div class="manual-title">P5 — Verify Gaps</div>
+              <p class="manual-desc">Attach P4 gaps. Audits Google, Product Hunt, GitHub, YC, and BetaList to eliminate false leads.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P5_Verify_Gaps.md" target="_blank" class="btn btn-white btn-sm" style="flex:1;">View P5.md ↗</a>
+              <button class="btn btn-primary btn-sm" onclick="copyFilePath('P5_Verify_Gaps.md')">📋 Copy Path</button>
+            </div>
           </div>
 
-          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
-            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 6: P6_Final_Report.md</div>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P1-P5 blocks. Generates investor diligence memo & MVP spec.</p>
-            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P6_Final_Report.md" target="_blank" class="btn btn-secondary btn-sm">Open P6_Final_Report.md ↗</a>
+          <!-- Step 6 -->
+          <div class="manual-card">
+            <div>
+              <div class="manual-card-top">
+                <span class="manual-phase-num">Step 6 of 7</span>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">Extended Thinking</span>
+              </div>
+              <div class="manual-title">P6 — Final Diligence Memo</div>
+              <p class="manual-desc">Attach all handoff blocks. Synthesizes investor-grade diligence memo, moats, unit economics, and 30-day GTM.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P6_Final_Report.md" target="_blank" class="btn btn-white btn-sm" style="flex:1;">View P6.md ↗</a>
+              <button class="btn btn-primary btn-sm" onclick="copyFilePath('P6_Final_Report.md')">📋 Copy Path</button>
+            </div>
           </div>
 
-          <div style="background:rgba(15,23,42,0.8); border:1px solid var(--card-border); border-radius:var(--radius-sm); padding:1rem;">
-            <div style="font-weight:800; color:#38bdf8; margin-bottom:0.3rem;">Step 7: P7_Make_README.md</div>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">Attach P6 spec. Generates complete production-grade GitHub README!</p>
-            <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P7_Make_README.md" target="_blank" class="btn btn-secondary btn-sm">Open P7_Make_README.md ↗</a>
+          <!-- Step 7 -->
+          <div class="manual-card">
+            <div>
+              <div class="manual-card-top">
+                <span class="manual-phase-num">Step 7 of 7</span>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">Capstone Launch</span>
+              </div>
+              <div class="manual-title">P7 — Launch README.md</div>
+              <p class="manual-desc">Attach P6 memo. Produces a battle-tested GitHub README.md with badges, differentiation tables, and roadmap.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="file:///c:/Users/nisha/OneDrive/Documents/Downloads/some/P7_Make_README.md" target="_blank" class="btn btn-white btn-sm" style="flex:1;">View P7.md ↗</a>
+              <button class="btn btn-primary btn-sm" onclick="copyFilePath('P7_Make_README.md')">📋 Copy Path</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Nissh Creator Watermark & Portfolio Banner -->
-    <div class="nissh-creator-banner">
-      <div class="creator-left">
+    <!-- Creator Banner (Nissh) -->
+    <div class="creator-banner">
+      <div class="creator-info">
         <div class="creator-avatar">👨‍💻</div>
         <div>
-          <div style="font-weight:800; font-size:1.15rem; color:#fff;">
+          <div class="creator-name">
             Researched with Nissh System &bull; Nishant Maurya
           </div>
-          <div style="font-size:0.85rem; color:var(--text-muted);">
+          <div class="creator-bio">
             Full Stack AI Developer &bull; Founder of Sight Pro &bull; MLH Hack Days Winner
           </div>
         </div>
       </div>
       <div>
-        <a href="https://nissh.info" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background:linear-gradient(135deg, #ec4899, #6366f1);">
+        <a href="https://nissh.info" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:0.85rem 1.75rem;">
           🌐 Explore Official Portfolio (nissh.info) →
         </a>
       </div>
     </div>
   </main>
 
-  <!-- API Key Setup Modal -->
+  <!-- API Keys Setup Modal -->
   <div class="modal-backdrop" id="key-modal">
-    <div class="modal-box">
-      <div class="modal-title">
-        <span>🔑 Configure AI Keys & Fallback Engine</span>
-        <button onclick="closeKeyModal()" style="background:none; border:none; color:#fff; font-size:1.25rem; cursor:pointer;">&times;</button>
+    <div class="modal-card">
+      <div class="modal-title-row">
+        <h3>🔑 Configure AI Keys &amp; Fallback Engine</h3>
+        <button class="close-btn" onclick="closeKeyModal()">&times;</button>
       </div>
-      <p style="font-size:0.85rem; color:var(--text-muted);">
-        At least <strong>1 API key is compulsory</strong>. We strongly recommend adding 2–3 keys (e.g. Gemini + Groq + Claude) so if one runs out of credits or rate limits, the system auto-switches to the next fallback without stopping your research.
+      <p style="font-size:0.85rem; color:var(--text-sub); line-height:1.6;">
+        At least <strong>1 API key is compulsory</strong>. We recommend adding 2–3 keys (e.g. Gemini + Groq + Claude) so if one hits a rate limit or runs out of credits at Stage 4, the system automatically falls over to the next provider without losing your work.
       </p>
 
-      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+      <div style="display:flex; flex-direction:column; gap:0.85rem;">
         <div>
-          <label style="font-size:0.75rem; font-weight:700; color:#38bdf8;">Google Gemini API Key (Fast & Free)</label>
-          <input type="password" id="input-gemini" class="input-control" placeholder="AIzaSy...">
+          <label style="font-size:0.75rem; font-weight:800; color:var(--cyan); text-transform:uppercase;">1. Google Gemini Key (Recommended Free Tier)</label>
+          <input type="password" id="input-gemini" class="input-box" style="padding:0.7rem 1rem;" placeholder="AIzaSy...">
         </div>
         <div>
-          <label style="font-size:0.75rem; font-weight:700; color:#f97316;">Groq API Key (High Speed Llama 3.3)</label>
-          <input type="password" id="input-groq" class="input-control" placeholder="gsk_...">
+          <label style="font-size:0.75rem; font-weight:800; color:#ea580c; text-transform:uppercase;">2. Groq Key (Ultra Fast Llama 3.3)</label>
+          <input type="password" id="input-groq" class="input-box" style="padding:0.7rem 1rem;" placeholder="gsk_...">
         </div>
         <div>
-          <label style="font-size:0.75rem; font-weight:700; color:#ec4899;">Anthropic Claude API Key (Deep Reasoning)</label>
-          <input type="password" id="input-claude" class="input-control" placeholder="sk-ant-...">
+          <label style="font-size:0.75rem; font-weight:800; color:var(--pink); text-transform:uppercase;">3. Anthropic Claude Key (Deep Reasoning)</label>
+          <input type="password" id="input-claude" class="input-box" style="padding:0.7rem 1rem;" placeholder="sk-ant-...">
         </div>
         <div>
-          <label style="font-size:0.75rem; font-weight:700; color:#10b981;">OpenAI API Key (GPT-4o)</label>
-          <input type="password" id="input-openai" class="input-control" placeholder="sk-proj-...">
+          <label style="font-size:0.75rem; font-weight:800; color:var(--emerald); text-transform:uppercase;">4. OpenAI Key (GPT-4o / GPT-4o-mini)</label>
+          <input type="password" id="input-openai" class="input-box" style="padding:0.7rem 1rem;" placeholder="sk-proj-...">
         </div>
         <div>
-          <label style="font-size:0.75rem; font-weight:700; color:#a855f7;">OpenRouter API Key (Optional)</label>
-          <input type="password" id="input-openrouter" class="input-control" placeholder="sk-or-...">
+          <label style="font-size:0.75rem; font-weight:800; color:var(--purple); text-transform:uppercase;">5. OpenRouter Key (Optional Universal Gateway)</label>
+          <input type="password" id="input-openrouter" class="input-box" style="padding:0.7rem 1rem;" placeholder="sk-or-...">
         </div>
       </div>
 
-      <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:0.5rem;">
-        <button class="btn btn-secondary btn-sm" onclick="closeKeyModal()">Cancel</button>
+      <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:0.75rem;">
+        <button class="btn btn-white btn-sm" onclick="closeKeyModal()">Cancel</button>
         <button class="btn btn-primary btn-sm" onclick="saveKeys()">💾 Save Keys to .env</button>
       </div>
     </div>
   </div>
 
+  <!-- Toast Notification -->
   <div class="toast" id="toast">
     <span id="toast-msg">Notification</span>
   </div>
 
+  <!-- Client-side Logic & GSAP Animations -->
   <script>
-    // Cursor Tracking
-    const cursor = document.getElementById("cursor");
+    // Custom Cursor Bubble Follower
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorBubble = document.getElementById("cursor-bubble");
+
     window.addEventListener("mousemove", (e) => {
-      if (!cursor) return;
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
+      if (!cursorDot || !cursorBubble) return;
+      cursorDot.style.left = e.clientX + "px";
+      cursorDot.style.top = e.clientY + "px";
+      cursorBubble.style.left = e.clientX + "px";
+      cursorBubble.style.top = e.clientY + "px";
+    });
+
+    document.querySelectorAll(".agent-card, .btn, .idea-chip, .manual-card").forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        if (!cursorBubble) return;
+        cursorBubble.style.opacity = "1";
+        cursorBubble.style.transform = "translate(14px, 14px) scale(1)";
+      });
+      el.addEventListener("mouseleave", () => {
+        if (!cursorBubble) return;
+        cursorBubble.style.opacity = "0";
+        cursorBubble.style.transform = "translate(14px, 14px) scale(0.8)";
+      });
+    });
+
+    // GSAP Entrance Animations on Load
+    window.addEventListener("DOMContentLoaded", () => {
+      fetchKeysStatus();
+      checkBackendStatus();
+
+      if (window.gsap) {
+        gsap.from(".hero-card", {
+          opacity: 0,
+          y: 25,
+          duration: 0.8,
+          ease: "power3.out"
+        });
+        gsap.from(".agent-card", {
+          opacity: 0,
+          y: 20,
+          stagger: 0.08,
+          duration: 0.6,
+          ease: "power2.out",
+          delay: 0.2
+        });
+        gsap.from(".sticker", {
+          scale: 0.8,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+          delay: 0.4
+        });
+      }
     });
 
     let pollInterval = null;
-
-    window.onload = function() {
-      fetchKeysStatus();
-      checkBackendStatus();
-    };
 
     function switchMode(mode) {
       document.getElementById("tab-auto").classList.toggle("active", mode === "auto");
       document.getElementById("tab-manual").classList.toggle("active", mode === "manual");
       document.getElementById("section-auto").style.display = mode === "auto" ? "block" : "none";
       document.getElementById("section-manual").style.display = mode === "manual" ? "block" : "none";
+    }
+
+    function fillIdea(idea, audience) {
+      document.getElementById("idea-input").value = idea;
+      document.getElementById("audience-input").value = audience;
+      showToast("💡 Idea loaded into input!");
+      document.getElementById("idea-input").focus();
     }
 
     function openKeyModal() {
@@ -775,11 +1185,13 @@
           term.innerHTML = "";
           (state.logs || []).forEach(l => {
             const div = document.createElement("div");
-            div.className = "terminal-line";
+            div.className = "term-line";
             if (l.includes("Auto-switched") || l.includes("API Switch")) {
-              div.className += " terminal-switch";
+              div.className += " term-fallback";
             } else if (l.includes("Complete!") || l.includes("PDF Successfully")) {
-              div.className += " terminal-success";
+              div.className += " term-success";
+            } else if (l.includes("Running") || l.includes("Agent")) {
+              div.className += " term-highlight";
             }
             div.innerText = l;
             term.appendChild(div);
@@ -809,7 +1221,7 @@
             document.getElementById("run-agents-btn").disabled = false;
             document.getElementById("completed-box").style.display = "block";
             if (window.confetti) {
-              confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+              confetti({ particleCount: 160, spread: 80, origin: { y: 0.6 } });
             }
           } else if (state.status === "error") {
             clearInterval(pollInterval);
@@ -833,13 +1245,19 @@
             document.getElementById(`agent-status-${i}`).innerText = "Completed ✅";
           }
           document.getElementById("completed-box").style.display = "block";
-          if (window.confetti) confetti({ particleCount: 100, spread: 70 });
+          if (window.confetti) confetti({ particleCount: 120, spread: 75 });
           showToast("⚡ ScopeLock Sample Demo Loaded & PDF Ready!");
         });
     }
 
     function downloadPdf() {
       window.location.href = "/api/download-pdf";
+    }
+
+    function copyFilePath(fileName) {
+      navigator.clipboard.writeText(fileName).then(() => {
+        showToast("📋 Copied file name: " + fileName);
+      });
     }
 
     function showToast(msg) {
