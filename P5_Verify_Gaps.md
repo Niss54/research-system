@@ -1,183 +1,104 @@
-# P5 — Verify Gaps
-> **Phase 5 of 7** · Problem → Opportunity Playbook · Created by [Nisha](https://nissh.info)
+# P5 — Verify Gaps (v2 Grounded Edition)
+> **Phase 5 of 7** · Forensic Gap Verification & Bullshit Detection · Created by [Nisha](https://nissh.info)
 
-> 💡 **Two Ways to Run This Phase:**
-> 1. **🤖 Mode 1 (Autonomous Local Engine):** Handled automatically when running `python server.py`.
-> 2. **📋 Mode 2 (Manual Chaining with Claude / ChatGPT):** Paste the `<!-- BEGIN P4_HANDOFF -->` block into the prompt below. Run in Claude (Web Search ON) across 9 platforms. Copy the resulting `<!-- BEGIN P5_HANDOFF -->` block and feed it into [`P6_Final_Report.md`](./P6_Final_Report.md).
+> 💡 **Execution Modes:**
+> 1. **🤖 Mode 1 (Autonomous Local CLI / UI):** Runs automated live queries against GitHub, Product Hunt, and web search engines to challenge candidate gaps.
+> 2. **📋 Mode 2 (Manual Chaining with Claude / ChatGPT):** Paste the `<!-- BEGIN P4_HANDOFF -->` block into the prompt below. Feed resulting `<!-- BEGIN P5_HANDOFF -->` into [`P6_Final_Report.md`](./P6_Final_Report.md).
 
 ---
 
 ## 🎯 What This Phase Does
 
-The gaps identified in Phase 4 were discovered by auditing established competitors — but you must confirm that no stealth startups, open-source projects, or new launches are already filling those exact voids. This phase conducts an exhaustive forensic search across 9 platforms to verify whether each gap is genuinely open.
-
-**Goal:** A verified roster of defensible market opportunities, filtering out false leads and promoting only Confirmed (✅) and Partial (⚠️) gaps to the final report.
-
----
-
-## 📥 Input Contract (From Phase 4)
-
-This phase consumes the output of [`P4_Gap_Analysis.md`](./P4_Gap_Analysis.md):
-- Problem space & Target audience
-- The `<!-- BEGIN P4_HANDOFF -->` block containing `TOP_5_GAPS` and `#1_RECOMMENDED_GAP`
+Acts as the adversarial **"Bullshit Detector"** of your startup thesis.
+In v2, you do NOT assume a missing search result equals an unbuilt opportunity:
+- **Absence of Evidence is NOT Evidence of Absence**: If you search "revision paywall" and find nothing, you must try synonyms ("change order billing", "milestone feedback approval", "design proofing scope lock").
+- **Search Coverage Log**: Record the exact platforms and query permutations tested.
+- **GitHub & Open Source Sweep**: Check if developers already solved this via open-source tools or browser scripts.
+- **Why Unbuilt & Why Now**: If a gap is genuinely unbuilt, why hasn't someone done it in the last 10 years? What technological (APIs, LLMs, Stripe micro-billing) or cultural shift makes it viable today?
 
 ---
 
 ## ⚙️ Tools Required
 
 | Tool | Status | Why |
-|------|--------|-----|
-| 🔍 Web Search | **ON** | Mandatory — searches across live databases to catch stealth startups |
-| 🔬 Deep Research Mode | **ON** | Runs multi-platform queries automatically |
-| 🧠 Extended Thinking | Optional | Useful for assessing partial vs false gaps |
-
-> **How to enable in Claude.ai:**
-> - Web Search → toggle via the search icon in the top bar
-> - Deep Research → toggle on Claude Pro
+|---|---|---|
+| 🔍 Live Web Search | **MANDATORY** | Deep multi-synonym search across Google, GitHub, and Product Hunt |
+| 🐙 GitHub API | **ACTIVE** | Query repository stars, topics, and code for open-source competitors |
+| 🧠 Extended Reasoning | **ON** | Disprove confirmation bias and weed out false gaps |
 
 ---
 
 ## 📋 Copy-to-Paste Prompt
 
-> **Instructions:** Copy the full prompt below, paste your `<!-- BEGIN P4_HANDOFF -->` block from Phase 4 into the input section, and run with Web Search and Deep Research ON.
->
-> 🔗 **Pipeline Connection:** The output of this phase produces a structured `<!-- BEGIN P5_HANDOFF -->` block that feeds directly into [`P6_Final_Report.md`](./P6_Final_Report.md).
-
 ```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 INPUT FROM PHASE 4:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[PASTE P4_HANDOFF BLOCK HERE]
-(Or specify: Problem space + Top 5 gap names and descriptions)
+[PASTE YOUR ENTIRE P4_HANDOFF BLOCK HERE]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TASK: EXHAUSTIVE GAP VERIFICATION (9-PLATFORM AUDIT)
+TASK: ADVERSARIAL GAP VERIFICATION (9-PLATFORM FORENSIC AUDIT)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Act as a skeptical venture scout and market investigator. Your mission is to attempt to DISPROVE these 5 market gaps. If someone has already built a great solution, find it and disqualify the gap immediately.
+Act as an adversarial venture auditor. Your job is to DISPROVE the candidate gaps identified in Phase 4.
+Assume every gap has already been built by someone, somewhere, under a different name or feature set.
 
-For EACH of the 5 gaps listed in the P4 handoff, run ALL 9 of these searches:
-□ Google: "[gap keyword] software OR tool OR app"
-□ Google: "[gap keyword] solution OR platform"
-□ Product Hunt: site:producthunt.com "[gap keyword]"
-□ Indie Hackers: site:indiehackers.com "[gap keyword]"
-□ GitHub: "[gap keyword]" (check for active open-source repos)
-□ Y Combinator: ycombinator.com/companies "[gap keyword]"
-□ BetaList / Uneed.app: recent launches and stealth projects
-□ TechCrunch / VentureBeat: "[gap keyword] funding OR startup"
-□ LinkedIn: "[gap keyword] founder" (stealth founders)
+FORENSIC AUDIT PROTOCOL:
+1. Synonym & Substitute Permutations:
+   - For each gap, generate 3-4 semantic synonyms (e.g., "revision paywall" → "change order billing", "scope enforcement tool", "client approval gate").
+2. Multi-Platform Search:
+   - Google / Web Search (synonyms + "software" / "tool")
+   - GitHub (search repository topics and READMEs)
+   - Product Hunt (historical launches from 2020-2026)
+   - Indie Hackers / Hacker News (Show HN / Ask HN threads)
+   - YC Directory (search alumni companies)
+3. Assign Honest Forensic Verdicts:
+   - CONFIRMED GAP ✅: Truly unserved across all synonym searches.
+   - PARTIAL GAP ⚠️: Solutions exist, but are complex enterprise tools, abandoned plugins, or fragmented across multiple apps.
+   - FALSE GAP ❌: High-quality, modern solutions already exist under another name (DISQUALIFY THIS GAP).
+4. The "Why Unbuilt" & "Why Now" Test:
+   - If CONFIRMED, why wasn't this built 5 years ago? (API limits, cultural inertia, high cost).
+   - What changed NOW that makes it a winning opportunity today?
 
-VERDICT CRITERIA FOR EACH GAP:
-✅ CONFIRMED GAP — Nothing viable found after exhaustive search. Completely unserved.
-⚠️ PARTIAL GAP — 1–2 weak, buggy, abandoned, or early projects exist, but a massive void remains.
-   → Name the existing tool + explain why it fails to adequately solve the problem.
-❌ FALSE GAP — A well-executed, modern solution already exists.
-   → Name it + provide URL + explain why it completely satisfies this need. Remove from roadmap.
-
-FOR EVERY CONFIRMED (✅) OR PARTIAL (⚠️) GAP, ANSWER:
-Q1: Why hasn't anyone solved this yet? (Technical hurdle? Misaligned incentives? Niche too small until now?)
-Q2: What changed recently that makes this buildable or urgent NOW? (New AI capability, API, regulatory shift, workflow change)
-Q3: What would a minimal viable version (MVP) look like? (3–5 bullet points)
-
-OUTPUT FORMAT (YOU MUST INCLUDE THE EXACT HANDOFF BLOCK BELOW):
+OUTPUT FORMAT (MUST INCLUDE EXACT HANDOFF BLOCK):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-DETAILED VERIFICATION LOG:
-[For each of the 5 gaps, provide the specific search findings, URLs checked, and analysis]
+SEARCH COVERAGE AUDIT LOG:
+| Gap Name | Synonyms Tested | Platforms Audited | Existing Substitutes Found | Verdict |
+| :--- | :--- | :--- | :--- | :---: |
 
 <!-- BEGIN P5_HANDOFF -->
-PROBLEM_SPACE: [Restated problem space]
-TARGET_AUDIENCE: [Primary ICP]
+PROBLEM_SPACE: [From P4]
+TARGET_AUDIENCE: [From P4]
 
 VERIFIED_GAPS:
 - GAP 1: [Name]
   VERDICT: [CONFIRMED ✅ / PARTIAL ⚠️ / FALSE ❌]
-  EVIDENCE: [Summary of search results and competitors discovered]
-  WHY_UNBUILT: [Technical, business, or market reason]
-  WHY_NOW: [Recent catalyst making this viable today]
+  SYNONYMS_SEARCHED: ["Synonym A", "Synonym B", "Synonym C"]
+  COUNTEREXAMPLES_DISCOVERED: [List any tools or repos that came close and why they fall short]
+  EVIDENCE_AUDIT: [Exact findings across Google, GitHub, and Product Hunt]
+  WHY_UNBUILT: [Structural or market reason it wasn't built historically]
+  WHY_NOW: [The immediate technology or market catalyst]
   MINIMAL_MVP_FEATURES:
-  * [Feature 1]
-  * [Feature 2]
-  * [Feature 3]
+  - [Core capability 1]
+  - [Core capability 2]
+  - [Core capability 3]
 
 - GAP 2: [Name]
-  VERDICT: [CONFIRMED ✅ / PARTIAL ⚠️ / FALSE ❌]
-  EVIDENCE: [Summary]
-  WHY_UNBUILT: [Reason]
-  WHY_NOW: [Catalyst]
-  MINIMAL_MVP_FEATURES: [Features]
-
-- GAP 3: [Name]
-  VERDICT: [CONFIRMED ✅ / PARTIAL ⚠️ / FALSE ❌]
-  EVIDENCE: [Summary]
-  WHY_UNBUILT: [Reason]
-  WHY_NOW: [Catalyst]
-  MINIMAL_MVP_FEATURES: [Features]
-
-- GAP 4: [Name]
-  VERDICT: [CONFIRMED ✅ / PARTIAL ⚠️ / FALSE ❌]
-  EVIDENCE: [Summary]
-  WHY_UNBUILT: [Reason]
-  WHY_NOW: [Catalyst]
-  MINIMAL_MVP_FEATURES: [Features]
-
+  ...
 - GAP 5: [Name]
-  VERDICT: [CONFIRMED ✅ / PARTIAL ⚠️ / FALSE ❌]
-  EVIDENCE: [Summary]
-  WHY_UNBUILT: [Reason]
-  WHY_NOW: [Catalyst]
-  MINIMAL_MVP_FEATURES: [Features]
-
-FINAL_VIABLE_OPPORTUNITIES (Only ✅ and ⚠️ gaps):
-1. [Name] — [One-line summary of market entry opportunity]
-2. [Name] — [One-line summary]
 
 RECOMMENDED_WEDGE:
-PRIMARY_OPPORTUNITY: [Single best gap to attack first]
-CORE_VALUE_PROP: [Why users will switch on Day 1]
-MVP_BUILD_SCOPE: [Clear 3-bullet description of the minimal product]
+PRIMARY_OPPORTUNITY: [Validated Winning Gap Name]
+CORE_VALUE_PROP: [One-line punchy promise: "Never X again. Always Y."]
+WHY_NOW_CATALYST: [Specific timing catalyst]
+MVP_BUILD_SCOPE:
+- [Must-have 1]
+- [Must-have 2]
+- [Must-have 3]
 <!-- END P5_HANDOFF -->
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ---
 
-## 🗂️ How to Use
-
-1. **Paste the `<!-- BEGIN P4_HANDOFF -->` block** directly into the prompt.
-2. **Turn Web Search & Deep Research ON** — verification requires active external queries.
-3. **Inspect FALSE Gaps carefully**: If a gap is marked ❌ FALSE GAP, look at user reviews of that existing product. If users complain about reliability or pricing, it may transform into a high-value Partial Gap.
-4. **Copy the `<!-- BEGIN P5_HANDOFF -->` block** from the output — it feeds directly into Phase 6.
-
----
-
-## ✅ Expected Output
-
-Claude will return:
-- Full verification logs across 9 platforms for all 5 gaps
-- Rigorous verdicts: CONFIRMED ✅, PARTIAL ⚠️, or FALSE ❌
-- "Why hasn't this been built?" and "Why now?" analysis for each survivor
-- Clean `<!-- BEGIN P5_HANDOFF -->` block ready for Phase 6 report generation
-
----
-
-## 💡 Pro Tip
-
-> **"Technically exists" does NOT mean "Adequately served."** If the only existing solution for a gap is an unmaintained GitHub repository with 15 stars or an enterprise tool costing $20,000/year, that is an open commercial runway for an indie builder or startup.
-
----
-
-## ⏱️ Time Estimate
-
-**~30–45 minutes** — Claude runs multiple cross-platform searches per gap.
-
----
-
-## ➡️ Next Step & Data Handoff
-
-1. Copy the `<!-- BEGIN P5_HANDOFF --> ... <!-- END P5_HANDOFF -->` block.
-2. Collect the handoff blocks from **Phase 1, Phase 2, Phase 3, Phase 4, and Phase 5**.
-3. Open [`P6_Final_Report.md`](./P6_Final_Report.md).
-4. Paste all handoff blocks to generate the investor-ready final report.
-
----
-
-*Part of the [Startup Research Playbook](./README.md) · 6-phase pipeline*
+## 🔗 Next Phase Handoff
+Copy the `<!-- BEGIN P5_HANDOFF -->` block into [`P6_Final_Report.md`](./P6_Final_Report.md).

@@ -159,7 +159,11 @@ Allowed verdicts:
 📊 ESTIMATE
 🧠 INFERENCE
 
-Do NOT include the internal ledger unless useful, but use it to control the final report.
+MANDATORY: YOU MUST INCLUDE THE COMPLETE 9-COLUMN EVIDENCE LEDGER TABLE IN SECTION 2 OF THE REPORT:
+| Claim | Original Source | Published Date | Event Date | Retrieved Date | Evidence (Exact Quote/Page) | Source Tier (Primary/Secondary/Community) | Verification Status (VERIFIED/PARTIAL/UNVERIFIED/CONTRADICTED) | Confidence (High/Medium/Low) | Source Limitation |
+
+CRITICAL SOURCE INDEPENDENCE RULE:
+If 10 tech blogs copy the same syndicated corporate press release or PR wire, that is ONE single source, NOT 10 independent confirmations. Do NOT inflate confidence based on syndicated PR clones.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SOURCE HIERARCHY

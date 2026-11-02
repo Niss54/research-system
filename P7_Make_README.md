@@ -106,7 +106,15 @@ Produce RAW, READY-TO-PUBLISH MARKDOWN ONLY. Follow this exact structure:
 - Environment variables table (`.env.example`)
 
 ─────────────────────────────────────────────────
-7. ROADMAP & 30-DAY PLAN
+7. POST-LAUNCH VALIDATION & POSTHOG TELEMETRY SPEC
+─────────────────────────────────────────────────
+- Core Activation Events (e.g. deliverable_created, revision_capped, change_order_paid)
+- Friction Drop-off Triggers (where clients abandon checkout or dispute limits)
+- Session Replay triggers: When client submits out-of-scope feedback
+- 1-Question Micro-Survey trigger: Did this tool prevent an unbilled revision?
+
+─────────────────────────────────────────────────
+8. ROADMAP & 30-DAY PLAN
 ─────────────────────────────────────────────────
 - Interactive checklist reflecting the 30-day roadmap from Phase 6
   - [x] Phase 1–6 Research & Market Validation Complete

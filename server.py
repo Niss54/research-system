@@ -2,7 +2,8 @@
 """
 Startup Research System - Local Web & API Server
 Serves the interactive UI, runs the 7-agent autonomous pipeline,
-manages API key fallbacks, and serves the watermarked PDF report.
+manages API key fallbacks, serves the watermarked PDF report,
+and provides v2 grounded agent endpoints.
 """
 
 import os
@@ -25,10 +26,15 @@ ENV_FILE = REPO_ROOT / ".env"
 
 from research_engine import MultiProviderLLM, AutonomousResearchOrchestrator, load_env_keys
 from pdf_generator import render_pdf
+import v2
+from v2.tools import LinkValidator, WebSearchEngine, GitHubVerifier
+
+v2_state_mgr = v2.StateManager()
+v2_orchestrator = v2.PipelineOrchestrator(v2_state_mgr)
 
 app = Flask(__name__, static_folder=str(REPO_ROOT), static_url_path="")
 
-# Global Pipeline Run State
+# Global Pipeline Run State (v1 backwards compatibility)
 pipeline_state = {
     "is_running": False,
     "current_agent": 0,
@@ -54,7 +60,7 @@ def index():
 def get_keys_status():
     keys = load_env_keys()
     masked = {}
-    for k in ["GEMINI_API_KEY", "GROQ_API_KEY", "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "OPENROUTER_API_KEY"]:
+    for k in ["GEMINI_API_KEY", "GROQ_API_KEY", "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "OPENROUTER_API_KEY", "TAVILY_API_KEY", "SERPER_API_KEY"]:
         val = keys.get(k, "")
         if val:
             masked[k] = val[:6] + "..." + val[-4:] if len(val) > 10 else "***"
@@ -70,7 +76,7 @@ def save_keys():
     data = request.json or {}
     existing_keys = load_env_keys()
     
-    for k in ["GEMINI_API_KEY", "GROQ_API_KEY", "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "OPENROUTER_API_KEY"]:
+    for k in ["GEMINI_API_KEY", "GROQ_API_KEY", "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "OPENROUTER_API_KEY", "TAVILY_API_KEY", "SERPER_API_KEY"]:
         if k in data and data[k] and not data[k].startswith("***"):
             existing_keys[k] = data[k].strip()
 
@@ -160,7 +166,6 @@ def get_status():
 def download_pdf():
     pdf_path = REPO_ROOT / "workspace" / "STARTUP_RESEARCH_REPORT.pdf"
     if not pdf_path.exists():
-        # Check if sample demo exists or generate default
         return jsonify({"status": "error", "message": "PDF report not yet generated. Please run the research pipeline first."}), 404
     
     return send_file(
@@ -186,6 +191,70 @@ def load_demo():
     }
     pdf_path = render_pdf(sample)
     return jsonify({"status": "success", "message": "Demo loaded and PDF compiled.", "pdf_path": pdf_path})
+
+# =========================================================================
+# v2 Grounded API Endpoints (Multi-project persistence, Live tools & HITL)
+# =========================================================================
+
+@app.route("/api/v2/projects", methods=["GET"])
+def v2_list_projects():
+    """Lists all saved research projects from SQLite DB"""
+    projects = v2_state_mgr.list_projects()
+    return jsonify({"status": "success", "projects": projects})
+
+@app.route("/api/v2/projects", methods=["POST"])
+def v2_start_project():
+    """Starts a new v2 research run (autonomous or hitl mode)"""
+    data = request.json or {}
+    raw_idea = data.get("idea", "").strip()
+    audience = data.get("audience", "").strip()
+    mode = data.get("mode", "autonomous") # "autonomous" or "hitl"
+
+    if not raw_idea:
+        return jsonify({"status": "error", "message": "Problem hypothesis cannot be empty."}), 400
+
+    project_id = v2_orchestrator.start_pipeline(raw_idea, audience, mode=mode)
+    return jsonify({
+        "status": "success",
+        "project_id": project_id,
+        "mode": mode,
+        "message": f"v2 Grounded Research Pipeline started in {mode.upper()} mode."
+    })
+
+@app.route("/api/v2/projects/<project_id>", methods=["GET"])
+def v2_get_project(project_id):
+    """Retrieves full project state, phase outputs, and real-time logs"""
+    state = v2_state_mgr.get_project_state(project_id)
+    if not state:
+        return jsonify({"status": "error", "message": "Project not found"}), 404
+    return jsonify({"status": "success", "project": state})
+
+@app.route("/api/v2/tools/validate-url", methods=["POST"])
+def v2_tool_validate_url():
+    """Direct utility endpoint to validate competitor URLs and fetch meta tags"""
+    data = request.json or {}
+    url = data.get("url", "").strip()
+    validator = LinkValidator()
+    result = validator.validate_url(url)
+    return jsonify({"status": "success", "result": result})
+
+@app.route("/api/v2/tools/search", methods=["POST"])
+def v2_tool_search():
+    """Direct utility endpoint to run live web search queries"""
+    data = request.json or {}
+    query = data.get("query", "").strip()
+    searcher = WebSearchEngine()
+    results = searcher.search(query, max_results=5)
+    return jsonify({"status": "success", "query": query, "results": results})
+
+@app.route("/api/v2/tools/github", methods=["POST"])
+def v2_tool_github():
+    """Direct utility endpoint to search GitHub repositories"""
+    data = request.json or {}
+    query = data.get("query", "").strip()
+    gh = GitHubVerifier()
+    repos = gh.search_repositories(query, limit=5)
+    return jsonify({"status": "success", "query": query, "repositories": repos})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
