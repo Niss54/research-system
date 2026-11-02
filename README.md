@@ -4,6 +4,7 @@
 
 **From Multilingual Problem Hypothesis to Investor-Grade Watermarked PDF Diligence — Powered by 7 Sequential Autonomous AI Agents with Auto-Fallback.**
 
+[![npm version](https://img.shields.io/npm/v/nissh-research?style=for-the-badge&logo=npm&color=cb3837)](https://www.npmjs.com/package/nissh-research)
 [![Built by Nisha](https://img.shields.io/badge/Author-Nishant%20Maurya%20(Nissh)-6366f1?style=for-the-badge&logo=safari&logoColor=white)](https://nissh.info)
 [![Official Portfolio](https://img.shields.io/badge/Portfolio-nissh.info-ec4899?style=for-the-badge)](https://nissh.info)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-10b981?style=for-the-badge)](LICENSE)
@@ -160,6 +161,17 @@ stateDiagram-v2
 
 ---
 
+
+
+---
+
+## 🌐 Truth Over Hallucination: Chrome DevTools MCP & Evidence Vault
+
+Prompts alone cannot prevent an LLM from hallucinating forum links or competitor features. The **Nissh Research System** connects to live execution tools:
+- **`chrome-devtools-mcp` Integration:** When running inside Google Antigravity or MCP clients, agents use native tools (`navigate_page`, `take_screenshot`, `take_snapshot`, `evaluate_script`) to drive a real Chrome browser, defeat cookie walls, and dump live DOM states.
+- **Immutable Evidence Vault:** Every claim is cryptographically hashed and saved in `evidence/ledger.json` and `evidence/EVIDENCE_LEDGER.md` with source tiers (`Primary`, `Secondary`, `Community`), verification status (`VERIFIED`, `PARTIAL`, `UNVERIFIED`), and confidence levels.
+- **Automated Local Screenshots:** Full-page browser PNGs are saved to `evidence/screenshots/` for investor and co-founder diligence.
+
 ## 🤖 The 7 Autonomous Agents
 
 Every agent executes with a strict, specialized charter to eliminate biases and surface unvarnished reality:
@@ -185,6 +197,23 @@ Every agent executes with a strict, specialized charter to eliminate biases and 
 ## 🚀 How to Use This Repository
 
 You can run this system in **3 different ways**, depending on your workflow and technical preference.
+
+### Mode 0: Instant NPX Command (Zero Setup Required)
+
+Run the full system anywhere with a single command via [npm](https://www.npmjs.com/package/nissh-research):
+
+```bash
+# 1. Launch interactive Web UI on localhost:5000
+npx nissh-research
+
+# 2. Run full 7-agent pipeline in terminal
+npx nissh-research run --idea "Freelancers lose hours to unpaid revisions" --audience "Freelancers"
+
+# 3. View captured evidence vault & local screenshots
+npx nissh-research evidence
+```
+
+---
 
 ### Mode 1: Autonomous Web UI (Recommended)
 
@@ -288,7 +317,7 @@ python pdf_generator.py
 You only need **ONE** API key to get started. Providing multiple keys enables the **Auto-Fallback Engine**, ensuring uninterrupted research even if you hit free-tier rate limits:
 
 ```text
-Priority 1: Google Gemini (Gemini 1.5 Flash / Fast & Free Tier)
+Priority 1: Google Gemini (Gemini 2.5/2.0 Flash / Fast & Free Tier)
       │
       ▼ (On 429 Rate Limit / Quota Exhaustion)
 Priority 2: Groq (Llama 3.3 70B Versatile @ 500+ tokens/sec)

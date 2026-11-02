@@ -1,0 +1,56 @@
+{
+  "name": "nissh-research",
+  "version": "2.0.0",
+  "description": "Autonomous 7-Agent Grounded Startup Research System by Nisha (https://nissh.info). Validates startup hypotheses, captures real evidence with browser screenshots, tears down competitors, and compiles investor diligence dossiers.",
+  "main": "./bin/nissh-research.js",
+  "bin": {
+    "nissh-research": "bin/nissh-research.js"
+  },
+  "scripts": {
+    "start": "node ./bin/nissh-research.js",
+    "web": "node ./bin/nissh-research.js web",
+    "cli": "node ./bin/nissh-research.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niss54/research-system.git"
+  },
+  "keywords": [
+    "startup",
+    "market-research",
+    "agentic-ai",
+    "due-diligence",
+    "hyperresearch",
+    "deep-research",
+    "multi-agent",
+    "nissh",
+    "autonomous-agents"
+  ],
+  "author": "Nishant Maurya (Nissh) <https://nissh.info>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Niss54/research-system/issues"
+  },
+  "homepage": "https://nissh.info",
+  "files": [
+    "bin/",
+    "v2/",
+    "skills/",
+    "nissh_cli.py",
+    "server.py",
+    "pdf_generator.py",
+    "research_engine.py",
+    "research_pipeline.py",
+    "startup_research_playbook.html",
+    "requirements.txt",
+    "README.md",
+    "LICENSE",
+    "P1_Validate.md",
+    "P2_Top10.md",
+    "P3_Research_x10.md",
+    "P4_Gap_Analysis.md",
+    "P5_Verify_Gaps.md",
+    "P6_Final_Report.md",
+    "P7_Make_README.md"
+  ]
+}
