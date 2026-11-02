@@ -2,10 +2,13 @@
 name: nissh-research
 description: >
   Autonomous 7-Agent Grounded Startup Research System by Nisha (nissh.info).
-  Validates startup problem hypotheses, captures real evidence with browser screenshots & Chrome DevTools MCP,
-  tears down competitors, computes deterministic opportunity scores, eliminates false gaps,
-  and compiles investor diligence dossiers with permanent watermarked PDFs.
-license: Apache-2.0
+  DORMANT BY DEFAULT. MUST ONLY ACTIVATE WHEN THE USER EXPLICITLY ASKS FOR "use nissh skills",
+  "nissh research", or "/nissh". NEVER intercepts general coding tasks, bug fixing,
+  refactoring, or everyday edits.
+triggers:
+  - "use nissh skills"
+  - "nissh research"
+  - "/nissh"
 ---
 
 # Nissh Research System — Antigravity Skill
@@ -14,30 +17,47 @@ An evidence-first, 7-agent autonomous intelligence runtime designed to validate 
 
 ---
 
-## ⚡ Instant One-Command NPX Execution (No Setup Required)
+> [!CAUTION]
+> ### 🛑 STRICT DORMANT ACTIVATION RULE
+> **This skill must remain 100% DORMANT by default.**
+> - Do **NOT** intercept general programming tasks, feature building, bug fixing, or regular user requests.
+> - **ONLY activate when the user explicitly types:**
+>   - 👉 **`use nissh skills`**
+>   - 👉 **`nissh research`**
+>   - 👉 **`/nissh`**
+> - Unless the user provides one of these explicit trigger phrases, stay silent and do not interfere with normal workspace operations.
 
-Run the full system anywhere via **NPX** (published on npm registry):
+---
 
-```bash
-# 1. Launch Interactive Web UI & Playbook on localhost:5000
-npx nissh-research
+## ⚡ Instant One-Command NPX Execution (Dual-Mode Interactive Selection)
 
-# 2. Run full 7-agent pipeline autonomously in terminal
-npx nissh-research run --idea "Freelancers lose hours to unpaid revisions" --audience "Freelance web designers"
+When you run `npx nissh-research` in any terminal, it prompts you interactively:
 
-# 3. Run in Human-in-the-Loop (HITL) Guided Mode (pauses after each phase)
-npx nissh-research run --idea "Freelancers lose hours to unpaid revisions" --mode hitl
-
-# 4. Inspect Evidence Ledger & local screenshots
-npx nissh-research evidence
-
-# 5. Capture a live webpage screenshot and log claim to Evidence Vault
-npx nissh-research test-evidence "https://hellobonsai.com" "Bonsai has no automated revision gating"
+```text
+? How would you like to run the Nissh Research System?
+  [1] 🌐 Interactive Web UI  (Launches local server at localhost:5000 with visual playbook)
+  [2] 💻 Local Code Editor   (Installs dormant skill into this project for Antigravity, VS Code, Claude)
 ```
 
-Or run via local Python CLI:
+Direct non-interactive shortcuts:
 ```bash
-python nissh_cli.py run --idea "..."
+# Option 1: Direct Web UI launch
+npx nissh-research web
+
+# Option 2: Install skill into current project folder
+npx nissh-research install
+
+# Option 3: Run autonomous 7-agent pipeline in terminal
+npx nissh-research run --idea "Freelancers lose hours to unpaid revisions" --audience "Freelance web designers"
+
+# Option 4: Run in Human-in-the-Loop (HITL) Guided Mode (pauses after each phase)
+npx nissh-research run --idea "Freelancers lose hours to unpaid revisions" --mode hitl
+
+# Option 5: Inspect Evidence Ledger & local screenshots
+npx nissh-research evidence
+
+# Option 6: Capture a live webpage screenshot and log claim to Evidence Vault
+npx nissh-research test-evidence "https://hellobonsai.com/pricing" "Bonsai has no automated revision gating"
 ```
 
 ---
@@ -56,22 +76,6 @@ When running inside **Google Antigravity** or any MCP-compatible environment, ag
 | `evaluate_script` | Scrapes dynamic page elements, tables, and live pricing tiers directly |
 | `click` / `wait_for` | Bypasses cookie banners and modal popups to read actual article content |
 
-### Example Agent Invocation with Chrome DevTools MCP:
-```json
-{
-  "ServerName": "chrome-devtools-mcp",
-  "ToolName": "navigate_page",
-  "Arguments": { "url": "https://hellobonsai.com/pricing" }
-}
-```
-Followed by:
-```json
-{
-  "ServerName": "chrome-devtools-mcp",
-  "ToolName": "take_screenshot",
-  "Arguments": { "filePath": "evidence/screenshots/screenshot_bonsai_pricing.png" }
-}
-```
 This evidence is directly recorded into [`evidence/EVIDENCE_LEDGER.md`](../../evidence/EVIDENCE_LEDGER.md) with cryptographic hash IDs and verification confidence levels.
 
 ---

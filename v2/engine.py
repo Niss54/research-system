@@ -151,15 +151,39 @@ class LLMCaller:
         if system:
             messages.append({"role": "system", "content": system})
         messages.append({"role": "user", "content": prompt})
-        res = requests.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
-            json={"model": "google/gemini-2.0-flash-exp:free", "messages": messages, "temperature": 0.3},
-            timeout=60
-        )
-        if res.status_code != 200:
-            raise Exception(f"HTTP {res.status_code}: {res.text[:120]}")
-        return res.json()["choices"][0]["message"]["content"]
+        headers = {
+            "Authorization": f"Bearer {key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://nissh.info",
+            "X-Title": "Nissh Research System"
+        }
+        models = [
+            "google/gemini-2.0-flash-exp:free",
+            "meta-llama/llama-3.3-70b-instruct:free",
+            "mistralai/mistral-small-24b-instruct-2501:free",
+            "google/gemini-flash-1.5",
+            "openai/gpt-4o-mini"
+        ]
+        last_err = None
+        for m in models:
+            try:
+                res = requests.post(
+                    "https://openrouter.ai/api/v1/chat/completions",
+                    headers=headers,
+                    json={"model": m, "messages": messages, "temperature": 0.3},
+                    timeout=45
+                )
+                if res.status_code == 200:
+                    resp_json = res.json()
+                    if "choices" in resp_json and len(resp_json["choices"]) > 0:
+                        content = resp_json["choices"][0].get("message", {}).get("content", "")
+                        if content:
+                            return content
+                last_err = f"HTTP {res.status_code}: {res.text[:120]}"
+            except Exception as e:
+                last_err = str(e)
+                continue
+        raise Exception(f"OpenRouter models failed ({last_err})")
 
 
 class ResearchEngineV2:

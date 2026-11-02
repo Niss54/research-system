@@ -97,7 +97,8 @@ class MultiProviderLLM:
                 err_str = str(e)
                 errors.append(f"{provider}: {err_str}")
                 next_provider = self.active_providers[i + 1] if i + 1 < len(self.active_providers) else None
-                msg = f"⚠️ Provider [{provider.upper()}] failed ({err_str[:90]}...)."
+                fl_name = provider.upper() if provider else "UNKNOWN"
+                msg = f"⚠️ Provider [{fl_name}] failed ({err_str[:90]}...)."
                 if next_provider:
                     msg += f" Auto-switching to fallback provider [{next_provider.upper()}]..."
                 else:
@@ -202,22 +203,43 @@ class MultiProviderLLM:
         url = "https://openrouter.ai/api/v1/chat/completions"
         headers = {
             "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://nissh.info",
+            "X-Title": "Nissh Research System"
         }
         messages = []
         if system_instruction:
             messages.append({"role": "system", "content": system_instruction})
         messages.append({"role": "user", "content": prompt})
 
-        data = {
-            "model": "google/gemini-2.0-flash-exp:free",
-            "messages": messages,
-            "temperature": 0.3
-        }
-        res = requests.post(url, headers=headers, json=data, timeout=60)
-        if res.status_code != 200:
-            raise Exception(f"HTTP {res.status_code}: {res.text}")
-        return res.json()["choices"][0]["message"]["content"]
+        # Try robust cascade of models on OpenRouter
+        models = [
+            "google/gemini-2.0-flash-exp:free",
+            "meta-llama/llama-3.3-70b-instruct:free",
+            "mistralai/mistral-small-24b-instruct-2501:free",
+            "google/gemini-flash-1.5",
+            "openai/gpt-4o-mini"
+        ]
+        last_err = None
+        for m in models:
+            try:
+                data = {
+                    "model": m,
+                    "messages": messages,
+                    "temperature": 0.3
+                }
+                res = requests.post(url, headers=headers, json=data, timeout=45)
+                if res.status_code == 200:
+                    resp_json = res.json()
+                    if "choices" in resp_json and len(resp_json["choices"]) > 0:
+                        content = resp_json["choices"][0].get("message", {}).get("content", "")
+                        if content:
+                            return content
+                last_err = f"HTTP {res.status_code}: {res.text[:120]}"
+            except Exception as e:
+                last_err = str(e)
+                continue
+        raise Exception(f"OpenRouter models failed ({last_err})")
 
 
 class AutonomousResearchOrchestrator:
@@ -241,7 +263,9 @@ class AutonomousResearchOrchestrator:
                 progress_callback(agent_num, name, status, msg, extra)
 
         def on_fallback_event(failed_p, switched_to_p, reason):
-            log_msg = f"API Switch: [{failed_p.upper()}] hit an error. Auto-switched to [{switched_to_p.upper()} if switched_to_p else 'NONE']."
+            fl_name = failed_p.upper() if failed_p else "UNKNOWN"
+            sw_name = switched_to_p.upper() if switched_to_p else "NONE"
+            log_msg = f"API Switch: [{fl_name}] hit an error ({str(reason)[:60]}...). Auto-switched to [{sw_name}]."
             if progress_callback:
                 progress_callback(0, "Fallback Engine", "fallback_switch", log_msg, {"failed": failed_p, "switched": switched_to_p, "reason": reason})
 
