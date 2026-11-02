@@ -245,7 +245,7 @@ python server.py
 #### Step 5: Run Your Research
 1. Open **`http://localhost:5000`** in your browser.
 2. In the main input box, describe your startup idea in **any language** (e.g. Hindi, Hinglish, Spanish, or English):
-   > *"Freelance web designers client revision loop mein phas jaate hain aur extra revision ke paise nahi milte..."*
+   > *"Freelance web designers lose revenue in endless client revision loops without getting paid for extra change orders..."*
 3. *(Optional)* Add a target audience hint (e.g., *"Freelance designers and small creative agencies"*).
 4. Click **🚀 Launch 7 Autonomous Agents**.
 5. Watch the live terminal console and agent status cards execute sequentially.

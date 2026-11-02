@@ -19,6 +19,7 @@ const fs = require('fs');
 const readline = require('readline');
 
 const PKG_ROOT = path.resolve(__dirname, '..');
+const pkg = require(path.join(PKG_ROOT, 'package.json'));
 const CLI_PATH = path.join(PKG_ROOT, 'nissh_cli.py');
 const SERVER_PATH = path.join(PKG_ROOT, 'server.py');
 
@@ -36,10 +37,10 @@ function printBanner() {
   console.log(`\x1b[36m
   _   _ _           _        ____                               _     
  | \\ | (_)___ ___  | |__    |  _ \\ ___  ___  ___  __ _ _ __ ___| |__  
- |  \\| | / __/ __| | '_ \\   | |_) / _ \\/ __|/ _ \\/ _\` | '__/ __| '_ \\ 
+ |  \| | / __/ __| | '_ \\   | |_) / _ \\/ __|/ _ \\/ _\` | '__/ __| '_ \\ 
  | |\\  | \\__ \\__ \\ | | | |  |  _ <  __/\\__ \\  __/ (_| | | | (__| | | |
  |_| \\_|_|___/___/ |_| |_|  |_| \\_\\___||___/\\___|\\__,_|_|  \\___|_| |_|
-                                                         v2.0.2
+                                                         v${pkg.version}
 \x1b[0m\x1b[90m  Autonomous 7-Agent Grounded Startup Research | nissh.info\x1b[0m\n`);
 }
 
@@ -105,11 +106,11 @@ function installLocalSkill() {
   • Evidence Vault:    \x1b[36mevidence/\x1b[0m
 
 \x1b[1m🛡️ MANDATORY DORMANT RULE CONFIGURED:\x1b[0m
-  Ye skill aapke code editor mein bilkul \x1b[33mDORMANT\x1b[0m rahegi aur kisi normal coding kaam mein taang nahi adegi.
+  This skill will remain completely \x1b[33mDORMANT\x1b[0m in your code editor and will never interfere with normal coding, bug fixing, or everyday development tasks.
   
-  Jab aapko market research run karni ho, tab chat mein likhein:
-  👉 \x1b[32m"use nissh skills"\x1b[0m ya \x1b[32m"nissh research"\x1b[0m
-  aur apna problem hypothesis likhein. Tabhi agents activate honge!
+  Whenever you want to run market research, explicitly type in chat:
+  👉 \x1b[32m"use nissh skills"\x1b[0m or \x1b[32m"nissh research"\x1b[0m
+  along with your problem hypothesis. Only then will the research agents activate!
 `);
 }
 
