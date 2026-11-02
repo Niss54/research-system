@@ -1,6 +1,6 @@
 {
   "name": "nissh-research",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Autonomous 7-Agent Grounded Startup Research System by Nisha (https://nissh.info). Validates startup hypotheses, captures real evidence with browser screenshots, tears down competitors, and compiles investor diligence dossiers.",
   "main": "./bin/nissh-research.js",
   "bin": {

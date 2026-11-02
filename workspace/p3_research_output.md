@@ -1,25 +1,49 @@
-<!-- BEGIN P3_PROFILE: Bonsai -->
-COMPETITOR_NAME: Bonsai
-WEBSITE: https://hellobonsai.com
-TYPE: Direct
-1. PRODUCT PROFILE: All-in-one freelance contract, invoicing, and CRM suite. User creates contract, tracks hours, generates invoice.
-2. COMPANY INTEL: Founded 2015, raised ~$1.2M, team ~50, serving over 500,000 freelancers globally.
-3. PRICING TIERS: Starter $25/mo, Professional $39/mo, Business $79/mo.
-4. WHAT USERS LOVE: Professional looking invoice templates, unified time tracking, and simple contracts.
-5. WHAT USERS HATE: Clunky mobile app, steep price increases over recent years, lacks real-time deliverable inspection.
-6. CRITICAL GAPS: Contracts specify revision counts in text paragraphs, but the app does NOT count or gate revision requests.
-THIS TOOL DOES NOT: automatically count client revision submissions, enforce contract revision limits, or trigger one-click micro-invoices for scope creep.
-<!-- END P3_PROFILE: Bonsai -->
+# Phase 3: Forensic Competitor Teardowns
 
-<!-- BEGIN P3_PROFILE: MarkUp.io -->
-COMPETITOR_NAME: MarkUp.io
-WEBSITE: https://markup.io
-TYPE: Indirect
-1. PRODUCT PROFILE: Visual commenting platform for websites, PDFs, and images. Clients point-and-click to leave change requests.
-2. COMPANY INTEL: Owned by Ceros, venture backed, tens of thousands of active users.
-3. PRICING TIERS: Free tier, Pro $15/mo.
-4. WHAT USERS LOVE: Intuitive pin-point feedback on live staging sites without browser extensions.
-5. WHAT USERS HATE: Makes it TOO EASY for clients to leave 100 nitpicky comments without knowing they are out of scope.
-6. CRITICAL GAPS: Completely disconnected from contracts or money. Actually exacerbates scope creep by reducing client friction to comment.
-THIS TOOL DOES NOT: track revision rounds, connect change requests to contracts, or require client payment approval for extra edits.
-<!-- END P3_PROFILE: MarkUp.io -->
+<!-- BEGIN P3_PROFILE: Yellow SMART -->
+COMPETITOR_NAME: Yellow SMART
+WEBSITE: https://getyellow.in/yellow-smart
+TYPE: Direct (India)
+SUMMARY_POSITIONING: Dedicated post-demise estate transfer platform in India. Combines remote assistance checklists with on-ground legal/paralegal agents to execute bank transfers, Demat transmissions, and succession certificates.
+PRICING_TIERS: Remote Plan Rs 500/yr; Comprehensive On-Ground execution priced per service (Rs 10,000 to 50,000+).
+WHAT_USERS_LOVE:
+- Having a human representative visit the bank branch relieves tremendous emotional strain for grieving widows.
+- Deep expertise in Indian legal certificates (Legal Heir Certificate, Probate in Kolkata/Mumbai/Chennai).
+WHAT_USERS_HATE:
+- Expensive for modest estates; fees eat up smaller fixed deposits.
+- On-ground coordination remains dependent on individual agent availability and speed.
+CRITICAL_GAPS:
+- Relies heavily on human manpower rather than digital API orchestrations.
+THIS TOOL DOES NOT: provide an automated digital bridge for surviving heirs to dispatch and track claims across all Indian financial institutions in one self-serve software platform.
+<!-- END P3_PROFILE: Yellow SMART -->
+
+<!-- BEGIN P3_PROFILE: EstateExec -->
+COMPETITOR_NAME: EstateExec
+WEBSITE: https://estateexec.com
+TYPE: Direct (Global)
+SUMMARY_POSITIONING: Standalone software for executors to manage the administration of an estate from death to final distribution.
+PRICING_TIERS: $199 one-time fee per estate.
+WHAT_USERS_LOVE:
+- Comprehensive accounting of estate assets, debts, and distributions.
+- Built-in guidance for probate court requirements.
+WHAT_USERS_HATE:
+- Highly US-centric; completely useless for Indian legal frameworks (Hindu Succession Act, Indian Succession Act).
+CRITICAL_GAPS:
+- Zero integration with non-US banks, depositories, or government bodies.
+THIS TOOL DOES NOT: handle Indian banking claim forms, KYC documentation, or Indian succession certificate processes.
+<!-- END P3_PROFILE: EstateExec -->
+
+<!-- BEGIN P3_PROFILE: Settld -->
+COMPETITOR_NAME: Settld
+WEBSITE: https://settld.care
+TYPE: Direct (UK/Global)
+SUMMARY_POSITIONING: Simplifies bereavement notifications by notifying banks, utilities, insurers, and subscription providers in a single submission.
+PRICING_TIERS: Free for families; charges B2B partner institutions.
+WHAT_USERS_LOVE:
+- Submitting the death certificate once instead of repeating the emotional story to 20 different call centers.
+WHAT_USERS_HATE:
+- Only operates in the UK and select EU jurisdictions.
+CRITICAL_GAPS:
+- Lacks coverage for Indian financial institutions and land registry offices.
+THIS TOOL DOES NOT: operate in India or resolve complex intestate inheritance claims.
+<!-- END P3_PROFILE: Settld -->

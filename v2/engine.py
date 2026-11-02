@@ -210,8 +210,11 @@ class ResearchEngineV2:
 
         system = (
             "You are a rigorous, evidence-driven startup problem validator. "
-            "You normalize any input language (Hindi, Hinglish, Spanish, etc.) into professional English. "
-            "Evaluate frequency, severity (1-10), and willingness to pay. Output valid JSON."
+            "You normalize any input language into professional English. "
+            "CRITICAL GUARDS: "
+            "1. Problem Alignment: If the problem is POST-INCIDENT (e.g. post-death asset transfer), do NOT conflate it with PRE-INCIDENT tools (e.g. pre-death Will generators). "
+            "2. Frequency Grounding: If the problem is an episodic life-event, individual frequency is 'Episodic / Once in 5-15 years' with 'High Active Duration (6-18 months)', while aggregate macro frequency reflects annual national deaths/inflows. Never call death a 'Monthly' frequency! "
+            "3. Verdict Integrity: If willingness-to-pay for standalone software is unproven or major incumbents exist, verdict must be CONTINUE DISCOVERY / MAYBE, not premature GO."
         )
 
         prompt = f"""Raw Idea: "{raw_idea}"
@@ -256,7 +259,12 @@ Validate the problem. Return ONLY a valid JSON object matching this schema:
         search_results = self.search.search(search_query, max_results=5)
         search_summary = "\n".join([f"- {r['title']}: {r['url']}" for r in search_results])
 
-        system = "You are a competitive intelligence scout. Output ONLY valid JSON."
+        system = (
+            "You are a forensic competitive intelligence scout. Output ONLY valid JSON. "
+            "CRITICAL: Match the EXACT problem trigger. Do NOT substitute pre-event tools for post-event workflows. "
+            "Include local market players (e.g. for India, check Yellow SMART, bank nominee processes) and global executor tools (EstateExec, Settld). "
+            "NEVER emit generic placeholders like 'Competitor A' or 'Tool B'."
+        )
         prompt = f"""Problem Space: {p1.problem_statement}
 Target Audience: {p1.target_audience}
 
@@ -448,7 +456,12 @@ Output JSON:
     def run_agent_6(self, project_id: str, p1: P1ValidationHandoff, p5: P5VerifyGapsHandoff) -> P6DiligenceHandoff:
         self.state_mgr.add_log(project_id, "Agent 6: Synthesizing Investor-Ready Diligence Memo & 30-Day Launch Plan...", 6, "Diligence Synthesizer", "info")
 
-        system = "You are an elite startup investor and operator. Synthesize an opportunity memo and launch spec. Output JSON."
+        system = (
+            "You are an elite startup investor and operator. "
+            "VERDICT INTEGRITY: Never upgrade a MAYBE verdict to GO unless new primary evidence justifies it. "
+            "If customer validation is unproven, maintain 'CONTINUE DISCOVERY (MAYBE)'. "
+            "Never use placeholders like Competitor A/B. Name real competitors and real source links."
+        )
         prompt = f"""Problem: {p1.problem_statement}
 Audience: {p1.target_audience}
 Validated Opportunity: {p5.primary_opportunity}

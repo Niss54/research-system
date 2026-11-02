@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<!--suppress CssUnusedSymbol -->
+<html ng-app="EstateExec" ng-controller="eeController" lang="en-us">
+<head>
+	<title>EstateExec Official Site: Award-Winning App for Estate Executors</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">	<!-- Bootstrap mobile/touch support -->
+	<meta name="description" content="EstateExec's award-winning online software makes {{state}} estate executor duties easy, with automatically customized task lists, automated accounting, PDF reports, and more">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+	<meta property="og:title" content="EstateExecâ¢ Makes Executor Duties Easy">
+	<meta property="og:image" content="https://www.estateexec.com/images/EstateExec_OG7.png">
+	<meta property="og:description" content="Automatically customized step-by-step guidance and accounting for settling an estate. You could do it the old-fashioned way, but why would you?">
+	<base href="/">															<!-- Needed for AngularJS cookies -->
+	<link ng-if="state" rel="canonical" ng-href="https://www.estateexec.com/?state_abbrev={{state}}">
+	<link ng-if="!state" rel="canonical" href="https://www.estateexec.com">
+	<link ng-if="!state" rel="alternate" hreflang="en-us" href="https://www.estateexec.com">
+	<link ng-if="!state" rel="alternate" hreflang="en-ca" href="https://www.estateexec.com/ca/">
+	<link ng-if="!state" rel="alternate" hreflang="x-default" href="https://www.estateexec.com">
+	<link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+	<link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:n,b|Montserrat&display=block" type="text/css">
+	<link rel="stylesheet" href="/script/ee_main_4.min.css">
+	<style>
+		body { background-color:#EEE; min-width:300px }
+		.white { background-color:#FFF }
+        .ee-divider { background-color:#0d97ff; height:5px; width:100px; margin-top:13px; margin-bottom:13px }
+        .ee-video-home { width:560px; height:315px; display:block; margin-left:auto; margin-right:auto; border:0 }
+		.ee-video-thumbnail { position:relative }
+		.ee-video-thumbnail:hover .video-play-icon { filter:none; opacity:0.9 }
+		.ee-act-btn { height:50px; font-size:20px; margin-top:15px; margin-right:30px; width:200px }
+        @media (max-width:480px) { .ee-act-btn { margin-right:0 } }
+      
+		/* Hero */
+        .ee-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25)), url(images/executor_working.webp);
+            height:100vh; min-height:678px; max-height:1028px }
+        .ee-scroller { color:#FFF; cursor:pointer }
+        .ee-scroller:hover { color:#DDD }
+        .ee-marquee { height:185px; padding:50px 10px 0 10px; text-align:center; font-size:44px; color:#FFF; font-weight:bold }
+        .ee-marquee a { color:#FFF }
+		.ee-marquee-break, .ee-narrowest-show { display:none }
+		.ee-marquee>div>div { position:absolute; top:0; width:100%; transition:all linear 1000ms; opacity:1 }
+		.ee-marquee>div>div.ng-hide { opacity:0 }
+		.ee-marquee>div>div>div { margin-top:4px; font-size:46px }
+		.ee-marquee img { width:398px; height:auto }
+		.ee-hero-core {display:grid; height:calc(96% - 240px); max-width:1600px; padding:0 5%; margin:0 auto; justify-items:center; align-items:center }
+		.ee-hero-text { grid-row:1; grid-column:1; font-size:36px; font-weight:bold; width:480px }
+		.ee-hero-video { grid-row:1; grid-column:2 }
+		.ee-video-tour img.ee-video-home { margin-top:10px; outline:2px solid #74c5ff; outline-offset:-2px}
+		.ee-video-tour .video-play-icon { opacity:0.6 }
+		.ee-video-tour .video-play-icon.ee-video-tour { opacity:0.9 }
+        .ee-hero .ee-divider, .ee-hero .ee-blue, .ee-hero .ee-blue:focus { background-color:#2FA7FC }
+        .ee-hero .ee-blue:hover { background-color:#0d97ff }
+        .ee-act-btn-main { margin-top:5px; color:#333 }
+        .ee-act-btn-main .ee-act-btn { width:auto; margin-right:0 }
+		.no-registration { font-size:12px; font-weight:normal; color:#EEE; position:absolute; bottom:-18px; left:67px }
+        .ee-learn-more { color:#FFF; height:49px; margin-top:16px }
+        .ee-learn-more, .ee-learn-more:focus { background-color:transparent; border-color:#2FA7FC; color:#FFF }
+        .ee-learn-more:hover { background-color:rgba(0,130,230,0.3); border-color:rgba(0,130,230,0.3); color:#FFF }
+        .ee-more { width:100%; text-align:center; font-size:26px; position:absolute; bottom:8px }
+        .ee-more .glyphicon-menu-down { width:100px }
+        @media (min-width:1750px) { .ee-hero-core { margin-left:calc(50% - 830px); margin-right:calc(50% - 780px) } }
+        @media (min-width:1201px) { .ee-scroller.ee-easy { font-size:40px } }
+        @media (max-width:1200px) {
+            .ee-marquee { height:141px; font-size:36px; padding-top:30px }
+			.ee-marquee>div>div>div { font-size:40px }
+			.ee-narrow-hide { display:none }
+            .ee-marquee img { width:327px; height:auto }
+			.ee-divider { margin:10px auto 3px auto }
+			.ee-hero { height:auto }
+			.ee-hero-core { display:block; height:auto }
+			.ee-hero-text { padding-top:30px; padding-bottom:30px; text-align:center; font-size:30px; margin-left:auto; margin-right:auto }
+			.ee-hero-text-bullets { margin-bottom:20px }
+			.ee-act-btn-main { padding-bottom:40px }
+			.no-registration { display:none }
+			.ee-hero-video { margin-top:30px } }
+		@media (max-width:900px) {
+			.ee-marquee-mid-hide-na { display:none } }
+        @media (max-width:820px) {
+            .ee-marquee { height:200px }
+			.ee-marquee-break { display:inline }
+            .ee-marquee img { margin-top:10px }
+			.ee-marquee-mid-hide-na { display:inline }
+            .ee-act-btn-main { text-align:center }
+            .ee-hero-text { display:flex; flex-direction:column; justify-content:center; width:100% }
+            .ee-hero-text-bullets { flex-grow:1; display:flex; flex-direction:column; justify-content:center } }
+		@media (min-width:820px) {
+			.ee-hero { padding-top:16px } }
+		@media (max-width:820px) and (max-height:680px) {
+            .ee-marquee { padding-top:25px } }
+        @media (max-height:680px) { .ee-divider { margin-top:5px; margin-bottom:0 } }
+        @media (max-width:560px) {
+            .ee-marquee { height:158px; font-size:28px }
+			.ee-marquee>div>div>div { font-size:32px }
+            .ee-marquee img { width:253px; height:auto; margin-top:0 }
+            .ee-hero-text { font-size:26px } }
+		@media (max-width:440px) {
+			.ee-marquee { padding-left:20px; padding-right:20px }
+			.ee-divider { margin-top:9px; margin-bottom:3px }
+			.ee-narrowest-show { display:inline }
+			.ee-narrowest-hide { display:none } }
+
+        /* Video */
+        .ee-video-sect { padding-bottom:36px; padding-top:12px }
+        .ee-video-sect h1 { text-align:center; margin-bottom:15px; font-size:36px }
+        .ee-video-sect h2 { text-align:center; margin:0 60px 32px 60px; font-size:24px; line-height:1.42857143 }
+        .ee-points >div { display:none }
+        .ee-points >div:last-of-type { display:block; text-align:center; margin:5px auto 0 auto }
+        .ee-video-btns button:last-of-type { margin-right:0 }
+		.ee-help-narrow { display:none }
+		@media (min-width:1200px) {
+			.container { width:1180px }
+            .ee-video-welcome { display:inline-block }
+			iframe.ee-video-welcome { margin-bottom:-5px }
+			.ee-video-welcome .video-play-icon { opacity:.9 }
+            .ee-video-sect >div { padding:0 40px }
+            .ee-video-btns .ee-act-btn { margin-top:0 }
+            .ee-points { float:right; height:315px; display:flex; flex-direction:column; justify-content:center }
+            .ee-points >div { display:block; margin-top:18px; font-size:21px }
+            .ee-points >div:first-of-type, .ee-points >div:last-of-type { margin-top:0 }
+            .ee-points .ee-divider { margin:20px 0 } }
+        @media (max-width:992px) { .ee-video-sect h2 { margin-left:0; margin-right:0 } }
+		@media (max-width:760px) {
+			.ee-help { display:none }
+			.ee-help-narrow { display:inline }
+		}
+        @media (max-width:620px) {
+            .ee-video-sect h2 { font-size:22px; margin-bottom:24px }
+            .ee-video-home { width:320px; height:180px }
+			.ee-hero-text-bullets { margin-bottom:15px } }
+        @media (max-width:400px) { .ee-video-sect h2 { font-size:20px } }
+
+		/* Quotes carousel */
+        .carousel-inner { background-color:#0d97ff }
+		.ee-slide { height:90px }
+        a.carousel-control, ol.carousel-indicators { display:none }
+		.carousel-caption { left:5%; right:5%; width:90%; padding:0; top:50%; transform:translateY(-50%); bottom:auto }
+		.carousel-caption div { padding:10px 0; font-size:20px; text-shadow:none }
+        .ee-author { color:#DDD; font-style:italic }
+        .stars-quote { display:inline-block; background:url(images/star.png) repeat-x; height:21px; width:104px; box-shadow:-5px 0 2px -3px #0d97ff inset; position:relative; top:2px; margin-right:2px }
+		@media (max-width:520px) { .ee-slide { height:120px } }
+		
+		/* Features */
+		.ee-capture { display:grid; padding-top:24px; padding-bottom:24px }
+		.ee-capture >div, .ee-capture-img { align-self:center }
+		.ee-capture-left .ee-capture-img { grid-row:1; grid-column:1; margin-right:50px }
+		.ee-capture-right .ee-capture-img { grid-row:1; grid-column:2 }
+		.ee-capture-left >div { grid-row:1; grid-column:2 }
+		.ee-capture-right >div { grid-row:1; grid-column:1 }
+		.ee-circle-task .ee-capture-img { margin-top:10px; margin-bottom:-36px; padding-bottom:0 }
+		.ee-capture-img img { height:auto }
+		.ee-rpt { margin-top:6px; width:480px; height:373px }
+		.ee-img-sharing { margin:15px 0 8px 0; max-width:480px }
+        .benefits >h3 { margin-left:20px; font-size:24px; font-weight:bold }
+        .benefits >h3 a { text-decoration:none; color:#000 }
+        .benefits >h3 a:hover { color:#666 }
+        .benefits >h3:after { display:block; content:''; background:#0d97ff; height:5px; width:100px; margin-top:12px; margin-bottom:20px }
+		.benefits li { font-size:18px; margin-top:18px; color:#666 }
+        .benefits li:first-of-type { margin-top:0 }
+        .ee-final-btns { margin-bottom:6px; text-align:center }
+        button span.glyphicon { vertical-align:-2px }
+		@media (min-width:1200px) {
+			.ee-capture { padding-left:40px } }
+ 		@media (max-width:700px) {
+			.ee-capture { display:block }
+			.ee-capture .ee-capture-img { text-align:center; margin:0 auto }
+			.ee-capture ul { width:80vw; margin:0 auto 0 auto; padding-top:0 }
+			.ee-import { padding-left:3% }
+			.benefits { padding-bottom:20px }
+            .benefits.ee-overview { padding-bottom:8px }
+			.benefits li:first-child { margin-top:0 } }
+		@media (max-width:600px) {
+			div.ee-capture-img img { width:90% } }
+
+		ul.ee-awards { margin:16px 0 17px 15px }
+		ul.ee-awards li { margin-top:10px }
+        .ee-footer { padding:20px }
+	</style>
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-touch-icon.png">
+    <link rel="mask-icon" href="/images/icon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="preload" href="/images/executor_working.webp" as="image">
+	<link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.7/ui-grid.min.js">
+	<link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js">
+	<link rel="prefetch" href="/script/ee2.min.js">
+</head>
+
+<body>
+	<!-- Hero -->
+	<section class="ee-hero">
+		<div class="navbar navbar-default flex-fixed" role="navigation" ng-init="set_active(0)">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" ng-click="nav_collapse = !nav_collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" ng-href="{{country_prefix}}/"><img src="/images/EstateExec_Logo.png" width="446" height="52" alt="EstateExec"></a>
+			</div>
+			<div class="navbar-collapse collapse" ng-class="{'collapse':nav_collapse}">
+				<ul class="nav navbar-nav navbar-main">
+					<li uib-dropdown ng-class="::{active:active_secs[1]}">
+						<a uib-dropdown-toggle><span class="ee-nav-wide">My</span> Estates<span class="caret"></span></a>
+						<ul class="dropdown-menu" uib-dropdown-menu role="menu">
+							<li><a ng-click="estate_create()">New...</a></li>
+							<li ng-class="{disabled:!user.has_estates}"><a ng-click="estate_open_dlg()">Open...</a></li>
+							<li ng-class="{disabled:!user.has_estates}"><a ng-click="estate_delete()">Delete...</a></li>
+							<li class="divider"></li>
+							<li><a href="/estate/sample/Docs/Introduction">Explore Sample</a></li>
+							<li ng-show="user.has_estates" class="divider"></li>
+							<li ng-repeat="estate in user.estates_recent">
+								  <a ng-href="/estate/{{estate.id}}">{{estate.label}}</a>
+							</li>
+						</ul>
+					</li>
+					<li uib-dropdown ng-class="::{active:active_secs[2]}">
+						<a uib-dropdown-toggle><span class="ee-nav-wide">My</span> Role<span class="caret"></span></a>
+						<ul class="dropdown-menu" uib-dropdown-menu role="menu">
+							<li><a href onclick="alert('This is the page for you!')">Executor</a></li>
+							<li><a ng-href="{{country_prefix}}/Docs/Heirs">Heir</a></li>
+							<li><a ng-href="{{country_prefix}}/for_lawyers.html">Lawyer</a></li>
+							<li class="divider"></li>
+							<li><a ng-href="{{country_prefix}}/for_owners.html">Estate Owner</a></li>
+							<li class="divider"></li>
+							<li><a ng-href="{{country_prefix}}/partners.html">EstateExec Partner</a></li>
+						</ul>
+					</li>
+					<li uib-dropdown ng-class="::{active:active_secs[3]}">
+						<a uib-dropdown-toggle><span class="ee-nav-wide">Executor's</span> Guide<span class="caret"></span></a>
+						<ul class="dropdown-menu" uib-dropdown-menu role="menu">
+							<li><a ng-href="{{country_prefix}}/Docs/Introduction">Introduction</a></li>
+							<li><a ng-href="{{country_prefix}}/Docs/Guide/{{state}}">Estate Settlement</a></li>
+							<li><a ng-href="{{country_prefix}}/Docs/settling-small-estates/{{state}}">Small Estates</a></li>
+							<li><a ng-href="{{country_prefix}}/Docs/Timeline">Timeline</a></li>
+							<li 

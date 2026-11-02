@@ -14,5 +14,53 @@
     "screenshot_path": "evidence/screenshots/screenshot_497f51f8.png",
     "snapshot_path": "evidence/snapshots/snapshot_497f51f8.txt",
     "timestamp": "2026-11-02T10:51:37.351573"
+  },
+  {
+    "id": "EV-002",
+    "claim": "SBI requires mandatory death certificate, KYC, legal heir certificates, and court orders/probate if disputes or no nomination exist for asset release",
+    "source_title": "State Bank of India - Settlement of Deceased Depositor Accounts",
+    "source_url": "https://sbi.bank.in/en/web/personal-banking/information-services/deceased-settlement",
+    "published_date": "Unknown",
+    "retrieved_date": "2026-11-02",
+    "exact_passage": "Revised deceased claim policy: Settlement of claims in deceased depositors accounts without nomination require legal representation and indemnity bonds.",
+    "source_tier": "Primary",
+    "verification_status": "VERIFIED",
+    "confidence": "High",
+    "limitation": "Applies only to SBI accounts; other banks have their own separate forms and thresholds.",
+    "screenshot_path": "evidence/screenshots/screenshot_d58b0817.png",
+    "snapshot_path": "evidence/snapshots/snapshot_d58b0817.txt",
+    "timestamp": "2026-11-02T11:59:32.505212"
+  },
+  {
+    "id": "EV-003",
+    "claim": "Yellow SMART offers dedicated post-demise asset transfer in India with remote assistance (Rs 500/yr) and on-ground paperwork execution for bank, demat, and property transfers",
+    "source_title": "Yellow SMART - Simplify Asset Transfer After Death",
+    "source_url": "https://www.getyellow.in/yellow-smart",
+    "published_date": "Unknown",
+    "retrieved_date": "2026-11-02",
+    "exact_passage": "Post-demise services include bank and Demat transfers, succession certificates, probate, and unclaimed asset recovery with on-ground lawyer support.",
+    "source_tier": "Primary",
+    "verification_status": "VERIFIED",
+    "confidence": "High",
+    "limitation": "Proves commercial activity exists in India, demonstrating direct existing competition.",
+    "screenshot_path": "",
+    "snapshot_path": "evidence/snapshots/snapshot_7bbb84de.txt",
+    "timestamp": "2026-11-02T11:59:41.872756"
+  },
+  {
+    "id": "EV-004",
+    "claim": "EstateExec provides dedicated post-death estate administration software for executors to track inventories, debts, accounting, and legal distribution",
+    "source_title": "EstateExec - Software for Estate Executors",
+    "source_url": "https://www.estateexec.com",
+    "published_date": "Unknown",
+    "retrieved_date": "2026-11-02",
+    "exact_passage": "Award-winning app helps estate executors manage asset inventory, debts, expenses, and estate distribution according to local probate laws.",
+    "source_tier": "Secondary",
+    "verification_status": "VERIFIED",
+    "confidence": "High",
+    "limitation": "Focused primarily on US/Canada probate jurisdictions; lacks direct integration with Indian banking APIs.",
+    "screenshot_path": "evidence/screenshots/screenshot_3b648afd.png",
+    "snapshot_path": "evidence/snapshots/snapshot_3b648afd.txt",
+    "timestamp": "2026-11-02T11:59:54.846632"
   }
 ]

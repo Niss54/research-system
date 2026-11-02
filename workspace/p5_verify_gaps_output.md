@@ -1,33 +1,37 @@
+# Phase 5: Adversarial Gap Verification (9-Platform Sweep)
+
+## Search Coverage & Synonym Log
+- Synonyms Tested: `"deceased estate claim software India"`, `"asset transfer after death service"`, `"succession certificate online assistance"`, `"bereavement notification service India"`, `"settled estate deceased account closure"`.
+- Platforms Searched: Google, Product Hunt, GitHub, YC Directory, Tracxn, MCA Company Records, SEBI Filings.
+
+## Verification Findings
+- **Is this a clean, virgin market gap?** **NO.** Yellow SMART is actively operating in this exact space in India.
+- **Verdict on Gap:** **PARTIAL GAP ⚠️** (Yellow exists, but operates primarily as a high-touch agency rather than self-serve automation).
+
 <!-- BEGIN P5_HANDOFF -->
-PROBLEM_SPACE: Freelance Deliverable Scope Enforcement & Revision Paywall
-TARGET_AUDIENCE: Freelance web designers and boutique creative agencies
+PROBLEM_SPACE: Deceased Estate Settlement & Cross-Institution Asset Transfer
+TARGET_AUDIENCE: Surviving heirs and estate executors in India
 
 VERIFIED_GAPS:
-- GAP 1: Automated Revision Gating (Smart Scope Paywall)
-  VERDICT: CONFIRMED ✅
-  EVIDENCE: Comprehensive search of Product Hunt, Indie Hackers, GitHub, and YC showed zero dedicated tools that enforce revision round limits with connected Stripe micro-billing. All existing feedback tools encourage unlimited commenting.
-  WHY_UNBUILT: Traditional feedback tools focused on enterprise agency collaboration (Ceros/MarkUp.io) where billing is handled separately by account managers.
-  WHY_NOW: Massive rise in solo freelance web developers (Webflow, Framer, Shopify) who need an automated bad-cop system for client revisions.
+- GAP 1: Cross-Institution Estate Settlement Platform
+  VERDICT: PARTIAL ⚠️ (Active direct competitor Yellow SMART exists in India; Settld exists in UK)
+  SYNONYMS_SEARCHED: ["deceased claim service India", "bereavement asset transfer", "succession certificate assistance"]
+  COUNTEREXAMPLES_DISCOVERED: Yellow SMART (getyellow.in) has direct post-demise offerings.
+  EVIDENCE_AUDIT: Yellow provides on-ground assistance for bank, demat, and property transfers; market is NOT empty.
+  WHY_UNBUILT_AS_PURE_SOFTWARE: Indian banks require physical signatures, indemnity stamp paper, and branch manager discretion. Pure digital-only transmission cannot bypass physical verification today.
+  WHY_NOW: SEBI's September 2025 circular mandates smoother nominee-to-heir transmission; RBI UDGAM portal creates public awareness of unclaimed inheritance.
   MINIMAL_MVP_FEATURES:
-  * Shareable deliverable link with revision counter (e.g., Round 1 of 2)
-  * Point-and-click revision submission form with scope confirmation
-  * Automated Stripe change-order paywall when revisions exceed included limit
-  * Auto-approval countdown timer (approves deliverable if client silent for 7 days)
-
-- GAP 2: Proofing-to-Billing Bridge
-  VERDICT: PARTIAL ⚠️
-  EVIDENCE: Some tools like Pastel offer approval buttons, but none integrate direct invoice generation or milestone release.
-  WHY_UNBUILT: API fragmentation between project tools and accounting software.
-  WHY_NOW: Stripe Elements and Webhook infrastructure allows seamless instant checkout.
-  MINIMAL_MVP_FEATURES:
-  * Embeddable client sign-off widget
-
-FINAL_VIABLE_OPPORTUNITIES:
-1. Automated Revision Gating (Smart Scope Paywall) — Defensible entry wedge for solo designers and boutique agencies.
-2. Proofing-to-Billing Bridge — Secondary expansion into visual feedback tools.
+  - Smart claim dossier compiler (pre-fills SBI, HDFC, ICICI, Zerodha deceased forms)
+  - Legal status triage (Will vs No Will, Nominee vs Non-Nominee, Dispute vs Amicable)
+  - Document checklist generator with notarization and stamp paper guidance
+  - Professional escalation marketplace (curated CAs and estate lawyers)
 
 RECOMMENDED_WEDGE:
-PRIMARY_OPPORTUNITY: Automated Revision Gating (Smart Scope Paywall)
-CORE_VALUE_PROP: "The polite bad-cop for your client projects. Never do an unpaid revision round again."
-MVP_BUILD_SCOPE: Deliverable approval link + Revision round counter + Stripe change-order paywall + 7-day auto-acceptance timer.
+PRIMARY_OPPORTUNITY: Cross-Institution Settlement Dossier Generator (Hybrid SaaS + Legal Escalation)
+CORE_VALUE_PROP: "The compassionate estate settlement copilot. One place to claim and transfer all family assets without paying thousands to touts."
+WHY_NOW_CATALYST: SEBI and RBI regulatory mandates for standardized deceased claim settlement + growing awareness of digital asset discovery.
+MVP_BUILD_SCOPE:
+- Deceased asset inventory builder
+- 5 Major Bank/Demat claim packet generator
+- Status tracker dashboard
 <!-- END P5_HANDOFF -->

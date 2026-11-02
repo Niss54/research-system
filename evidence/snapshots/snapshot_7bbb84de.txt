@@ -1,0 +1,153 @@
+<!DOCTYPE html><!-- Last Published: Fri Oct 09 2026 05:30:34 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="www.getyellow.in" data-wf-page="65a9f73c6cd3b486f4bd5f14" data-wf-site="631751590a2e47f5d4e00cbc"><head><meta charset="utf-8"/><link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/><title>Yellow Smart | Simplify Asset Transfer After Death</title><meta content="Yellow Smart streamlines the transfer of property and assets providing full support for a hassle-free inheritance process. Secure a smooth transition for your assets today." name="description"/><meta content="Yellow Smart | Simplify Asset Transfer After Death" property="og:title"/><meta content="Yellow Smart streamlines the transfer of property and assets providing full support for a hassle-free inheritance process. Secure a smooth transition for your assets today." property="og:description"/><meta content="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc/64b13385a27271e24954ab85_9.png" property="og:image"/><meta content="Yellow Smart | Simplify Asset Transfer After Death" name="twitter:title"/><meta content="Yellow Smart streamlines the transfer of property and assets providing full support for a hassle-free inheritance process. Secure a smooth transition for your assets today." name="twitter:description"/><meta content="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc/64b13385a27271e24954ab85_9.png" name="twitter:image"/><meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc/css/getyellow.webflow.shared.af7ad2473.css" rel="stylesheet" type="text/css" integrity="sha384-r3rSRzqzKEWkjpL1gxN/09QO8BRGacODxZKL2/zOzG6p+CTXVZfG7MaVjO+QQkD7" crossorigin="anonymous"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script><script type="text/javascript">WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Merriweather:300,300italic,400,400italic,700,700italic,900,900italic","Varela:400","Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Varela Round:400","Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic","PT Sans:400,400italic,700,700italic","Droid Serif:400,400italic,700,700italic","Bitter:400,700,400italic","PT Serif:400,400italic,700,700italic","Inconsolata:400,700","Vollkorn:400,400italic,700,700italic","Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic","Roboto:300,400,500,600,700"]  }});</script><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc/632462675c7b0a764ac07d5e_get-yellow-favicon.png" rel="shortcut icon" type="image/x-icon"/><link href="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc/631efcfc293ce7218eccb7e4_get-yellow-webclip.png" rel="apple-touch-icon"/><script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": [
+{
+"@type": "Question",
+"name": "What is Yellow SMART?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Yellow SMART is India’s one-stop post-demise asset recovery and transfer service for families. It helps families navigate the complex legal and administrative process of claiming and transferring a deceased person's assets in India — from bank accounts and investments to property and insurance claims."
+}
+},
+{
+"@type": "Question",
+"name": "What does Yellow SMART help with after a death?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Yellow SMART assists families with: discovering all assets of the deceased, gathering required legal documents, closing and transferring bank accounts, claiming life insurance policies, transferring property, redeeming investments and mutual funds, and completing all other post-demise legal formalities required in India."
+}
+},
+{
+"@type": "Question",
+"name": "How long does asset transfer after death take in India?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Without proper planning, asset transfer in India can take 1 to 3 years or more, especially for property. With a valid Will and Yellow SMART assistance, the process can often be completed within a few months."
+}
+},
+{
+"@type": "Question",
+"name": "Do I need a Will to use Yellow SMART?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "No. Yellow SMART can assist families even when the deceased did not have a Will. However, having a valid Will in place significantly simplifies and speeds up the post-demise asset transfer process."
+}
+},
+{
+"@type": "Question",
+"name": "Who can use Yellow SMART?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Yellow SMART is designed for families dealing with post-demise administrative and legal processes in India after the loss of a loved one. Whether the deceased had a Will or not, Yellow Smart experts can guide the family through every step of the asset recovery and transfer process."
+}
+}
+]
+}
+</script><script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script><script type="text/javascript">!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.agent='plwebflow';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', 'ID900359367901804');fbq('track', 'PageView');</script><!-- Global site tag (gtag.js) - Google Ads: 10973058365 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10973058365"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'AW-10973058365');
+    </script>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB9ZD4H');</script>
+<!-- End Google Tag Manager -->
+   
+
+<meta name="facebook-domain-verification" content="riw85zyz851ixltu5qzhjwp2pzhb2n" />
+   
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '900359367901804');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=900359367901804&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Hotjar Tracking Code for https://getyellow.in/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3070156,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<script type="text/javascript">
+(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+
+// Enabling the debug mode flag is useful during implementation,
+// but it's recommended you remove it for production
+mixpanel.init('a3f05f8b9f1685b1f88e23de38690e95', {ignore_dnt: true});
+
+</script>
+
+<script id="jetboost-script" type="text/javascript"> window.JETBOOST_SITE_ID = "clq20jaj6001r0jtrbbnfgvf2"; (function(d) { var s = d.createElement("script"); s.src = "https://cdn.jetboost.io/jetboost.js"; s.async = 1; d.getElementsByTagName("head")[0].appendChild(s); })(document); </script>
+
+
+<!-- Memberstack webflow package -->
+<script data-memberstack-app="undefined" src="https://static.memberstack.com/scripts/v1/memberstack.js" type="text/javascript"></script>
+
+
+<!-- Sygnal Attributes 5 | Memberships --> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@5.3.4/dist/css/webflow-membership.css"> 
+<script defer src="https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@5.3.4/dist/nocode/webflow-membership.js"></script>
+<script>
+window.sa5 = window.sa5 || [];
+window.sa5.push(['getMembershipConfig', 
+  (config) => {
+    // Apply any configuration settings here
+    // such as access groups 
+    return config;
+  }]);
+</script>
+
+<!-- Sygnal Attributes 5 | Memberships | Config -->
+<script>
+window.sa5 = window.sa5 || [];
+window.sa5.push(['getMembershipRoutingConfig', 
+  (config) => {
+    config.routeAfterFirstLogin = '/search-forms';
+    config.routeAfterLogin = '/search-forms';
+    return config;
+  }]); 
+</script>
+
+
+<script src="https://cdn-in.pagesense.io/js/digitalsuccessionsolution/9dfb54a065fb43a2be5c7d2a4f448ba5.js"></script>
+
+
+<!-- Google tag (gtag.js) --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10973058365"></script> 
+<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-10973058365'); </script><script src="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc%2F6544eda5f000985a163a8687%2F6805d3efd0576dff0dd1ce41%2Ffinsweetcomponentsconfig-1.0.0.js" type="module" async="" siteId="631751590a2e47f5d4e00cbc" finsweet="components"></script></head><body><a href="https://www.getyellow.in/webinars" class="ribbon-text hide w-inline-block"><img src="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc/69a1a1cf92f15a6f26213da0_Webinar%20announcement.gif" loading="lazy" width="520" alt="" class="image-680"/></a><div data-w-id="3db5bd73-2d60-fe52-ffdf-5ee60eaca222" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-2-0 w-nav"><a href="https://www.getyellow.in" class="w-inline-block"><img width="118" loading="lazy" alt="Untitled UI logotext" src="https://cdn.prod.website-files.com/631751590a2e47f5d4e00cbc/667d525a20b5b76dc5a4ba25_yellow%20registered%20trademark.svg" class="yellow-logo"/></a><div class="div-block-957"></div><nav role="navigation" class="uui-navbar08_menu w-nav-menu"><div class="uui-navbar08_menu-left"><div data-delay="300" data-hover="false" class="uui-navbar08_menu-dropdown w-dropdown"><div class="navbar_dropdown-toggle w-dropdown-toggle"><div class="uui-dropdown-icon w-embed"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 7.5L10 12.5L15 7.5" stroke="CurrentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div><div class="text-block-85">Wills</div></div><nav class="uui-navbar08_dropdown-list w-dropdown-list"><div class="uui-navbar08_dropdown-link-list"><a href="https://www.getyellow.in/legal-will" class="uui-navbar08_dropdown-link w-inline-block"><div class="uui-navbar08_icon-wrapper"><div class="icon_navbar wills"></div></div><div class="uui-navbar08_item-right"><div class="uui-navbar08_item-heading">Legal Wills</div><div class="uui-text-size-small-2 hide-mobile-landscape">A range of comprehensive Will-making solutions to fit your needs</div></div></a><a id="w-node-_0c0a73f0-c6bf-95b2-4bfb-9d235922b45c-0eaca222" href="https://www.getyellow.in/pricing-wills" class="uui-navbar08_dropdown-link _2 w-inline-block"><div class="uui-navbar08_icon-wrapper"><div class="icon_navbar pricing"></div></div><div id="w-node-_0c0a73f0-c6bf-95b2-4bfb-9d235922b45f-0eaca222" class="uui-navbar08_item-right"><div class="uui-navbar08_item-heading">Wills Pricing</div></div></a></div></nav></div><div data-delay="300" data-hover="false" data-w-id="3db5bd73-2d60-fe52-ffdf-5ee60eaca22a" class="uui-navbar08_menu-dropdown w-dropdown"><div class="navbar_dropdown-toggle w-dropdown-toggle"><div class="uui-dropdown-icon w-embed"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 7.5L10 12.5L15 7.5" stroke="CurrentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div><div class="text-block-85">Inheritance Planning</div></div><nav class="uui-navbar08_dropdown-list wide w-dropdown-list"><h4 class="uui-navbar08_heading">Services  for Individuals</h4><div class="uui-nav
